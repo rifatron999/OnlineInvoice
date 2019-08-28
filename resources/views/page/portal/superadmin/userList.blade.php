@@ -1,6 +1,6 @@
 @extends('template.portal.user')
 @section('title')
-Oinvoice-Portal-Add admin
+Oinvoice-Portal-UserList
 @endsection
 @section('sidebar&content')
       
@@ -29,8 +29,8 @@ Oinvoice-Portal-Add admin
                           <span>User Access Control</span>
                       </a>
                       <ul class="sub">
-                          <li class="active" ><a  href="{{route('addAdminView.index')}}">Create Admin</a></li>
-                          <li><a  href="{{route('userListView.index')}}">View Users & Admin</a></li>
+                          <li ><a  href="{{route('addAdminView.index')}}">Create Admin</a></li>
+                          <li class="active" ><a  href="{{route('userListView.index')}}">View Users & Admin</a></li>
                           
                       </ul>
                   </li>
@@ -112,53 +112,61 @@ Oinvoice-Portal-Add admin
   </div>
 </font>
             
+<!--userList table -->
+<div class="row mt">
+                  <div class="col-md-12">
+                      <div class="content-panel">
+                          <table class="table table-striped table-advance table-hover">
+                            <h4 style="text-align:center;" > USER LIST</h4>
+                            <hr>
+                              <thead>
+                              <tr>
+                                  <th><i class="fa fa-bullhorn"></i> Id</th>
+                                  <th class="hidden-phone"><i class="fa fa-question-circle"></i> Name</th>
+                                  <th><i class=""></i> DOB</th>
+                                  <th><i class=" "></i> Gender</th>
+                                  <th><i class=" "></i> Email</th>
+                                  <th><i class=" "></i> Phone</th>
+                                  <th><i class=" "></i> Type</th>
+                                  <th><i class=" fa fa-edit"></i> BAN</th>
+                                  <th></th>
+                              </tr>
+                              </thead>
 
-              <!--  add admin  -->
-              <div id="login-page">
-      <div class="container">
-      
-          
+                              <tbody>
+                                 @foreach ($userList as $s) 
+                              <tr>
+                                  <td><a href="">{{$s->id}}</a></td>
+                                  <td><a href="">{{$s->name}}</a></td>
+                                  <td><a href="">{{$s->dob}}</a></td>
+                                  <td><a href="">{{$s->gender}}</a></td>
+                                  <td><a href="">{{$s->email}}</a></td>
+                                  <td><a href="">{{$s->phone}}</a></td>
+                                  
+                                  <td><span class="label label-info label-mini">{{$s->type}}</span></td>
+                                  <td>
+                                      <?php
+        if($s->type != 'super admin')
+        { ?>
+           <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+            <?php
+
+        }
+
+?>
+                                      
+                                      
+                                  </td>
+                              </tr>
+                               @endforeach
+                              
+                              </tbody>
+                          </table>
+                      </div><!-- /content-panel -->
+                  </div><!-- /col-md-12 -->
+              </div><!-- /row -->
+<!--/userList table -->
             
-            
-              <form method="post" class="form-login"  >
-                <h3 class="form-login-heading" style="text-align:center;">Create Admin</h3>
-               
-                <input type="text" class="form-control" placeholder="Name*" name="name" autofocus>
-                <br>
-
-                <input type="date" class="form-control" placeholder="DOB* " name="dob" autofocus  >
-                <br>
-                 <select class="form-control" name="gender" >
-  <option value="male"  >Male</option>
-  <option value="female"  >Female</option>
-  
-              </select  >
-                <br>
-
-                <input type="email" class="form-control" placeholder="Email Address*" name="email" autofocus>
-                <br>
-
-                <input type="number" class="form-control" placeholder="Contact number*" name="phone" autofocus>
-                <br>
-
-
-                <input type="password" class="form-control" placeholder="Password*" name="password" >
-                <br>
-                <input type="password" class="form-control" placeholder="Confirm Password*" name="cpassword" >
-                <label class="checkbox">
-                    <!-- <span class="pull-right">
-                        <a data-toggle="modal" href="login.html#myModal"> Forgot Password?</a>
-    
-                    </span> -->
-                </label>
-              
-                <input class="btn btn-theme btn-block" type="submit" name="submit" value="Create" />
-                <hr>
-                </form>
-                
-                </div>
-    </div>
-              <!--   /add admin -->
 
 
 

@@ -70,16 +70,15 @@ public function userCheck($req)
 		
        /*$req->validate([
 
-            'u_name'=>'required|unique:t_users',
-            'ut_password'=>'required|max:3',
-            'ut_password'=>'required|max:3',
-            'utc_password'=>'required|same:ut_password|max:3',
-            'ut_email'=>'required',
-            'ut_phone'=>'required|unique:t_temp_users',
-            'ut_dob'=>'required',
+            'name'=>'required|unique:t_users',
+            'password'=>'required|max:3',
+            'cpassword'=>'required|max:3',
+            'email'=>'required',
+            'phone'=>'required|unique:t_temp_users',
+            'dob'=>'required',
             
-            ]); */
-
+            ]); 
+*/
 
 //insert statrs
        //echo $req;
@@ -113,4 +112,32 @@ public function userCheck($req)
 
 
     	//### addAdmin ###
+
+		//***userListView ***
+
+    	public function userListView(Request $req)
+    	{
+    		if($this->userCheck($req))
+    		{
+    			$userList	= DB::table('t_user')->get();
+    			//echo $userList;
+    			return view('page.portal.superadmin.userList', ['userList' => $userList ]);
+    		}
+    	else
+    		 {
+    		 	$req->session()->flash('msg', "UNAUTHORIZED!");
+        		return redirect()->route('login.index');
+    		 }
+    	}
+
+    //### userListView ###
+
+
+
+
+
+
+
+
+
 }

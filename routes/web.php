@@ -43,6 +43,7 @@ Route::get('/portal','portalController@index')->name('portal.index');
 //*** portal super admin *** 
 Route::get('/portal/superadmin','superadminController@index')->name('superadmin.index');
 Route::get('/portal/superadmin/addAdmin','superadminController@addAdminView')->name('addAdminView.index');
+Route::get('/portal/superadmin/userList','superadminController@userListView')->name('userListView.index');
 
 Route::post('/portal/superadmin/addAdmin','superadminController@addAdmin');
 //### portal super admin ###

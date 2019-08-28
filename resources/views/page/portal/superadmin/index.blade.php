@@ -30,7 +30,7 @@ Oinvoice-Portal
                       </a>
                       <ul class="sub">
                           <li><a  href="{{route('addAdminView.index')}}">Create Admin</a></li>
-                          <li><a  href="buttons.html">View Users & Admin</a></li>
+                          <li><a  href="{{route('userListView.index')}}">View Users & Admin</a></li>
                           
                       </ul>
                   </li>
