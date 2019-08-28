@@ -28,6 +28,7 @@ Route::get('/logout', 'logoutController@index')->name('logout.index');
 
 //*** registration ***
 Route::get('/registration','registrationController@index')->name('registration.index');
+
 Route::post('/registration','registrationController@signup');
 
 //### registration ###
@@ -41,6 +42,9 @@ Route::get('/portal','portalController@index')->name('portal.index');
 
 //*** portal super admin *** 
 Route::get('/portal/superadmin','superadminController@index')->name('superadmin.index');
+Route::get('/portal/superadmin/addAdmin','superadminController@addAdminView')->name('addAdminView.index');
+
+Route::post('/portal/superadmin/addAdmin','superadminController@addAdmin');
 //### portal super admin ###
 
 //*** portal  admin *** 
