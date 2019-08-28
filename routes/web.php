@@ -17,11 +17,36 @@ Route::get('/', function () {
 
 //*** login ***
 Route::get('/login','loginController@index')->name('login.index');
-//Route::post('/login','loginController@signup');
+//Route::get('/test/123','loginController@test')->name('test.index');
+
+Route::post('/login','loginController@signin');
 //### login ###
+
+//*** logout ***
+Route::get('/logout', 'logoutController@index')->name('logout.index');
+//### logout
 
 //*** registration ***
 Route::get('/registration','registrationController@index')->name('registration.index');
 Route::post('/registration','registrationController@signup');
 
 //### registration ###
+
+
+
+//*** portal common ***
+Route::get('/portal','portalController@index')->name('portal.index');
+
+//### portal common ###
+
+//*** portal super admin *** 
+Route::get('/portal/superadmin','superadminController@index')->name('superadmin.index');
+//### portal super admin ###
+
+//*** portal  admin *** 
+Route::get('/portal/admin','adminController@index')->name('admin.index');
+//### portal  admin ###
+
+//*** portal user  *** 
+Route::get('/portal/user','userController@index')->name('user.index');
+//### portal user  ###
