@@ -1,4 +1,7 @@
 @extends('template.portal.user')
+@section('title')
+Oinvoice-Portal
+@endsection
 @section('sidebar&content')
       
       <!-- **********************************************************************************************************************************************************
@@ -14,7 +17,7 @@
                   <h5 class="centered">{{session('name')}}</h5>
                     
                   <li class="mt">
-                      <a href="index.html">
+                      <a class="active" href="{{route('portal.index')}}">
                           <i class="fa fa-dashboard"></i>
                           <span>Dashboard</span>
                       </a>
@@ -44,7 +47,7 @@
                       </ul>
                   </li>
                   <li class="sub-menu">
-                      <a class="active" href="javascript:;" >
+                      <a  href="javascript:;" >
                           <i class="fa fa-book"></i>
                           <span>Extra Pages</span>
                       </a>

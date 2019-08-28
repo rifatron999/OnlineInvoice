@@ -8,7 +8,7 @@ class userController extends Controller
 {
     //***index ***
 
-    	public function index()
+    	public function index(Request $req)
     	{
     		return view('page.portal.user.index');
     	}

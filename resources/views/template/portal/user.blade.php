@@ -7,7 +7,7 @@
     <meta name="author" content="Dashboard">
     <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
-    <title>DASHGUM - Bootstrap Admin Template</title>
+    <title>@yield('title')</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{{asset('assets/css')}}/bootstrap.css" rel="stylesheet">  
@@ -37,7 +37,7 @@
                   <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
               </div>
             <!--logo start-->
-            <a href="index.html" class="logo"><b>Online invoicE</b></a>
+            <a href="{{route('portal.index')}}" class="logo"><b>Online invoicE</b></a>
             <!--logo end-->
             
             <div class="top-menu">
