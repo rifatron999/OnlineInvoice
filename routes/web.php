@@ -50,6 +50,8 @@ Route::post('/portal/superadmin/addAdmin','superadminController@addAdmin');
 
 //*** portal  admin *** 
 Route::get('/portal/admin','adminController@index')->name('admin.index');
+Route::get('/portal/admin/userList','adminController@userListView')->name('userListViewA.index');
+
 //### portal  admin ###
 
 //*** portal user  *** 

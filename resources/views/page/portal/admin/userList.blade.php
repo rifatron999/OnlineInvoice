@@ -24,13 +24,13 @@ Oinvoice-Portal-UserList
                   </li>
 
                   <li class="sub-menu">
-                      <a class="active" href="javascript:;" >
+                      <a class="active"  href="javascript:;" >
                           <i class="fa fa-user"></i>
                           <span>User Access Control</span>
                       </a>
                       <ul class="sub">
-                          <li ><a  href="{{route('addAdminView.index')}}">Create Admin</a></li>
-                          <li class="active" ><a  href="{{route('userListView.index')}}">View Users & Admin</a></li>
+                         
+                          <li class="active"  ><a  href="{{route('userListViewA.index')}}">View Users</a></li>
                           
                       </ul>
                   </li>
@@ -127,7 +127,7 @@ Oinvoice-Portal-UserList
                                   <th><i class=" "></i> Gender</th>
                                   <th><i class=" "></i> Email</th>
                                   <th><i class=" "></i> Phone</th>
-                                  <th><i class=" "></i> Type</th>
+                                  <th><i class=" "></i> Products</th>
                                   <th><i class=" fa fa-edit"></i> BAN</th>
                                   <th></th>
                               </tr>
@@ -143,17 +143,14 @@ Oinvoice-Portal-UserList
                                   <td><a >{{$s->email}}</a></td>
                                   <td><a >{{$s->phone}}</a></td>
                                   
-                                  <td><span class="label label-info label-mini">{{$s->type}}</span></td>
+                                  <td> <button class="btn btn-danger btn-xs">➠</button></td>
                                   <td>
-                                      <?php
-        if($s->type != 'super admin')
-        { ?>
+                                     
+      
            <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-            <?php
+            
 
-        }
-
-?>
+        
                                       
                                       
                                   </td>

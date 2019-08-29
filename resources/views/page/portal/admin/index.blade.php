@@ -23,15 +23,15 @@ Oinvoice-Portal
                       </a>
                   </li>
 
-                  <li class="sub-menu">
-                      <a href="javascript:;" >
-                          <i class="fa fa-desktop"></i>
-                          <span>UI Elements</span>
+                   <li class="sub-menu">
+                      <a  href="javascript:;" >
+                          <i class="fa fa-user"></i>
+                          <span>User Access Control</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href="general.html">General</a></li>
-                          <li><a  href="buttons.html">Buttons</a></li>
-                          <li><a  href="panels.html">Panels</a></li>
+                         
+                          <li  ><a  href="{{route('userListViewA.index')}}">View Users</a></li>
+                          
                       </ul>
                   </li>
 

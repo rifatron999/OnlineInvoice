@@ -62,6 +62,7 @@
     <script class="include" type="text/javascript" src="{{asset('assets/js')}}/jquery.dcjqaccordion.2.7.js"></script>
     <script src="{{asset('assets/js')}}/jquery.scrollTo.min.js"></script>
     <script src="{{asset('assets/js')}}/jquery.nicescroll.js" type="text/javascript"></script>
+    
 
 
     <!--common script for all pages-->
