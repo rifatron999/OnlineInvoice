@@ -1,6 +1,6 @@
 @extends('template.portal.user')
 @section('title')
-Oinvoice-Portal
+Oinvoice-Portal-profile
 @endsection
 @section('sidebar&content')
       
@@ -17,13 +17,13 @@ Oinvoice-Portal
                   <h5 class="centered">{{session('name')}}</h5>
                     
                   <li class="mt">
-                      <a class="active" href="{{route('portal.index')}}">
+                      <a href="{{route('portal.index')}}">
                           <i class="fa fa-dashboard"></i>
                           <span>Dashboard</span>
                       </a>
                   </li>
                   <li class="mt">
-                      <a  href="{{route('profileView.index')}}">
+                      <a class="active"  href="{{route('profileView.index')}}">
                           <i class="fa fa-user"></i>
                           <span>Profile</span>
                       </a>
@@ -105,13 +105,40 @@ Oinvoice-Portal
       <!--main content start-->
       <section id="main-content">
           <section class="wrapper site-min-height">
-            <h3><i class="fa fa-angle-right"></i> user from portal</h3>
-            <div class="row mt">
+            <!-- profile -->
+           
+             <div class="row mt">
               <div class="col-lg-12">
-              <p>Place your content here.</p>
-              </div>
-            </div>
-      
+                <form class="form-inline" role="form">
+                <div class="form-panel">
+                      
+                      
+                          <div class="form-group"> <h3  align="center"> User Information</h3> <br>
+                               Name: &nbsp
+                              <input type="text" class="form-control"  placeholder="Name" value="{{session('name')}}">
+                             &nbsp Password: &nbsp
+                              <input type="password" class="form-control"  placeholder="Password" value="{{session('password')}}">
+                              &nbsp Email: &nbsp
+                              <input type="Email" class="form-control"  placeholder="Email" value="{{session('email')}}" >
+                             
+                               &nbsp DOB: &nbsp
+                              <input type="date" class="form-control"  value="{{session('dob')}}" >
+                              &nbsp Phone: &nbsp
+                              <input type="number" class="form-control" value="{{session('phone')}}" >
+                               &nbsp Picture: &nbsp
+                              <input type="file" class="form-control" value="" />
+                          </div>
+                          <br>
+                          </div><!-- /form-panel -->
+                          <br>
+                           <div class="form-panel">
+                           </div><!-- /form-panel -->
+
+
+                </form>
+              </div><!-- /col-lg-12 -->
+            </div><!-- /row -->
+            <!-- /profile -->
     </section><! --/wrapper -->
       </section><!-- /MAIN CONTENT -->
 

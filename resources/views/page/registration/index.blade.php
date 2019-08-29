@@ -4,7 +4,7 @@
 	  	<div class="container">
 	  	
 		      
-		        
+		        <!-- registration -->
 		        <div class="login-wrap">
 		        	<form method="post" class="form-login"  >
 		        		<h2 class="form-login-heading">sign up now</h2>
@@ -55,6 +55,8 @@
 		            </div>
 		
 		        </div>
+		        
+		        <!-- /registration -->
 		         
 		
 		          <!-- Modal -->
