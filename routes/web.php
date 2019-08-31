@@ -58,10 +58,13 @@ Route::get('/portal/admin/userList','adminController@userListView')->name('userL
 Route::get('/portal/user','userController@index')->name('user.index');
 Route::get('/portal/user/profile','userController@profileView')->name('profileView.index');
 Route::get('/portal/user/addProduct','userController@addProductView')->name('addProductView.index');
-Route::get('/portal/user/updateProduct/{p_id}','userController@productUpdateView')->name('productUpdateView.index');
+Route::get('/portal/user/updateProduct/{p_id}','userController@productUpdateView')->name('productUpdateView');
+Route::get('/portal/user/removeProduct/{p_id}','userController@deleteProduct')->name('removeProduct');
+
 
 
 Route::post('/portal/user/profile','userController@profileUpdate');
 Route::post('/portal/user/updateProduct/{p_id}','userController@productUpdate');
 Route::post('/portal/user/addProduct','userController@addProduct');
+
 //### portal user  ###

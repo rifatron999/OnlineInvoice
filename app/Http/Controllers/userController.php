@@ -313,24 +313,38 @@ DB::table('t_product')->where('p_id', $p_id)
 ]);
 
 
-$productList   = DB::table('t_product')->where('p_owner', $req->session()->get('name'))
-                    ->get();
-                    if($this->userCheck($req))
-                    {
-                        return view('page.portal.user.addproduct', ['productList' => $productList ]);
-
-                    }
-                    else
-                    {
-                        $req->session()->flash('msg', "UNAUTHORIZED!");
-                        return redirect()->route('login.index');
-                    }
+return redirect()->route('addProductView.index');
 
         
 
     }
     
     //### productUpdate ###
+
+
+
+
+
+    //*** deleteProduct ***
+
+public function deleteProduct($p_id,Request $req){
+         if($this->userCheck($req))
+                    {
+$facultySlideList   = DB::table('t_product')->where('p_id', $p_id)
+->delete();
+
+
+
+
+         return back()->with('msg', "✘ SLIDE REMOVED");
+        }
+    
+    else{
+        $request->session()->flash('msg', "illigal request!");
+            return redirect()->route('login.index');
+        }
+    }
+    //### deleteProduct ###
 
 
 

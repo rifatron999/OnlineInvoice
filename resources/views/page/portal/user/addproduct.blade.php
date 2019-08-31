@@ -182,11 +182,11 @@ Oinvoice-Portal-AddProduct
                                   <td><a >{{$s->p_price}}</a></td>
                                   <td><a >{{$s->p_stock}}</a></td>
                                                                    
-                                  <td> <a href="{{route('productUpdateView.index',$s->p_id )}}" class="btn btn-danger btn-xs"><i class="fa fa-edit"></i></a></td>
+                                  <td> <a href="{{route('productUpdateView',$s->p_id )}}" class="btn btn-danger btn-xs"><i class="fa fa-edit"></i></a></td>
                                   <td>
                                      
       
-           <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+           <a class="btn btn-danger btn-xs" href="{{route('removeProduct',$s->p_id )}}" ><i class="fa fa-trash-o "></i></a>
             
 
         
