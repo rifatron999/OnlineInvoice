@@ -148,7 +148,7 @@ Oinvoice-Portal-UserList
                                       <?php
         if($s->type != 'super admin')
         { ?>
-           <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+           <a class="btn btn-danger btn-xs" href="{{route('removeUserSuper',$s->id )}}" ><i class="fa fa-trash-o "></i></a>
             <?php
 
         }

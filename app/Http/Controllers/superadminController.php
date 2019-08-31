@@ -132,6 +132,26 @@ public function userCheck($req)
 
     //### userListView ###
 
+//*** removeUser ***
+
+public function removeUser($id,Request $req){
+         if($this->userCheck($req))
+                    {
+$facultySlideList   = DB::table('t_user')->where('id', $id)
+->delete();
+
+
+
+
+         return back()->with('msg', "✘ User REMOVED");
+        }
+    
+    else{
+        $request->session()->flash('msg', "illigal request!");
+            return redirect()->route('login.index');
+        }
+    }
+    //### removeUser ###
 
 
 

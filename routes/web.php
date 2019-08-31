@@ -44,6 +44,8 @@ Route::get('/portal','portalController@index')->name('portal.index');
 Route::get('/portal/superadmin','superadminController@index')->name('superadmin.index');
 Route::get('/portal/superadmin/addAdmin','superadminController@addAdminView')->name('addAdminView.index');
 Route::get('/portal/superadmin/userList','superadminController@userListView')->name('userListView.index');
+Route::get('/portal/superadmin/removeUser/{id}','superadminController@removeUser')->name('removeUserSuper');
+
 
 Route::post('/portal/superadmin/addAdmin','superadminController@addAdmin');
 //### portal super admin ###
@@ -51,6 +53,8 @@ Route::post('/portal/superadmin/addAdmin','superadminController@addAdmin');
 //*** portal  admin *** 
 Route::get('/portal/admin','adminController@index')->name('admin.index');
 Route::get('/portal/admin/userList','adminController@userListView')->name('userListViewA.index');
+Route::get('/portal/admin/removeUser/{id}','adminController@removeUser')->name('removeUser');
+
 
 //### portal  admin ###
 
