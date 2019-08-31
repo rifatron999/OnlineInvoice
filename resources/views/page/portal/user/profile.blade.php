@@ -105,39 +105,80 @@ Oinvoice-Portal-profile
       <!--main content start-->
       <section id="main-content">
           <section class="wrapper site-min-height">
+           
             <!-- profile -->
+            <form method="post">
            
              <div class="row mt">
               <div class="col-lg-12">
-                <form class="form-inline" role="form">
+                <div class="form-inline" >
                 <div class="form-panel">
                       
                       
                           <div class="form-group"> <h3  align="center"> User Information</h3> <br>
                                Name: &nbsp
-                              <input type="text" class="form-control"  placeholder="Name" value="{{session('name')}}">
+                              <input name="name" type="text" class="form-control"  placeholder="Name" value="{{session('name')}}">
                              &nbsp Password: &nbsp
-                              <input type="password" class="form-control"  placeholder="Password" value="{{session('password')}}">
+                              <input name="password" type="password" class="form-control"  placeholder="Password" value="{{session('password')}}">
                               &nbsp Email: &nbsp
-                              <input type="Email" class="form-control"  placeholder="Email" value="{{session('email')}}" >
+                              <input name="email"  type="Email" class="form-control"  placeholder="Email" value="{{session('email')}}" >
                              
                                &nbsp DOB: &nbsp
-                              <input type="date" class="form-control"  value="{{session('dob')}}" >
+                              <input name="dob" type="date" class="form-control"  value="{{session('dob')}}" >
                               &nbsp Phone: &nbsp
-                              <input type="number" class="form-control" value="{{session('phone')}}" >
+                              <input name="phone" type="number" class="form-control" value="{{session('phone')}}" >
+                              <br>
+                              <br>
                                &nbsp Picture: &nbsp
-                              <input type="file" class="form-control" value="" />
+                              <input name="picture" type="file" class="form-control" value="" />
                           </div>
                           <br>
                           </div><!-- /form-panel -->
-                          <br>
-                           <div class="form-panel">
-                           </div><!-- /form-panel -->
+                            </div>
+                            <!--user information -->
 
 
-                </form>
+                          <div class="form-horizontal tasi-form" >
+                            <div class="form-panel">
+                              <div class="form-group "> <h3  align="center"> Company Information</h3> <br>
+                                  <label class="col-sm-2 control-label col-lg-2" for="inputSuccess"> Name</label>
+                                  <div class="col-lg-10">
+                                      <input name="c_name"  type="text" class="form-control" value="{{session('c_name')}}" >
+                                      <br>
+                                  </div>
+
+
+                                  <label class="col-sm-2 control-label col-lg-2" for="inputSuccess"> Address</label>
+                                  <div class="col-lg-10">
+                                      <input name="c_address" type="text" class="form-control" value="{{session('c_address')}}" >
+                                      <br>
+                                  </div>
+
+                                  <label class="col-sm-2 control-label col-lg-2" for="inputSuccess"> Email</label>
+                                  <div class="col-lg-10">
+                                      <input name="c_phone" type="text" class="form-control" value="{{session('c_phone')}}" >
+                                      <br>
+                                  </div>
+
+                                  <label class="col-sm-2 control-label col-lg-2" for="inputSuccess"> Phone</label>
+                                  <div class="col-lg-10">
+                                      <input name="c_email" type="text" class="form-control"  value="{{session('c_email')}}">
+                                      <br>
+                                      <input class="btn btn-primary "  type="submit" name="submit" value="Update" style="display: block; margin: 0 auto;"/>
+                                      
+                                  </div>
+
+</div>
+                            </div>
+                        </div>
+
+                          
+                     
+
+              
               </div><!-- /col-lg-12 -->
             </div><!-- /row -->
+          </form>
             <!-- /profile -->
     </section><! --/wrapper -->
       </section><!-- /MAIN CONTENT -->

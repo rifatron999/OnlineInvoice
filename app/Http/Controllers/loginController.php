@@ -47,6 +47,7 @@ class loginController extends Controller
 		$result	= DB::table('t_user')->where('name', $req->name)
 				 ->where('password', $req->password)
 				 ->get();
+				 $result1	= DB::table('t_company')->where('c_owner', $req->name)->get();
 
 		//echo $result;
 
@@ -61,6 +62,14 @@ class loginController extends Controller
 			$req->session()->put('email', $result[0]->email );
 			$req->session()->put('phone', $result[0]->phone );
 			//$req->session()->put('u_pic', $result[0]->pic );
+
+			$req->session()->put('c_name', $result1[0]->c_name );
+            $req->session()->put('c_address', $result1[0]->c_address );
+            $req->session()->put('c_phone', $result1[0]->c_phone );
+            $req->session()->put('c_email', $result1[0]->c_email );
+
+
+
 			
 			//return redirect()->route('home.index');
 			return redirect()->route('portal.index');

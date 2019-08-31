@@ -57,4 +57,6 @@ Route::get('/portal/admin/userList','adminController@userListView')->name('userL
 //*** portal user  *** 
 Route::get('/portal/user','userController@index')->name('user.index');
 Route::get('/portal/user/profile','userController@profileView')->name('profileView.index');
+
+Route::post('/portal/user/profile','userController@profileUpdate');
 //### portal user  ###
