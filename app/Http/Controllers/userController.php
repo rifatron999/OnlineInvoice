@@ -249,4 +249,98 @@ DB::table('t_user')->where('name', $req->session()->get('name'))
 
         //### addProduct ###
 
+
+
+
+    //*** productUpdateView *** 
+
+public function productUpdateView($p_id,Request $req)
+{   
+    $productByid   = DB::table('t_product')->where('p_id', $p_id)->get();
+
+
+    if($this->userCheck($req))
+                    {
+                        return view('page.portal.user.updateproduct', ['productByid' => $productByid ]);
+
+                    }
+                    else
+                    {
+                        $req->session()->flash('msg', "UNAUTHORIZED!");
+                        return redirect()->route('login.index');
+                    }
+
+
 }
+        
+  
+
+
+  //### productUpdateView ###
+
+
+
+                //*** productUpdate ***
+
+     public function productUpdate($p_id,Request $req){
+        //echo $req;
+        
+        
+//        $req->validate([
+
+            
+//             't_sun'=>'required',
+//             't_mon'=>'required',
+            
+            
+
+
+            
+//         ]); 
+
+        
+
+
+DB::table('t_product')->where('p_id', $p_id)
+->update([
+    
+         
+    
+    'p_price' => $req->p_price ,
+    'p_stock' => $req->p_stock
+    
+    
+]);
+
+
+$productList   = DB::table('t_product')->where('p_owner', $req->session()->get('name'))
+                    ->get();
+                    if($this->userCheck($req))
+                    {
+                        return view('page.portal.user.addproduct', ['productList' => $productList ]);
+
+                    }
+                    else
+                    {
+                        $req->session()->flash('msg', "UNAUTHORIZED!");
+                        return redirect()->route('login.index');
+                    }
+
+        
+
+    }
+    
+    //### productUpdate ###
+
+
+
+
+
+
+
+
+
+
+}
+
+
