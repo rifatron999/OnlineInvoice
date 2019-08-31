@@ -30,15 +30,11 @@ Oinvoice-Portal
                   </li>
 
                   <li class="sub-menu">
-                      <a href="javascript:;" >
-                          <i class="fa fa-desktop"></i>
-                          <span>UI Elements</span>
+                      <a  href="{{route('addProductView.index')}}" >
+                          <i class="fa fa-tasks"></i>
+                          <span>Products</span>
                       </a>
-                      <ul class="sub">
-                          <li><a  href="general.html">General</a></li>
-                          <li><a  href="buttons.html">Buttons</a></li>
-                          <li><a  href="panels.html">Panels</a></li>
-                      </ul>
+                      
                   </li>
 
                   <li class="sub-menu">

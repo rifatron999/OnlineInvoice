@@ -23,7 +23,7 @@ Oinvoice-Portal-profile
                       </a>
                   </li>
                   <li class="mt">
-                      <a class="active"  href="{{route('profileView.index')}}">
+                      <a   href="{{route('profileView.index')}}">
                           <i class="fa fa-user"></i>
                           <span>Profile</span>
                       </a>
@@ -42,7 +42,7 @@ Oinvoice-Portal-profile
                   </li>
 
                   <li class="sub-menu">
-                      <a  href="{{route('addProductView.index')}}" >
+                      <a class="active" href="{{route('addProductView.index')}}" >
                           <i class="fa fa-tasks"></i>
                           <span>Products</span>
                       </a>
@@ -107,60 +107,35 @@ Oinvoice-Portal-profile
            
              <div class="row mt">
               <div class="col-lg-12">
-                <div class="form-inline" >
-                <div class="form-panel">
-                      
-                      
-                          <div class="form-group"> <h3  align="center"> User Information</h3> <br>
-                               Name: &nbsp
-                              <input name="name" type="text" class="form-control"  placeholder="Name" value="{{session('name')}}">
-                             &nbsp Password: &nbsp
-                              <input name="password" type="password" class="form-control"  placeholder="Password" value="{{session('password')}}">
-                              &nbsp Email: &nbsp
-                              <input name="email"  type="Email" class="form-control"  placeholder="Email" value="{{session('email')}}" >
-                             
-                               &nbsp DOB: &nbsp
-                              <input name="dob" type="date" class="form-control"  value="{{session('dob')}}" >
-                              &nbsp Phone: &nbsp
-                              <input name="phone" type="number" class="form-control" value="{{session('phone')}}" >
-                              <br>
-                              <br>
-                               &nbsp Picture: &nbsp
-                              <input name="picture" type="file" class="form-control" value="" />
-                          </div>
-                          <br>
-                          </div><!-- /form-panel -->
-                            </div>
-                            <!--user information -->
+                
 
 
                           <div class="form-horizontal tasi-form" >
                             <div class="form-panel">
-                              <div class="form-group "> <h3  align="center"> Company Information</h3> <br>
-                                  <label class="col-sm-2 control-label col-lg-2" for="inputSuccess"> Name</label>
+                              <div class="form-group "> <h3  align="center">Add Product</h3> <br>
+                                  <label class="col-sm-2 control-label col-lg-2" for="inputSuccess"> Product Name</label>
                                   <div class="col-lg-10">
-                                      <input name="c_name"  type="text" class="form-control" value="{{session('c_name')}}" >
+                                      <input name="p_name"  type="text" class="form-control"  >
                                       <br>
                                   </div>
 
 
-                                  <label class="col-sm-2 control-label col-lg-2" for="inputSuccess"> Address</label>
+                                  <label class="col-sm-2 control-label col-lg-2" for="inputSuccess">Unit Price</label>
                                   <div class="col-lg-10">
-                                      <input name="c_address" type="text" class="form-control" value="{{session('c_address')}}" >
+                                      <input name="p_price" type="number" class="form-controls"  >
+                                      &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+                                      <label > Stock</label> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+                                      <input name="p_stock" type="number" class="form-controls"  >
                                       <br>
                                   </div>
 
-                                  <label class="col-sm-2 control-label col-lg-2" for="inputSuccess"> Email</label>
-                                  <div class="col-lg-10">
-                                      <input name="c_phone" type="text" class="form-control" value="{{session('c_phone')}}" >
-                                      <br>
-                                  </div>
+                                 
 
-                                  <label class="col-sm-2 control-label col-lg-2" for="inputSuccess"> Phone</label>
+                                 
                                   <div class="col-lg-10">
-                                      <input name="c_email" type="text" class="form-control"  value="{{session('c_email')}}">
+                                      
                                       <br>
-                                      <input class="btn btn-primary "  type="submit" name="submit" value="Update" style="display: block; margin: 0 auto;"/>
+                                      <input class="btn btn-primary "  type="submit" name="submit" value="Add" style="display: block; margin: 0 auto;"/>
                                       
                                   </div>
 
@@ -176,6 +151,57 @@ Oinvoice-Portal-profile
             </div><!-- /row -->
           </form>
             <!-- /profile -->
+
+
+
+
+            <!--userList table -->
+<div class="row mt">
+                  <div class="col-md-12">
+                      <div class="content-panel">
+                          <table class="table table-striped table-advance table-hover">
+                            <h4 style="text-align:center;" > My Products</h4>
+                            <hr>
+                              <thead>
+                              <tr>
+                                  <th><i class="fa fa-bullhorn"></i> Id</th>
+                                  <th class="hidden-phone"><i class="fa fa-question-circle"></i> Name</th>
+                                  <th><i class=""></i> price</th>
+                                  <th><i class=" "></i> Stock</th>
+                                  <th><i class=" fa fa-edit"></i> Edit</th>
+                                  <th><i class=" fa fa-edit"></i> Delete</th>
+                                  <th></th>
+                              </tr>
+                              </thead>
+
+                              <tbody>
+                                 @foreach ($productList as $s) 
+                              <tr>
+                                  <td><a >{{$s->p_id}}</a></td>
+                                  <td><a href="">{{$s->p_name}}</a></td>
+                                  <td><a >{{$s->p_price}}</a></td>
+                                  <td><a >{{$s->p_stock}}</a></td>
+                                                                   
+                                  <td> <button class="btn btn-danger btn-xs"><i class="fa fa-edit"></i></button></td>
+                                  <td>
+                                     
+      
+           <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+            
+
+        
+                                      
+                                      
+                                  </td>
+                              </tr>
+                               @endforeach
+                              
+                              </tbody>
+                          </table>
+                      </div><!-- /content-panel -->
+                  </div><!-- /col-md-12 -->
+              </div><!-- /row -->
+<!--/userList table -->
     </section><! --/wrapper -->
       </section><!-- /MAIN CONTENT -->
 

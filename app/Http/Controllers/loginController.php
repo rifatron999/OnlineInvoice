@@ -63,10 +63,14 @@ class loginController extends Controller
 			$req->session()->put('phone', $result[0]->phone );
 			//$req->session()->put('u_pic', $result[0]->pic );
 
+			if(count($result1) > 0)
+			{
 			$req->session()->put('c_name', $result1[0]->c_name );
             $req->session()->put('c_address', $result1[0]->c_address );
             $req->session()->put('c_phone', $result1[0]->c_phone );
             $req->session()->put('c_email', $result1[0]->c_email );
+        	}
+
 
 
 

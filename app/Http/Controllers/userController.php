@@ -173,4 +173,80 @@ DB::table('t_user')->where('name', $req->session()->get('name'))
     
     //### profileUpdate ###
 
+
+
+
+
+    //*** addProductView ***
+        public function addProductView(Request $req)
+                 {
+                    $productList   = DB::table('t_product')->where('p_owner', $req->session()->get('name'))
+                    ->get();
+                    if($this->userCheck($req))
+                    {
+                        return view('page.portal.user.addproduct', ['productList' => $productList ]);
+
+                    }
+                    else
+                    {
+                        $req->session()->flash('msg', "UNAUTHORIZED!");
+                        return redirect()->route('login.index');
+                    }
+                }
+
+        //### addProductView ###
+
+
+
+                //*** addProduct ***
+
+         public function addProduct(Request $req)
+         {
+        
+        
+       /*$req->validate([
+
+            'name'=>'required|unique:t_users',
+            'password'=>'required|max:3',
+            'cpassword'=>'required|max:3',
+            'email'=>'required',
+            'phone'=>'required|unique:t_temp_users',
+            'dob'=>'required',
+            
+            ]); 
+*/
+
+//insert statrs
+       //echo $req;
+
+       DB::table('t_product')->insert([
+    [
+        'p_name' => $req->p_name,  
+        'p_price' => $req->p_price,  
+        'p_stock' => $req->p_stock,  
+        'p_owner' => $req->session()->get('name') 
+   
+    
+    
+]
+    
+]);
+
+
+//insert ends
+       // //$msg="reg comp";
+       //   return view('page.registration.registration')->with('msg', 'complete');
+       
+       //$req->session()->flash('msg', "✔ Your registration request has been submitted to our admin");
+                return redirect()->route('addProductView.index');
+
+        
+        
+    }
+
+
+
+
+        //### addProduct ###
+
 }
