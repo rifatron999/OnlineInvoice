@@ -1,6 +1,6 @@
 @extends('template.portal.user')
 @section('title')
-Oinvoice-Portal-profile
+Oinvoice-Portal-Create
 @endsection
 @section('sidebar&content')
       
@@ -23,19 +23,19 @@ Oinvoice-Portal-profile
                       </a>
                   </li>
                   <li class="mt">
-                      <a class="active"  href="{{route('profileView.index')}}">
+                      <a   href="{{route('profileView.index')}}">
                           <i class="fa fa-user"></i>
                           <span>Profile</span>
                       </a>
                   </li>
 
                   <li class="sub-menu">
-                      <a href="javascript:;" >
+                      <a class="active" href="javascript:;" >
                           <i class="fa fa-file"></i>
                           <span>Invoice</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href="{{route('createinvoiceView.index')}}">Create New Invoice</a></li>
+                          <li class="active" ><a  href="">Create New Invoice</a></li>
                           <li><a  href="buttons.html">Buttons</a></li>
                           <li><a  href="panels.html">Panels</a></li>
                       </ul>
@@ -102,88 +102,81 @@ Oinvoice-Portal-profile
       <section id="main-content">
           <section class="wrapper site-min-height">
            
-            <!-- profile -->
+            <!-- create -->
             <form method="post">
-           
-             <div class="row mt">
-              <div class="col-lg-12">
-                <div class="form-inline" >
+
+ <!-- test -->
+
+                        <div class="col-lg-12">
                 <div class="form-panel">
-                      
-                      
-                          <div class="form-group"> <h3  align="center"> User Information</h3> <br>
-                               Name: &nbsp
-                              <input name="name" type="text" class="form-control"  placeholder="Name" value="{{session('name')}}">
-                             &nbsp Password: &nbsp
-                              <input name="password" type="password" class="form-control"  placeholder="Password" value="{{session('password')}}">
-                              &nbsp Email: &nbsp
-                              <input name="email"  type="Email" class="form-control"  placeholder="Email" value="{{session('email')}}" >
+                     <h3  align="center"> Create New Invoice</h3> <br>
+                          <div class="row mt">
+                              <div class="col-sm-6 text-center">
+                                    <img  src="{{asset('assets/img')}}/ny.jpg" width="200" height="250">
+                                    
+                                     &nbsp <label name="c_name"  type="text"  >{{session('c_name')}}  <br>Hot line : {{session('c_phone')}} <br>Email: {{session('c_email')}} <br>
+                                     Address: {{session('c_address')}} 
+                                      </label>
+                                         <hr>
+                              </div>
+                              <div class="col-sm-6 text-center">
+                                  <select  class="form-controls" name="qi" >
+  <option value="invoice"  >Invoice</option>
+  <option value="quotation"  >Quotation</option>
+  
+              </select  >
+              <br>
+              <br>
+
+              <input name="invoiceNo" type="number" class="form-controls"  placeholder="Invoice Number" value="56">
+                              </div>
+                          </div> 
+                          <!--/1st row -->
+                         
+                          <div class="row mt">
+                              <div class="col-sm-6 text-center">
+                                  <input name="invoiceFrom" type="text" class="form-controlm"  placeholder="Who is this invoice from ? (required)" value="{{session('c_name')}}" >
+              <br>
+           
+
+              <input  name="billto" type="text" class="form-controlss"  placeholder="Bill To" value="Bill to" >
+              <input name="invoiceTo" type="text" class="form-controlm"  placeholder="Who is this invoice to? (required)"  >
+                              </div>
+                              <div class="col-sm-6 text-center">
+
+                             <input  name="datex" type="text" class="form-controlss"  placeholder="Date" value="Date" >   
+                             <input  name="date" type="date" class="form-controls"  id="today"  >
+                              <br>
+                           <input  name="paymentTermsx" type="text" class="form-controlss"  placeholder="Payment Terms" value="Payment Terms" > 
+                            <input  name="paymentTermsx" type="text" class="form-controls"   >
+                            <br>
+                            <input  name="duedatex" type="text" class="form-controlss"  placeholder=" Due Date"  >   
+                             <input  name="duedate" type="date" class="form-controls"   >
+
+                              </div>
                              
-                               &nbsp DOB: &nbsp
-                              <input name="dob" type="date" class="form-control"  value="{{session('dob')}}" >
-                              &nbsp Phone: &nbsp
-                              <input name="phone" type="number" class="form-control" value="{{session('phone')}}" >
-                              <br>
-                              <br>
-                               &nbsp Picture: &nbsp
-                              <input name="picture" type="file" class="form-control" value="" />
-                          </div>
-                          <br>
-                          </div><!-- /form-panel -->
-                            </div>
-                            <!--user information -->
-
-
-                          <div class="form-horizontal tasi-form" >
-                            <div class="form-panel">
-                              <div class="form-group "> <h3  align="center"> Company Information</h3> <br>
-
-                                <label class="col-sm-2 control-label col-lg-2" for="inputSuccess"> Logo</label>
-                                  <div class="col-lg-10">
-                                     <img   width="200" height="250" id="image-field" style="visibility: hidden;" >
-                                      <input name="c_logo"  type="file" class="form-controls" id="file-field"  onchange="previewImage(event)">
-                                      
-                                      <br>
-                                  </div>
-                                  <label class="col-sm-2 control-label col-lg-2" for="inputSuccess"> Name</label>
-                                  <div class="col-lg-10">
-                                      <input name="c_name"  type="text" class="form-control" value="{{session('c_name')}}" >
-                                      <br>
-                                  </div>
-
-
-                                  <label class="col-sm-2 control-label col-lg-2" for="inputSuccess"> Address</label>
-                                  <div class="col-lg-10">
-                                      <input name="c_address" type="text" class="form-control" value="{{session('c_address')}}" >
-                                      <br>
-                                  </div>
-
-                                  <label class="col-sm-2 control-label col-lg-2" for="inputSuccess"> Email</label>
-                                  <div class="col-lg-10">
-                                      <input name="c_phone" type="text" class="form-control" value="{{session('c_phone')}}" >
-                                      <br>
-                                  </div>
-
-                                  <label class="col-sm-2 control-label col-lg-2" for="inputSuccess"> Phone</label>
-                                  <div class="col-lg-10">
-                                      <input name="c_email" type="text" class="form-control"  value="{{session('c_email')}}">
-                                      <br>
-                                      <input class="btn btn-primary "  type="submit" name="submit" value="Update" style="display: block; margin: 0 auto;"/>
-                                      
-                                  </div>
-
-</div>
-                            </div>
-                        </div>
-
+                          </div> 
+                          <!--/2nd row -->
                           
-                     
+                </div>
+              </div>
 
-              
-              </div><!-- /col-lg-12 -->
-            </div><!-- /row -->
+                        <!-- /test -->
+
+
+
+
+
+
+
+
+
+
+
+           
+             
           </form>
-            <!-- /profile -->
+            <!-- /create -->
     </section><! --/wrapper -->
       </section><!-- /MAIN CONTENT -->
 

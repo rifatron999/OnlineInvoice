@@ -348,6 +348,27 @@ $facultySlideList   = DB::table('t_product')->where('p_id', $p_id)
 
 
 
+     //*** createinvoiceView ***
+
+        public function createinvoiceView(Request $req)
+        {
+            
+             if($this->userCheck($req))
+             {
+                return view('page.portal.user.create');
+
+             }
+             else
+             {
+                $req->session()->flash('msg', "UNAUTHORIZED!");
+                return redirect()->route('login.index');
+             }
+        }
+
+    //### createinvoiceView ###
+
+
+
 
 
 
