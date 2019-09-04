@@ -129,7 +129,7 @@ Oinvoice-Portal-Create
               <br>
 
               <input name="invoiceNo" type="number" class="form-controls"  placeholder="Invoice Number" value="56">
-              <hr style="border: 3px solid green;border-radius: 8px;">
+              <hr style="border: px solid green;border-radius: 8px;">
 
                               </div>
                           </div> 
