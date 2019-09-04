@@ -205,6 +205,11 @@ Oinvoice-Portal-Create
                           <div class="row mt">
                               <div class="col-sm-6 text-center">
                                     <!--col 1 -->
+                                     <input  align="left" name="Notesx" type="text" class="form-controlss"  placeholder="Notes" value="Notes" >
+              <input name="Notes" type="text" class="form-control"  placeholder="Any required information not already covered"  >
+
+              <input  name="termsx" type="text" class="form-controlss"  placeholder="Terms" value="Terms" >
+              <input name="terms" type="text" class="form-control"  placeholder="Terms and condition e.g late fee, Delivery schedule , Payment methods "  >
                                     
                               </div>
                               <div class="col-sm-6 text-center">
