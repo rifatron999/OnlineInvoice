@@ -29,5 +29,29 @@ window.onload = function() {
 };
 //#########################################################################
 
+//*** product add in create ***
 
-                                    
+
+
+
+    $(document).ready(function()
+    {
+        $("#add-row").click(function()
+        {
+            
+            var markup = "<tr><td ><input name='invoiceItem' type='text' class='form-control'  placeholder='Description of service and product'  ></td><td><input  name='invoiceQuantity' type='number' class='form-controlssp'    ></td><td><input  name='invoiceRate' type='number' class='form-controlssp'    ></td><td><input  name='invoiceAmount' type='number' class='form-controlssp' disabled   ></td><td><input type='checkbox' name='record' class='form-controlssp' ></td></tr>";
+            $("table tbody").append(markup);
+        });
+        
+        // Find and remove selected table rows
+        $("#delete-row").click(function()
+        {
+            $("table tbody").find('input[name="record"]').each(function(){
+              if($(this).is(":checked")){
+                    $(this).parents("tr").remove();
+                }
+            });
+        });
+    });    
+
+                 //### product add in create ###                   

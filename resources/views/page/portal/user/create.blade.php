@@ -107,7 +107,7 @@ Oinvoice-Portal-Create
 
  <!-- test -->
 
-                        <div class="col-lg-12">
+                <div class="col-lg-12">
                 <div class="form-panel">
                      <h3  align="center"> Create New Invoice</h3> <br>
                           <div class="row mt">
@@ -137,6 +137,7 @@ Oinvoice-Portal-Create
                               <div class="col-sm-6 text-center">
                                   <input name="invoiceFrom" type="text" class="form-controlm"  placeholder="Who is this invoice from ? (required)" value="{{session('c_name')}}" >
               <br>
+              <br>
            
 
               <input  name="billto" type="text" class="form-controlss"  placeholder="Bill To" value="Bill to" >
@@ -152,16 +153,64 @@ Oinvoice-Portal-Create
                             <br>
                             <input  name="duedatex" type="text" class="form-controlss"  placeholder=" Due Date"  >   
                              <input  name="duedate" type="date" class="form-controls"   >
+                             <br>
+                            <input  name="duebanalcex" type="text" class="form-controlss"  placeholder="Balance Due"  >   
+                             <input  name="duebanalce" type="text" class="form-controls"   value="$" disabled>
 
                               </div>
                              
                           </div> 
                           <!--/2nd row -->
+                          <div class="row mt">
+                              <div class="col-sm-12 text-left">
+                                  <!-- clm 1 -->
+                                  <table class="table table-hover">
+                            
+                            <hr>
+                                <thead>
+                                <tr>
+                                    
+                                    <th style="min-width:500px; max-width:501px"  >Item &nbsp <button id='add-row' type="button" class="btn btn-theme02"><i class="fa fa-plus"></i> </button> 
+                                      &nbsp <button id='delete-row' type="button" class="btn btn-theme04"><i class="fa fa-minus"></i> </button>
+
+                                    </th>
+                                    <th>Quantity</th>
+                                    <th>Rate</th>
+                                    <th>Amount</th>
+                                    <th>Select  </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                <td ><input name='invoiceItem' type='text' class='form-control'  placeholder='Description of service and product'  ></td>
+                <td><input  name='invoiceQuantity' type='number' class='form-controlssp'    ></td>
+                <td><input  name='invoiceRate' type='number' class='form-controlssp'    ></td>
+              <td><input  name='invoiceAmount' type='number' class='form-controlssp' disabled   ></td>
+              <td><input type='checkbox' name='record' class='form-controlssp' ></td>
+            </tr>
+                                
+                                
+                                </tbody>
+                            </table>
+                                  
+
+                              </div>
+                              
+                             
+                          </div> 
+
+                          <!--/3rd row -->
                           
                 </div>
               </div>
 
+
+
+
+
                         <!-- /test -->
+
+
 
 
 
@@ -181,6 +230,8 @@ Oinvoice-Portal-Create
       </section><!-- /MAIN CONTENT -->
 
       <!--main content end-->
+
+
           @endsection
 
       

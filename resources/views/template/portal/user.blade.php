@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
@@ -55,6 +56,7 @@
   </section>
 
     <!-- js placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script> //jquery cdn
     <script src="{{asset('assets/js')}}/jquery.js"></script>
     <script src="{{asset('assets/js')}}/bootstrap.min.js"></script>
     <script src="{{asset('assets/js')}}/jquery-ui-1.9.2.custom.min.js"></script>
@@ -63,6 +65,7 @@
     <script src="{{asset('assets/js')}}/jquery.scrollTo.min.js"></script>
     <script src="{{asset('assets/js')}}/jquery.nicescroll.js" type="text/javascript"></script>
     <script src="{{asset('assets/js')}}/my.js" type="text/javascript"></script>
+
     
 
 
