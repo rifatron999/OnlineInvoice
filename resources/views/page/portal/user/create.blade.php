@@ -129,6 +129,8 @@ Oinvoice-Portal-Create
               <br>
 
               <input name="invoiceNo" type="number" class="form-controls"  placeholder="Invoice Number" value="56">
+              <hr>
+
                               </div>
                           </div> 
                           <!--/1st row -->
@@ -200,6 +202,44 @@ Oinvoice-Portal-Create
                           </div> 
 
                           <!--/3rd row -->
+                          <div class="row mt">
+                              <div class="col-sm-6 text-center">
+                                    <!--col 1 -->
+                                    
+                              </div>
+                              <div class="col-sm-6 text-center">
+                                <!--col 2 -->
+                                    <input  name="subTotalx" type="text" class="form-controlss"  value="Sub Total" disabled  >   
+                             <input  name="subTotal" type="number" class="form-controls"  disabled  >
+                              <br>
+
+                           <input  name="discountx" type="text" class="form-controlss"  placeholder="Discount" value="Discount" > 
+                            <input  name="discount" type="text" class="form-controls"   >
+                            <br>
+
+                             <input  name="taxx" type="text" class="form-controlss"  placeholder="Tax" value="Tax" > 
+                            <input  name="tax" type="text" class="form-controls"   >
+                            <br>
+
+                            <input  name="shippingx" type="text" class="form-controlss"  placeholder="Shipping" value="Shipping"  >   
+                             <input  name="shippingx" type="text" class="form-controls"   value="$" >
+                             <br>
+
+
+                             
+
+
+                             <input  name="totalx" type="text" class="form-controlss"  placeholder="Total" value="Total" disabled  >   
+                             <input  name="total" type="text" class="form-controls"   value="$" disabled >
+                             <br>
+
+                             <input  name="paidx" type="text" class="form-controlss"  placeholder="Amount Paid" value="Amount Paid" disabled  >   
+                             <input  name="paid" type="text" class="form-controls"   >
+                            
+
+                              </div>
+                          </div> 
+                          <!--/4th row -->
                           
                 </div>
               </div>
