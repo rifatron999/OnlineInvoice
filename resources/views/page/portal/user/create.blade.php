@@ -117,7 +117,7 @@ Oinvoice-Portal-Create
                                      &nbsp <label name="c_name"  type="text"  >{{session('c_name')}}  <br>Hot line : {{session('c_phone')}} <br>Email: {{session('c_email')}} <br>
                                      Address: {{session('c_address')}} 
                                       </label>
-                                         <hr>
+                                         <hr style="border: 5px solid green;border-radius: 8px;">
                               </div>
                               <div class="col-sm-6 text-center">
                                   <select  class="form-controls" name="qi" >
@@ -129,7 +129,7 @@ Oinvoice-Portal-Create
               <br>
 
               <input name="invoiceNo" type="number" class="form-controls"  placeholder="Invoice Number" value="56">
-              <hr>
+              <hr style="border: 3px solid green;border-radius: 8px;">
 
                               </div>
                           </div> 
@@ -203,10 +203,15 @@ Oinvoice-Portal-Create
 
                           <!--/3rd row -->
                           <div class="row mt">
+
                               <div class="col-sm-6 text-center">
+                 <hr style="border: 5px solid green;border-radius: 8px;">
                                     <!--col 1 -->
                                      <input  align="left" name="Notesx" type="text" class="form-controlss"  placeholder="Notes" value="Notes" >
               <input name="Notes" type="text" class="form-control"  placeholder="Any required information not already covered"  >
+
+              <br>
+              <br>
 
               <input  name="termsx" type="text" class="form-controlss"  placeholder="Terms" value="Terms" >
               <input name="terms" type="text" class="form-control"  placeholder="Terms and condition e.g late fee, Delivery schedule , Payment methods "  >
