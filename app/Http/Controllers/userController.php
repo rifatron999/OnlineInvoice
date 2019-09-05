@@ -77,17 +77,23 @@ public function userCheck($req)
         //echo $req;
         
         
-//        $req->validate([
+        $req->validate([
 
             
-//             't_sun'=>'required',
-//             't_mon'=>'required',
-            
-            
+           'picture'=> 'required|image|mimes:jpeg,jpg,png,gif|max:2048',
+
 
 
             
-//         ]); 
+         ]); 
+
+//***image
+           $file = $req->file('picture');
+           $fileName = $req->name.'.'.$file->getClientOriginalExtension();
+           //echo $fileName;
+           $file->move('assets/img/user_picture', $fileName);
+//###image
+
 
         $companyInfoExist   = DB::table('t_company')->where('c_owner', $req->session()->get('name'))->get();
 
@@ -101,6 +107,7 @@ DB::table('t_user')->where('name', $req->session()->get('name'))
     'email' => $req->email,
     'dob' => $req->dob,
     'phone' => $req->phone,
+    'picture' => $fileName
     
 ]);
 
@@ -155,6 +162,7 @@ DB::table('t_user')->where('name', $req->session()->get('name'))
             $req->session()->put('dob', $req->dob );
             $req->session()->put('email', $req->email );
             $req->session()->put('phone', $req->phone );
+            $req->session()->put('picture', $fileName );
 
             $req->session()->put('c_name', $req->c_name );
             $req->session()->put('c_address', $req->c_address );

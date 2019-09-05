@@ -13,7 +13,7 @@ Oinvoice-Portal-profile
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
               
-                  <p class="centered"><a href="profile.html"><img src="{{asset('assets/img')}}/ui-sam.jpg" class="img-circle" width="60"></a></p>
+                  <p class="centered"><a href="profile.html"><img src="{{asset('assets/img/user_picture')}}/{{session('picture')}}" class="img-circle" width="60"></a></p>
                   <h5 class="centered">{{session('name')}}</h5>
                     
                   <li class="mt">
@@ -103,7 +103,12 @@ Oinvoice-Portal-profile
           <section class="wrapper site-min-height">
            
             <!-- profile -->
-            <form method="post">
+            <font color="red">
+        @foreach($errors->all() as $err)
+  ⚠️{{$err}} <br>
+@endforeach
+</font>
+            <form method="post" enctype="multipart/form-data">
            
              <div class="row mt">
               <div class="col-lg-12">
@@ -126,7 +131,7 @@ Oinvoice-Portal-profile
                               <br>
                               <br>
                                &nbsp Picture: &nbsp
-                              <input name="picture" type="file" class="form-control" value="" />
+                              <input name="picture" type="file" class="form-control" value="C:\Xampp\htdocs\Online Invoice\onlineInvoice\public\assets\img\user_picture\{{session('picture')}}"  />
                           </div>
                           <br>
                           </div><!-- /form-panel -->

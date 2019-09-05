@@ -13,7 +13,7 @@ Oinvoice-Portal-Create
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
               
-                  <p class="centered"><a href="profile.html"><img src="{{asset('assets/img')}}/ui-sam.jpg" class="img-circle" width="60"></a></p>
+                  <p class="centered"><a href="profile.html"><img src="{{asset('assets/img/user_picture')}}/{{session('picture')}}" class="img-circle" width="60"></a></p>
                   <h5 class="centered">{{session('name')}}</h5>
                     
                   <li class="mt">
@@ -114,8 +114,8 @@ Oinvoice-Portal-Create
                               <div class="col-sm-6 text-center">
                                     <img  src="{{asset('assets/img')}}/ny.jpg" width="200" height="250">
                                     
-                                     &nbsp <label name="c_name"  type="text"  >{{session('c_name')}}  <br>Hot line : {{session('c_phone')}} <br>Email: {{session('c_email')}} <br>
-                                     Address: {{session('c_address')}} 
+                                     &nbsp <label style="font-size:17px;" name="c_name"  type="text"  ><mark>{{session('c_name')}}</mark><br><mark>Hot line </mark>: {{session('c_phone')}} <br><mark>Email</mark>: {{session('c_email')}} <br>
+                                     <mark>Address</mark>: {{session('c_address')}} 
                                       </label>
                                          <hr style="border: 5px solid green;border-radius: 8px;">
                               </div>
