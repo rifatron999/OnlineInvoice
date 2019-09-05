@@ -137,6 +137,8 @@ Oinvoice-Portal-Create
                          
                           <div class="row mt">
                               <div class="col-sm-6 text-center">
+                                <input  name="billfrom" type="text" class="form-controlss"  placeholder="Bill From" value="Bill From" >
+                                  
                                   <input name="invoiceFrom" type="text" class="form-controlm"  placeholder="Who is this invoice from ? (required)" value="{{session('c_name')}}" >
               <br>
               <br>
@@ -204,17 +206,17 @@ Oinvoice-Portal-Create
                           <!--/3rd row -->
                           <div class="row mt">
 
-                              <div class="col-sm-6 text-center">
+                              <div class="col-sm-6 text-left">
                  <hr style="border: 5px solid green;border-radius: 8px;">
                                     <!--col 1 -->
-                                     <input  align="left" name="Notesx" type="text" class="form-controlss"  placeholder="Notes" value="Notes" >
-              <input name="Notes" type="text" class="form-control"  placeholder="Any required information not already covered"  >
+                                     <input  align="left" name="descriptionx" type="text" class="form-controlss"  placeholder="Description" value="Description" >
+              <input name="description" type="text" class="form-controld"  placeholder="Any required information not already covered"  >
 
               <br>
               <br>
 
               <input  name="termsx" type="text" class="form-controlss"  placeholder="Terms" value="Terms" >
-              <input name="terms" type="text" class="form-control"  placeholder="Terms and condition e.g late fee, Delivery schedule , Payment methods "  >
+              <input name="terms" type="text" class="form-controld"  placeholder="Terms and condition e.g late fee, Delivery schedule , Payment methods "  >
                                     
                               </div>
                               <div class="col-sm-6 text-center">
