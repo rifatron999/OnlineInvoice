@@ -186,7 +186,7 @@ Oinvoice-Portal-Create
                                 </thead>
                                 <tbody>
                                 <tr>
-                <td ><input name='invoiceItem' type='text' class='form-control'  placeholder='Description of service and product'  ></td>
+                <td ><input name='invoiceItem[]' type='text' class='form-control'  placeholder='Description of service and product'  ></td>
                 <td><input  name='invoiceQuantity' type='number' class='form-controlssp'    ></td>
                 <td><input  name='invoiceRate' type='number' class='form-controlssp'    ></td>
               <td><input  name='invoiceAmount' type='number' class='form-controlssp' disabled   ></td>
@@ -247,6 +247,10 @@ Oinvoice-Portal-Create
 
                              <input  name="paidx" type="text" class="form-controlss"  placeholder="Amount Paid" value="Amount Paid" disabled  >   
                              <input  name="paid" type="text" class="form-controls"   >
+                             <br>
+                             <br>
+                             <br>
+                             <button type="Submit" class="btn btn-primary btn-lg">Submit Payment</button>
                             
 
                               </div>

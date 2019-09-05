@@ -69,8 +69,10 @@ Route::get('/portal/user/create','userController@createinvoiceView')->name('crea
 
 
 
+
 Route::post('/portal/user/profile','userController@profileUpdate');
 Route::post('/portal/user/updateProduct/{p_id}','userController@productUpdate');
 Route::post('/portal/user/addProduct','userController@addProduct');
+Route::post('/portal/user/create','userController@createinvoice');
 
 //### portal user  ###
