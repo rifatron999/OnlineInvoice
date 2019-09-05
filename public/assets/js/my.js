@@ -55,3 +55,40 @@ window.onload = function() {
     });    
 
                  //### product add in create ###                   
+  //#############################################################################
+
+
+
+
+//*** discount tax shipping  ***
+
+
+
+
+    $(document).ready(function(){
+
+  
+
+  $("#discount").click(function(){
+    $("#next").after('<div id="d"> <input  name="discountx" type="text" class="form-controlss"  placeholder="Discount" value="Discount" > <input  name="discount" type="text" class="form-controls"   >  <br></div>');
+    $(this).hide();
+  });
+
+  $("#tax").click(function(){
+    $("#next").after('<br> <input  name="taxx" type="text" class="form-controlss"  placeholder="Tax" value="Tax" > <input  name="tax" type="text" class="form-controls"   ><br>');
+    $(this).hide();
+  });
+
+
+
+  $("#Shipping").click(function(){
+    $("#next").after('<br> <input  name="shippingx" type="text" class="form-controlss"  placeholder="Shipping" value="Shipping"  >   <input  name="shippingx" type="text" class="form-controls"   value="$" ><br>');
+    $(this).hide();
+  });
+
+
+  
+});
+
+                 //### product add in create ###                   
+  //#############################################################################

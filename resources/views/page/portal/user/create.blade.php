@@ -221,18 +221,18 @@ Oinvoice-Portal-Create
                                 <!--col 2 -->
                                     <input  name="subTotalx" type="text" class="form-controlss"  value="Sub Total" disabled  >   
                              <input  name="subTotal" type="number" class="form-controls"  disabled  >
-                              <br>
+                              
+                               <br>
+                           
+                           <p id='next' > </p>
+                           <span style="color:blue;font-weight:bold" id="discount" type="button">+ Discount</span> &nbsp
+                            <span style="color:green;font-weight:bold" id="tax" type="button">+ Tax</span> &nbsp
+                            <span style="color:blue;font-weight:bold" id="Shipping" type="button">+ Shipping</span> &nbsp
 
-                           <input  name="discountx" type="text" class="form-controlss"  placeholder="Discount" value="Discount" > 
-                            <input  name="discount" type="text" class="form-controls"   >
-                            <br>
+                            
 
-                             <input  name="taxx" type="text" class="form-controlss"  placeholder="Tax" value="Tax" > 
-                            <input  name="tax" type="text" class="form-controls"   >
-                            <br>
-
-                            <input  name="shippingx" type="text" class="form-controlss"  placeholder="Shipping" value="Shipping"  >   
-                             <input  name="shippingx" type="text" class="form-controls"   value="$" >
+                            
+                             <br>
                              <br>
 
 
