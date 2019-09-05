@@ -81,6 +81,7 @@ public function userCheck($req)
 
             
            'picture'=> 'required|image|mimes:jpeg,jpg,png,gif|max:2048',
+           'company_logo'=> 'required|image|mimes:jpeg,jpg,png,gif|max:2048',
 
 
 
@@ -93,6 +94,13 @@ public function userCheck($req)
            //echo $fileName;
            $file->move('assets/img/user_picture', $fileName);
 //###image
+
+//***company_logo
+           $file = $req->file('company_logo');
+           $fileName1 = $req->c_name.'.'.$file->getClientOriginalExtension();
+           //echo $fileName;
+           $file->move('assets/img/company_logo', $fileName1);
+//###company_logo
 
 
         $companyInfoExist   = DB::table('t_company')->where('c_owner', $req->session()->get('name'))->get();
@@ -125,7 +133,8 @@ DB::table('t_user')->where('name', $req->session()->get('name'))
     'c_address' => $req->c_address,  
     'c_phone' => $req->c_phone,  
     'c_email' => $req->c_email,
-    'c_owner' => $req->name 
+    'c_owner' => $req->name,
+    'c_logo' => $fileName1
     
 ]);
 
@@ -140,7 +149,8 @@ DB::table('t_user')->where('name', $req->session()->get('name'))
     'c_address' => $req->c_address,  
     'c_phone' => $req->c_phone,  
     'c_email' => $req->c_email,
-        'c_owner' => $req->name 
+        'c_owner' => $req->name,
+        'c_logo' => $fileName1
 
    
 ]   
@@ -168,6 +178,7 @@ DB::table('t_user')->where('name', $req->session()->get('name'))
             $req->session()->put('c_address', $req->c_address );
             $req->session()->put('c_phone', $req->c_phone );
             $req->session()->put('c_email', $req->c_email );
+             $req->session()->put('c_logo', $fileName1 );
 
 
 

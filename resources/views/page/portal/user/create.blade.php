@@ -112,7 +112,7 @@ Oinvoice-Portal-Create
                      <h3  align="center"> Create New Invoice</h3> <br>
                           <div class="row mt">
                               <div class="col-sm-6 text-center">
-                                    <img  src="{{asset('assets/img')}}/ny.jpg" width="200" height="250">
+                                    <img  src="{{asset('assets/img/company_logo')}}/{{session('c_logo')}}" width="200" height="250">
                                     
                                      &nbsp <label style="font-size:17px;" name="c_name"  type="text"  ><mark>{{session('c_name')}}</mark><br><mark>Hot line </mark>: {{session('c_phone')}} <br><mark>Email</mark>: {{session('c_email')}} <br>
                                      <mark>Address</mark>: {{session('c_address')}} 

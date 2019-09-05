@@ -10,7 +10,7 @@ function previewImage(event)
                                         }
                                       }
                                       reader.readAsDataURL(event.target.files[0]);
-                                      document.getElementById("file-field").style.visibility = "hidden";
+                                      
                                       document.getElementById("image-field").style.visibility = "visible";
                                     }
 

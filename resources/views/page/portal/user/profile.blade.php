@@ -145,8 +145,8 @@ Oinvoice-Portal-profile
 
                                 <label class="col-sm-2 control-label col-lg-2" for="inputSuccess"> Logo</label>
                                   <div class="col-lg-10">
-                                     <img   width="200" height="250" id="image-field" style="visibility: hidden;" >
-                                      <input name="c_logo"  type="file" class="form-controls" id="file-field"  onchange="previewImage(event)">
+                                     <img   width="200" height="250" id="image-field" style="visibility: visible;" src="{{asset('assets/img/company_logo')}}/{{session('c_logo')}}" >
+                                      <input name="company_logo"  type="file" class="form-controls" id="file-field"  onchange="previewImage(event)">
                                       
                                       <br>
                                   </div>
