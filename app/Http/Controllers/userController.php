@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use PDF;
 
 class userController extends Controller
 {
@@ -395,11 +396,19 @@ $facultySlideList   = DB::table('t_product')->where('p_id', $p_id)
             
              if($this->userCheck($req))
              {
-               // echo $req->totalx;
+               /*// echo $req->totalx;
                 echo '<pre>';
                 print_r($req->invoiceItem);
+                print_r($req->invoiceQuantity);
+                print_r($req->invoiceRate);
+                print_r($req->invoiceAmount);
                 echo '</pre>';
-               // return view('page.portal.user.create');
+               // return view('page.portal.user.create');*/
+               
+                $pdf = PDF::loadView('page.portal.user.invoice', compact('req'));
+                return $pdf->setPaper('A4','landscape')->stream('invoice.pdf');
+
+
 
              }
              else
@@ -410,6 +419,9 @@ $facultySlideList   = DB::table('t_product')->where('p_id', $p_id)
         }
 
     //### createinvoice ###
+
+
+
 
 
 

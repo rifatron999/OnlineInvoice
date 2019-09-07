@@ -120,15 +120,15 @@ Oinvoice-Portal-Create
                                          <hr style="border: 5px solid green;border-radius: 8px;">
                               </div>
                               <div class="col-sm-6 text-center">
-                                  <select  class="form-controls" name="qi" >
-  <option value="invoice"  >Invoice</option>
-  <option value="quotation"  >Quotation</option>
+                                  <select  class="form-controls" name="invoice_option" >
+  <option value="Invoice"  >Invoice</option>
+  <option value="Quotation"  >Quotation</option>
   
               </select  >
               <br>
               <br>
 
-              <input name="invoiceNo" type="number" class="form-controls"  placeholder="Invoice Number" value="56">
+              <input name="invoice_No" type="number" class="form-controls"  placeholder="Invoice Number" value="56">
               <hr style="border: px solid green;border-radius: 8px;">
 
                               </div>
@@ -155,11 +155,11 @@ Oinvoice-Portal-Create
                            <input  name="paymentTermsx" type="text" class="form-controlss"  placeholder="Payment Terms" value="Payment Terms" > 
                             <input  name="paymentTermsx" type="text" class="form-controls"   >
                             <br>
-                            <input  name="duedatex" type="text" class="form-controlss"  placeholder=" Due Date"  >   
+                            <input  name="duedatex" type="text" class="form-controlss"  placeholder=" Due Date"  value="Due Date">   
                              <input  name="duedate" type="date" class="form-controls"   >
                              <br>
-                            <input  name="duebanalcex" type="text" class="form-controlss"  placeholder="Balance Due"  >   
-                             <input  name="duebanalce" type="text" class="form-controls"   value="$" disabled>
+                            <input  name="duebanalcex" type="text" class="form-controlss"  placeholder="Balance Due" value="Balance Due" >   
+                             <input  name="duebanalce" type="text" class="form-controls"   value="$80" readonly="readonly">
 
                               </div>
                              
@@ -187,9 +187,9 @@ Oinvoice-Portal-Create
                                 <tbody>
                                 <tr>
                 <td ><input name='invoiceItem[]' type='text' class='form-control'  placeholder='Description of service and product'  ></td>
-                <td><input  name='invoiceQuantity' type='number' class='form-controlssp'    ></td>
-                <td><input  name='invoiceRate' type='number' class='form-controlssp'    ></td>
-              <td><input  name='invoiceAmount' type='number' class='form-controlssp' disabled   ></td>
+                <td><input  name='invoiceQuantity[]' type='number' class='form-controlssp'    ></td>
+                <td><input  name='invoiceRate[]' type='number' class='form-controlssp'    ></td>
+              <td><input  name='invoiceAmount[]' type='number' class='form-controlssp' readonly="readonly"  ></td>
               <td><input type='checkbox' name='record' class='form-controlssp' ></td>
             </tr>
                                 

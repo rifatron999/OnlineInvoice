@@ -39,7 +39,7 @@ window.onload = function() {
         $("#add-row").click(function()
         {
             
-            var markup = "<tr><td ><input name='invoiceItem[]' type='text' class='form-control'  placeholder='Description of service and product'  ></td><td><input  name='invoiceQuantity' type='number' class='form-controlssp'    ></td><td><input  name='invoiceRate' type='number' class='form-controlssp'    ></td><td><input  name='invoiceAmount' type='number' class='form-controlssp' disabled   ></td><td><input type='checkbox' name='record' class='form-controlssp' ></td></tr>";
+            var markup = "<tr><td ><input name='invoiceItem[]' type='text' class='form-control'  placeholder='Description of service and product'  ></td><td><input  name='invoiceQuantity[]' type='number' class='form-controlssp'    ></td><td><input  name='invoiceRate[]' type='number' class='form-controlssp'    ></td><td><input  name='invoiceAmount[]' type='number' class='form-controlssp' readonly='readonly'    ></td><td><input type='checkbox' name='record' class='form-controlssp' ></td></tr>";
             $("table tbody").append(markup);
         });
         
