@@ -36,10 +36,11 @@ window.onload = function() {
 
     $(document).ready(function()
     {
+      var i=0;
         $("#add-row").click(function()
         {
-            
-            var markup = "<tr><td ><input name='invoiceItem[]' type='text' class='form-control'  placeholder='Description of service and product'  ></td><td><input  name='invoiceQuantity[]' type='number' class='form-controlssp'    ></td><td><input  name='invoiceRate[]' type='number' class='form-controlssp'    ></td><td><input  name='invoiceAmount[]' type='number' class='form-controlssp' readonly='readonly'    ></td><td><input type='checkbox' name='record' class='form-controlssp' ></td></tr>";
+            i++;
+            var markup = "<tr><td ><input  name='invoiceItem[]' type='text' class='form-control'  placeholder='Description of service and product'  ></td><td><input id='quantity_"+i+"' name='invoiceQuantity[]' type='number' onkeyup='amountCal("+i+")' class='form-controlssp'    ></td><td><input id='rate_"+i+"' onkeyup='amountCal("+i+")' name='invoiceRate[]' type='number' class='form-controlssp'    ></td><td><input id='amount_"+i+"' name='invoiceAmount[]' type='number' class='form-controlssp' readonly='readonly'    ></td><td><input type='checkbox' name='record' class='form-controlssp' ></td></tr>";
             $("table tbody").append(markup);
         });
         
@@ -52,6 +53,10 @@ window.onload = function() {
                 }
             });
         });
+
+
+
+        
     });    
 
                  //### product add in create ###                   
@@ -92,3 +97,43 @@ window.onload = function() {
 
                  //### product add in create ###                   
   //#############################################################################
+
+  //*** row calc ***
+
+
+
+
+       
+
+
+
+    $(document).on('keyup', '#rate,#quantity', function(){
+    
+          var num1 = document.getElementById('quantity').value;
+            var num2 = document.getElementById('rate').value;
+      var result = parseInt(num1) * parseInt(num2);
+     
+            if (!isNaN(result)) {
+                document.getElementById('amount').value = result;
+              }
+  });
+
+                 //### row calc ###  
+
+
+
+
+//##############################################
+ 
+
+
+
+function amountCal(i) {
+            var num1 = $('#quantity_'+i).val();
+            var num2 = $('#rate_'+i).val();
+      var result = parseInt(num1) * parseInt(num2);
+     
+            if (!isNaN(result)) {
+                document.getElementById('amount_'+i).value = result;
+              }
+} 

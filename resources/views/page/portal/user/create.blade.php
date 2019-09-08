@@ -185,13 +185,18 @@ Oinvoice-Portal-Create
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
+                    
+
+            <tr>
                 <td ><input name='invoiceItem[]' type='text' class='form-control'  placeholder='Description of service and product'  ></td>
-                <td><input  name='invoiceQuantity[]' type='number' class='form-controlssp'    ></td>
-                <td><input  name='invoiceRate[]' type='number' class='form-controlssp'    ></td>
-              <td><input  name='invoiceAmount[]' type='number' class='form-controlssp' readonly="readonly"  ></td>
+                <td><input id='quantity_0' name='invoiceQuantity[]' type='number' class='form-controlssp'  onkeyup="amountCal(0)"  ></td>
+                <td><input id='rate_0'  name='invoiceRate[]' type='number' class='form-controlssp' onkeyup="amountCal(0)"   ></td>
+              <td><input  id='amount_0' name='invoiceAmount[]' type='number' class='form-controlssp'  readonly='readonly' ></td>
               <td><input type='checkbox' name='record' class='form-controlssp' ></td>
             </tr>
+
+
+
                                 
                                 
                                 </tbody>
