@@ -226,8 +226,8 @@ Oinvoice-Portal-Create
                               </div>
                               <div class="col-sm-6 text-center">
                                 <!--col 2 -->
-                                    <input  name="subTotalx" type="text" class="form-controlss"  value="Sub Total" disabled  >   
-                             <input  name="subTotal" type="number" class="form-controls"  disabled  >
+                                    <input  name="subTotalx" type="text" class="form-controlss"  value="Sub Total"   >   
+                             <input id="subTotal" name="subTotal" type="number" class="form-controls"  readonly="readonly"  >
                               
                                <br>
                            
@@ -246,8 +246,8 @@ Oinvoice-Portal-Create
                              
 
 
-                             <input  name="totalx" type="text" class="form-controlss"  placeholder="Total" value="Total" disabled  >   
-                             <input  name="total" type="text" class="form-controls"   value="$" disabled >
+                             <input  name="totalx" type="text" class="form-controlss"  placeholder="Total" value="Total"   >   
+                             <input id="total" name="total" type="text" class="form-controls"    readonly="readonly" >
                              <br>
 
                              <input  name="paidx" type="text" class="form-controlss"  placeholder="Amount Paid" value="Amount Paid" disabled  >   

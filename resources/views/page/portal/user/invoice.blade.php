@@ -97,26 +97,26 @@
       
     </tbody>
      </table>
-<!--
-    <table>
-      <tr><td></td></tr>
+
+    <table align="right" border="1px" width="30%" >
+      
         <tr>
-            <td colspan="3"></td>
-            <td align="right">Subtotal $</td>
-            <td align="right">1635.00</td>
+           
+            <td align="center">Subtotal $</td>
+            <td align="center">{{$req->subTotal}}</td>
         </tr>
         <tr>
-            <td colspan="3"></td>
-            <td align="right">Tax $</td>
-            <td align="right">294.3</td>
+            
+            <td align="center">Tax $</td>
+            <td align="center"></td>
         </tr>
         <tr>
-            <td colspan="3"></td>
-            <td align="right">Total $</td>
-            <td align="right" class="gray">$ 1929.3</td>
+           
+            <td align="center">Total $</td>
+            <td align="center" class="gray"></td>
         </tr>
     </table>
-  -->
+  
 
 </body>
 </html>

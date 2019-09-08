@@ -31,12 +31,12 @@ window.onload = function() {
 
 //*** product add in create ***
 
-
+var i=0;
 
 
     $(document).ready(function()
     {
-      var i=0;
+      
         $("#add-row").click(function()
         {
             i++;
@@ -75,19 +75,19 @@ window.onload = function() {
   
 
   $("#discount").click(function(){
-    $("#next").after('<div id="d"> <input  name="discountx" type="text" class="form-controlss"  placeholder="Discount" value="Discount" > <input  name="discount" type="text" class="form-controls"   >  <br></div>');
+    $("#next").after('<div id="d"> <input  name="discountx" type="text" class="form-controlss"  placeholder="Discount" value="Discount" > <input  id="discount"  name="discount" type="text" class="form-controls"  onkeyup="totalCal()" >  <br></div>');
     $(this).hide();
   });
 
   $("#tax").click(function(){
-    $("#next").after('<br> <input  name="taxx" type="text" class="form-controlss"  placeholder="Tax" value="Tax" > <input  name="tax" type="text" class="form-controls"   ><br>');
+    $("#next").after('<br> <input  name="taxx" type="text" class="form-controlss"  placeholder="Tax" value="Tax" > <input  id="tax" name="tax" type="text" class="form-controls" onkeyup="totalCal()"  ><br>');
     $(this).hide();
   });
 
 
 
   $("#Shipping").click(function(){
-    $("#next").after('<br> <input  name="shippingx" type="text" class="form-controlss"  placeholder="Shipping" value="Shipping"  >   <input  name="shippingx" type="text" class="form-controls"   value="$" ><br>');
+    $("#next").after('<br> <input  name="shippingx" type="text" class="form-controlss"  placeholder="Shipping" value="Shipping"  >   <input id="shipping" name="shipping" type="text" class="form-controls" onkeyup="totalCal()"   ><br>');
     $(this).hide();
   });
 
@@ -107,16 +107,19 @@ window.onload = function() {
 
 
 
-    $(document).on('keyup', '#rate,#quantity', function(){
+   /* $(document).on('keyup', '#rate,#quantity', function()
+    {
     
-          var num1 = document.getElementById('quantity').value;
+            var num1 = document.getElementById('quantity').value;
             var num2 = document.getElementById('rate').value;
-      var result = parseInt(num1) * parseInt(num2);
+            var result = parseInt(num1) * parseInt(num2);
      
-            if (!isNaN(result)) {
+            if (!isNaN(result)) 
+            {
                 document.getElementById('amount').value = result;
-              }
-  });
+
+            }
+  });*/
 
                  //### row calc ###  
 
@@ -128,12 +131,63 @@ window.onload = function() {
 
 
 
-function amountCal(i) {
+function amountCal(i) 
+{
             var num1 = $('#quantity_'+i).val();
             var num2 = $('#rate_'+i).val();
-      var result = parseInt(num1) * parseInt(num2);
+            var result = parseInt(num1) * parseInt(num2);
      
-            if (!isNaN(result)) {
+            if (!isNaN(result)) 
+            {
                 document.getElementById('amount_'+i).value = result;
-              }
+
+                var amountTotal = 0;
+                var j;
+                for (j = 0; j < i+1; j++) 
+                {  
+                   amountTotal += parseInt(document.getElementById('amount_'+j).value);
+                  
+
+  
+                }
+                document.getElementById('subTotal').value = amountTotal; //subtotal from amount
+                totalCal();
+          }
+} 
+
+
+
+function totalCal() 
+{
+  
+        var tax = $('#tax').val();
+        var shipping = $('#shipping').val();
+        var discount = $('#discount').val();
+
+         if (!tax) 
+            {
+              tax=0;
+            }
+          if (!shipping ) 
+            {
+              shipping=0;
+            }
+          if (!discount) 
+            {
+              discount=0;
+            }
+
+        var result2 = parseInt($('#subTotal').val()) + parseInt(tax) + parseInt(shipping) - parseInt(discount)  ;
+            
+        if (!isNaN(result2)) 
+            {
+              document.getElementById('total').value = result2 ;
+            }
+        else
+            { 
+              document.getElementById('total').value = $('#subTotal').val() ;
+            }
+
+                
+            
 } 
