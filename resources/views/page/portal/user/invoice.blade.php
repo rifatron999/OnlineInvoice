@@ -30,7 +30,7 @@
 
   <table width="100%">
     <tr>
-        <td valign="top"><!--<img  src="{{asset('assets/img/company_logo')}}/{{session('c_logo')}}" width="200" height="250"> --> </td>
+        <td valign="top"><!-- <img  src="{{asset('assets/img/company_logo')}}/{{session('c_logo')}}" width="200" height="250">  --> <img  src="assets/img/company_logo/{{session('c_logo')}}" width="200" height="250"></td>
         <td align="right">
             <h2> {{$req->invoice_option}} #{{$req->invoice_No}}</h2>
             <h3>{{session('c_name')}}</h3>
@@ -49,12 +49,14 @@
   <table width="100%">
     <tr>
         <td><strong>{{$req->billfrom}}:</strong> {{$req->invoiceFrom}}</td>
+      </tr>
+      <tr>
         <td><strong>{{$req->billto}}:</strong> {{$req->invoiceTo}}</td>
         
         <td align="right" >
           <strong>{{$req->datex}}:</strong> {{$req->date}} <br>
           <strong>{{$req->duedatex}}:</strong> {{$req->duedate}} <br>
-          <strong class="gray" >{{$req->duebanalcex}}:</strong> <span class="gray" >{{$req->duebanalce}}</span> 
+          <strong  >{{$req->duebanalcex}}:</strong> <span class="gray" >{{$req->duebanalce}}</span> 
 
         </td>
 
@@ -98,22 +100,56 @@
     </tbody>
      </table>
 
-    <table align="right" border="1px" width="30%" >
+    <table align="right"  width="30%" >
       
         <tr>
            
-            <td align="center">Subtotal $</td>
+            <td align="center">{{$req->subTotalx}}</td>
             <td align="center">{{$req->subTotal}}</td>
         </tr>
         <tr>
             
-            <td align="center">Tax $</td>
-            <td align="center"></td>
+            <td align="center">{{$req->taxx}}</td>
+            <td align="center">{{$req->tax}}</td>
+        </tr>
+        <tr>
+            
+            <td align="center">{{$req->shippingx}}</td>
+            <td align="center">{{$req->shipping}}</td>
+        </tr>
+
+        <tr>
+            
+            <td align="center">{{$req->discountx}}</td>
+            <td align="center">{{$req->discount}}</td>
         </tr>
         <tr>
            
-            <td align="center">Total $</td>
-            <td align="center" class="gray"></td>
+            <td align="center">{{$req->totalx}}</td>
+            <td align="center" class="gray">{{$req->total}}</td>
+        </tr>
+
+        <tr>
+           
+            <td align="center">{{$req->paidx}}</td>
+            <td align="center" class="gray">{{$req->paid}}</td>
+        </tr>
+<hr width="70%" align="left" >
+
+
+        
+    <table align="left"  width="70%"  >
+    
+      
+        <tr>
+           
+            <td align="left" style="color: #a0aec0;"width="20%" >{{$req->descriptionx}}: </td>
+            <td align="left"  style=" color: #fbd38d;">{{$req->description}}</td>
+        </tr>
+        <tr>
+           
+            <td align="left" style="color: #a0aec0;"width="20%" >{{$req->termsx}}: </td>
+            <td align="left"  style=" color: #fbd38d;">{{$req->terms}}</td>
         </tr>
     </table>
   

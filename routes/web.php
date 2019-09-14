@@ -66,6 +66,7 @@ Route::get('/portal/user/updateProduct/{p_id}','userController@productUpdateView
 Route::get('/portal/user/removeProduct/{p_id}','userController@deleteProduct')->name('removeProduct');
 Route::get('/portal/user/create','userController@createinvoiceView')->name('createinvoiceView.index');
 
+
 //Route::get('/portal/user/create/invoice','userController@createinvoice')->name('createinvoice.index');
 
 
@@ -78,5 +79,10 @@ Route::post('/portal/user/addProduct','userController@addProduct');
 
 //Route::post('/portal/user/create','userController@createinvoice');
 Route::post('/portal/user/create','userController@createinvoice');
+//Route::post('/portal/user/create','userController@productFetch')->name('product.fetch');
+
+
+Route::get('/autocomplete', 'userController@index1');
+Route::post('/autocomplete/fetch', 'userController@productFetch')->name('product.fetch');
 
 //### portal user  ###

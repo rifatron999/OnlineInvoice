@@ -3,6 +3,9 @@
 Oinvoice-Portal-Create
 @endsection
 @section('sidebar&content')
+
+
+
       
       <!-- **********************************************************************************************************************************************************
       MAIN SIDEBAR MENU
@@ -159,15 +162,19 @@ Oinvoice-Portal-Create
                              <input  name="duedate" type="date" class="form-controls"   >
                              <br>
                             <input  name="duebanalcex" type="text" class="form-controlss"  placeholder="Balance Due" value="Balance Due" >   
-                             <input  name="duebanalce" type="text" class="form-controls"   value="$80" readonly="readonly">
+                             <input id="duebanalce" name="duebanalce" type="text" class="form-controls"    readonly="readonly">
 
                               </div>
                              
                           </div> 
                           <!--/2nd row -->
+
+  
+
                           <div class="row mt">
                               <div class="col-sm-12 text-left">
                                   <!-- clm 1 -->
+                                  
                                   <table class="table table-hover">
                             
                             <hr>
@@ -184,22 +191,31 @@ Oinvoice-Portal-Create
                                     <th>Select  </th>
                                 </tr>
                                 </thead>
+
                                 <tbody>
+                                  <datalist id='productList'>
+                    @foreach ($productList as $s)
+                             <option label='{{$s->p_price}}' value='{{$s->p_name}}'>
+                    @endforeach
+                             
+                  </datalist>
                     
 
             <tr>
-                <td ><input name='invoiceItem[]' type='text' class='form-control'  placeholder='Description of service and product'  ></td>
+              
+                <td ><input id='invoiceItem_0' name='invoiceItem[]' type='text' class='form-control'  placeholder='Description of service and product' list='productList' ></td>
                 <td><input id='quantity_0' name='invoiceQuantity[]' type='number' class='form-controlssp'  onkeyup="amountCal(0)"  ></td>
-                <td><input id='rate_0'  name='invoiceRate[]' type='number' class='form-controlssp' onkeyup="amountCal(0)"   ></td>
+                <td><input id='rate_0'  name='invoiceRate[]' type='number' class='form-controlssp' onkeyup="amountCal(0)"></td>
               <td><input  id='amount_0' name='invoiceAmount[]' type='number' class='form-controlssp'  readonly='readonly' ></td>
               <td><input type='checkbox' name='record' class='form-controlssp' ></td>
             </tr>
 
 
-
+            
                                 
                                 
                                 </tbody>
+
                             </table>
                                   
 
@@ -232,6 +248,11 @@ Oinvoice-Portal-Create
                                <br>
                            
                            <p id='next' > </p>
+                           <datalist id='listid'>
+                             <option label='label1' value='mouse'>
+                             <option label='label1' value='moude'>
+                             <option label='label2' value='headphone'>
+                             </datalist>
                            <span style="color:blue;font-weight:bold" id="discount" type="button">+ Discount</span> &nbsp
                             <span style="color:green;font-weight:bold" id="tax" type="button">+ Tax</span> &nbsp
                             <span style="color:blue;font-weight:bold" id="Shipping" type="button">+ Shipping</span> &nbsp
@@ -250,8 +271,8 @@ Oinvoice-Portal-Create
                              <input id="total" name="total" type="text" class="form-controls"    readonly="readonly" >
                              <br>
 
-                             <input  name="paidx" type="text" class="form-controlss"  placeholder="Amount Paid" value="Amount Paid" disabled  >   
-                             <input  name="paid" type="text" class="form-controls"   >
+                             <input  name="paidx" type="text" class="form-controlss"  placeholder="Amount Paid" value="Amount Paid"   >   
+                             <input id="paid" name="paid" type="text" class="form-controls" onkeyup="dueCal()" >
                              <br>
                              <br>
                              <br>
@@ -270,6 +291,8 @@ Oinvoice-Portal-Create
 
 
                         <!-- /test -->
+
+
 
 
 

@@ -375,7 +375,8 @@ $facultySlideList   = DB::table('t_product')->where('p_id', $p_id)
             
              if($this->userCheck($req))
              {
-                return view('page.portal.user.create');
+                $productList   = DB::table('t_product')->where('p_owner', $req->session()->get('name'))->get();
+                return view('page.portal.user.create',['productList'=>$productList]);
 
              }
              else
@@ -419,6 +420,73 @@ $facultySlideList   = DB::table('t_product')->where('p_id', $p_id)
         }
 
     //### createinvoice ###
+
+        //*** productFetch ***
+
+        public function productFetch(Request $req)
+        {
+            
+             if($this->userCheck($req))
+             {
+                if($req->get('query'))
+     {
+      $query = $req->get('query');
+      $data = DB::table('t_product')
+        ->where('p_name', 'LIKE', "%{$query}%")
+        ->get();
+      $output = '<ul class="dropdown-menu" style="display:block; position:relative">';
+      foreach($data as $row)
+      {
+       $output .= '
+       <li><a href="#">'.$row->p_name.'</a></li>
+       ';
+      }
+      $output .= '</ul>';
+      echo $output;
+     }     
+
+
+
+             }
+             else
+             {
+                $req->session()->flash('msg', "UNAUTHORIZED!");
+                return redirect()->route('login.index');
+             }
+        }
+
+    //### productFetch ###
+
+
+
+        //test
+function index1()
+    {
+     return view('autocomplete');
+    }
+
+    function fetch(Request $request)
+    {
+     if($request->get('query'))
+     {
+      $query = $request->get('query');
+      $data = DB::table('t_product')
+        ->where('p_name', 'LIKE', "%{$query}%")
+        ->get();
+      $output = '<ul class="dropdown-menu" style="display:block; position:relative">';
+      foreach($data as $row)
+      {
+       $output .= '
+       <li>'.$row->p_name.'</li>
+       ';
+      }
+      $output .= '</ul>';
+      echo $output;
+     }
+    }
+
+
+        //#test
 
 
 

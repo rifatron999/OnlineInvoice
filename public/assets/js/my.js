@@ -40,7 +40,7 @@ var i=0;
         $("#add-row").click(function()
         {
             i++;
-            var markup = "<tr><td ><input  name='invoiceItem[]' type='text' class='form-control'  placeholder='Description of service and product'  ></td><td><input id='quantity_"+i+"' name='invoiceQuantity[]' type='number' onkeyup='amountCal("+i+")' class='form-controlssp'    ></td><td><input id='rate_"+i+"' onkeyup='amountCal("+i+")' name='invoiceRate[]' type='number' class='form-controlssp'    ></td><td><input id='amount_"+i+"' name='invoiceAmount[]' type='number' class='form-controlssp' readonly='readonly'    ></td><td><input type='checkbox' name='record' class='form-controlssp' ></td></tr>";
+            var markup = "<tr><td ><input  list='productList' name='invoiceItem[]' type='text' class='form-control'  placeholder='Description of service and product'  ></td><td><input id='quantity_"+i+"' name='invoiceQuantity[]' type='number' onkeyup='amountCal("+i+")' class='form-controlssp'    ></td><td><input id='rate_"+i+"' onkeyup='amountCal("+i+")' name='invoiceRate[]' type='number' class='form-controlssp'    ></td><td><input id='amount_"+i+"' name='invoiceAmount[]' type='number' class='form-controlssp' readonly='readonly'    ></td><td><input type='checkbox' name='record' class='form-controlssp' ></td></tr>";
             $("table tbody").append(markup);
         });
         
@@ -59,23 +59,24 @@ var i=0;
         
     });    
 
-                 //### product add in create ###                   
+                                
   //#############################################################################
 
 
 
 
-//*** discount tax shipping  ***
+
 
 
 
 
     $(document).ready(function(){
 
-  
+  //### product add in create ###  
+  //*** discount tax shipping  ***  
 
   $("#discount").click(function(){
-    $("#next").after('<div id="d"> <input  name="discountx" type="text" class="form-controlss"  placeholder="Discount" value="Discount" > <input  id="discount"  name="discount" type="text" class="form-controls"  onkeyup="totalCal()" >  <br></div>');
+    $("#next").after('<div id="d"> <input  name="discountx" type="text" class="form-controlss"  placeholder="Discount" value="Discount" > <input list="listid" id="discount"  name="discount" type="text" class="form-controls"  onkeyup="totalCal()" >  <br></div>');
     $(this).hide();
   });
 
@@ -90,12 +91,29 @@ var i=0;
     $("#next").after('<br> <input  name="shippingx" type="text" class="form-controlss"  placeholder="Shipping" value="Shipping"  >   <input id="shipping" name="shipping" type="text" class="form-controls" onkeyup="totalCal()"   ><br>');
     $(this).hide();
   });
+  //### product add in create ###  
+  //*** Ajax Search Product ***
+  
+
+
+
+
+  //### Ajax Search Product ###
 
 
   
 });
 
-                 //### product add in create ###                   
+
+
+
+
+
+
+
+    
+
+                                  
   //#############################################################################
 
   //*** row calc ***
@@ -182,6 +200,7 @@ function totalCal()
         if (!isNaN(result2)) 
             {
               document.getElementById('total').value = result2 ;
+              dueCal();
             }
         else
             { 
@@ -190,4 +209,35 @@ function totalCal()
 
                 
             
-} 
+}
+
+
+
+function dueCal() 
+{
+            var num1 = $('#total').val();
+            var num2 = $('#paid').val();
+            
+            var result3 = parseInt(num1) - parseInt(num2);
+     
+            if (!isNaN(result3)) 
+            {
+                document.getElementById('duebanalce').value = result3;
+            }
+            else
+            {
+              document.getElementById('duebanalce').value = document.getElementById('total').value;
+            }
+}
+
+
+
+
+
+
+ 
+
+
+
+
+
