@@ -76,7 +76,7 @@ var i=0;
   //*** discount tax shipping  ***  
 
   $("#discount").click(function(){
-    $("#next").after('<div id="d"> <input  name="discountx" type="text" class="form-controlss"  placeholder="Discount" value="Discount" > <input list="listid" id="discount"  name="discount" type="text" class="form-controls"  onkeyup="totalCal()" >  <br></div>');
+    $("#next").after('<div id="d"> <input  name="discountx" type="text" class="form-controlss"  placeholder="Discount" value="Discount" > <input  id="discount"  name="discount" type="text" class="form-controls"  onkeyup="totalCal()" >  <br></div>');
     $(this).hide();
   });
 

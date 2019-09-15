@@ -195,7 +195,7 @@ Oinvoice-Portal-Create
                                 <tbody>
                                   <datalist id='productList'>
                     @foreach ($productList as $s)
-                             <option label='{{$s->p_price}}' value='{{$s->p_name}}'>
+                             <option label='Price: {{$s->p_price}}' value='{{$s->p_name}}'>
                     @endforeach
                              
                   </datalist>
@@ -248,11 +248,7 @@ Oinvoice-Portal-Create
                                <br>
                            
                            <p id='next' > </p>
-                           <datalist id='listid'>
-                             <option label='label1' value='mouse'>
-                             <option label='label1' value='moude'>
-                             <option label='label2' value='headphone'>
-                             </datalist>
+                           
                            <span style="color:blue;font-weight:bold" id="discount" type="button">+ Discount</span> &nbsp
                             <span style="color:green;font-weight:bold" id="tax" type="button">+ Tax</span> &nbsp
                             <span style="color:blue;font-weight:bold" id="Shipping" type="button">+ Shipping</span> &nbsp
