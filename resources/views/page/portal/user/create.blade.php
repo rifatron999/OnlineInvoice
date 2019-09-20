@@ -39,7 +39,7 @@ Oinvoice-Portal-Create
                       </a>
                       <ul class="sub">
                           <li class="active" ><a  href="{{route('createinvoiceView.index')}}">Create New Invoice</a></li>
-                          <li><a  href="buttons.html">Previous Invoices</a></li>
+                          <li><a  href="{{route('previousInvoiceView.index')}}">Previous Invoices</a></li>
                           <li><a  href="panels.html">Due Invoices</a></li>
                           <li><a  href="panels.html">Drafts</a></li>
                       </ul>
@@ -109,7 +109,7 @@ Oinvoice-Portal-Create
             <!-- create -->
             <form method="post">
 
- <!-- test --><marquee align="center" behavior="alternate" >{{session('success')}}</marquee>
+ <!-- test --><h3 align="center" behavior="alternate" ><mark>{{session('success')}}</mark></h3>
 
                 <div class="col-lg-12">
                 <div class="form-panel">

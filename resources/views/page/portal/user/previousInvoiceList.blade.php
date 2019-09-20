@@ -1,8 +1,11 @@
 @extends('template.portal.user')
 @section('title')
-Oinvoice-Portal-AddProduct
+Oinvoice-Previous Invoices
 @endsection
 @section('sidebar&content')
+
+
+
       
       <!-- **********************************************************************************************************************************************************
       MAIN SIDEBAR MENU
@@ -30,19 +33,20 @@ Oinvoice-Portal-AddProduct
                   </li>
 
                   <li class="sub-menu">
-                      <a href="javascript:;" >
+                      <a class="active"  href="javascript:;" >
                           <i class="fa fa-file"></i>
                           <span>Invoice</span>
                       </a>
                       <ul class="sub">
                           <li><a  href="{{route('createinvoiceView.index')}}">Create New Invoice</a></li>
-                          <li><a  href="buttons.html">Previous Invoices</a></li>
+                          <li class="active" ><a  href="">Previous Invoices</a></li>
                           <li><a  href="panels.html">Due Invoices</a></li>
+                          <li><a  href="panels.html">Drafts</a></li>
                       </ul>
                   </li>
 
                   <li class="sub-menu">
-                      <a class="active" href="{{route('addProductView.index')}}" >
+                      <a  href="{{route('addProductView.index')}}" >
                           <i class="fa fa-tasks"></i>
                           <span>Products</span>
                       </a>
@@ -102,91 +106,41 @@ Oinvoice-Portal-AddProduct
       <section id="main-content">
           <section class="wrapper site-min-height">
            
-            <!-- profile -->
-            <form method="post">
-           
-             <div class="row mt">
-              <div class="col-lg-12">
-                
-
-
-                          <div class="form-horizontal tasi-form" >
-                            <div class="form-panel">
-                              <div class="form-group "> <h3  align="center">Add Product</h3> <br>
-                                  <label class="col-sm-2 control-label col-lg-2" for="inputSuccess"> Product Name</label>
-                                  <div class="col-lg-10">
-                                      <input name="p_name"  type="text" class="form-control"  >
-                                      <br>
-                                  </div>
-
-
-                                  <label class="col-sm-2 control-label col-lg-2" for="inputSuccess">Unit Price</label>
-                                  <div class="col-lg-10">
-                                      <input name="p_price" type="number" class="form-controls"  >
-                                      &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-                                      <label > Stock</label> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-                                      <input name="p_stock" type="number" class="form-controls"  >
-                                      <br>
-                                  </div>
-
-                                 
-
-                                 
-                                  <div class="col-lg-10">
-                                      
-                                      <br>
-                                      <input class="btn btn-primary "  type="submit" name="submit" value="Add" style="display: block; margin: 0 auto;"/>
-                                      
-                                  </div>
-
-</div>
-                            </div>
-                        </div>
-
-                          
-                     
-
-              
-              </div><!-- /col-lg-12 -->
-            </div><!-- /row -->
-          </form>
-            <!-- /profile -->
-
-
-
-
-            <!--productList table -->
+            <!-- Prevoius invoicelist table -->
+             
 <div class="row mt">
                   <div class="col-md-12">
                       <div class="content-panel">
-                          <table class="table table-striped table-advance table-hover">
-                            <h4 style="text-align:center;" > My Products</h4>
+                          <table class="table table-striped  table-hover">
+                            <h4 style="text-align:center;" > Previous Invoices</h4>
                             <hr>
                               <thead>
-                              <tr>
+                              <tr >
                                   <th><i class="fa fa-bullhorn"></i> Id</th>
-                                  <th class="hidden-phone"><i class="fa fa-question-circle"></i> Name</th>
-                                  <th><i class=""></i> price</th>
-                                  <th><i class=" "></i> Stock</th>
-                                  <th><i class=" fa fa-edit"></i> Edit</th>
-                                  <th><i class=" fa fa-edit"></i> Delete</th>
+                                  <th><i class=""></i> To</th>
+                                  <th><i class=" "></i>Deadline</th>
+                                  <th><i class=" fa fa-edit"></i> Total</th>
+                                  <th><i class=" fa fa-edit"></i> Due </th>
+                                  <th><i class=" fa fa-edit"></i> Update </th>
+                                  <th><i class=" fa fa-edit"></i> Delete </th>
                                   <th></th>
                               </tr>
                               </thead>
 
                               <tbody>
-                                 @foreach ($productList as $s) 
+                                 @foreach ($invoiceList as $s) 
                               <tr>
-                                  <td><a >{{$s->p_id}}</a></td>
-                                  <td><a href="">{{$s->p_name}}</a></td>
-                                  <td><a >{{$s->p_price}}</a></td>
-                                  <td><a >{{$s->p_stock}}</a></td>
+                                  <td><a >{{$s->invoice_number}}</a></td>
+                                  <td><a >{{$s->invoice_to}}</a></td>
+                                  <td><a href="">{{$s->due_date}}</a></td>
+                                  <td><a >{{$s->total}}</a></td>
+                                  <td><a >{{$s->due_banalce}}</a></td>
                                                                    
-                                  <td> <a href="{{route('productUpdateView',$s->p_id )}}" class="btn btn-danger btn-xs"><i class="fa fa-edit"></i></a></td>
+                                  <td> <a href="{{route('productUpdateView',$s->invoice_number )}}" class="btn btn-danger btn-xs"><i class="fa fa-edit"></i></a></td>
                                   <td>
                                      
       
-           <a class="btn btn-danger btn-xs" href="{{route('removeProduct',$s->p_id )}}" ><i class="fa fa-trash-o "></i></a>
+           <a class="btn btn-danger btn-xs" href="{{route('removeProduct',$s->invoice_number )}}" ><i class="fa fa-trash-o "></i></a>
             
 
         
@@ -201,11 +155,14 @@ Oinvoice-Portal-AddProduct
                       </div><!-- /content-panel -->
                   </div><!-- /col-md-12 -->
               </div><!-- /row -->
-<!--/productList table -->
+
+            <!-- /Prevoius invoicelist table -->
     </section><! --/wrapper -->
       </section><!-- /MAIN CONTENT -->
 
       <!--main content end-->
+
+
           @endsection
 
       

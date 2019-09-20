@@ -611,6 +611,28 @@ Mail::send('page.portal.user.email', $data, function($message) use ($to_name, $t
 
     //### createinvoice ###
 
+        //*** previousInvoiceView ***
+
+        public function previousInvoiceView(Request $req)
+        {
+            
+             if($this->userCheck($req))
+             {
+                
+                $invoiceList   = DB::table('t_invoice')->where('invoice_type', 'Invoice')->get();
+
+                return view('page.portal.user.previousInvoiceList',['invoiceList'=>$invoiceList]);
+
+             }
+             else
+             {
+                $req->session()->flash('msg', "UNAUTHORIZED!");
+                return redirect()->route('login.index');
+             }
+        }
+
+    //### previousInvoiceView ###
+
         //*** productFetch ***
 
         public function productFetch(Request $req)
