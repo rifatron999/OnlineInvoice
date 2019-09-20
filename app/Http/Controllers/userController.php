@@ -5,14 +5,17 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use PDF;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\sendMail;
 
 class userController extends Controller
 {
-	//*** userCheck ***
+    //*** userCheck ***
 public function userCheck($req)
 {
        if($req->session()->get('type') == 'user')
-       	{
+        {
             return true;
         }
         else
@@ -22,7 +25,7 @@ public function userCheck($req)
     }
     
 
-	//### userCheck ###
+    //### userCheck ###
 
 
 
@@ -31,41 +34,41 @@ public function userCheck($req)
 
     //***index ***
 
-    	public function index(Request $req)
-    	{
-    		 if($this->userCheck($req))
-    		 {
-    			return view('page.portal.user.index');
+        public function index(Request $req)
+        {
+             if($this->userCheck($req))
+             {
+                return view('page.portal.user.index');
 
-    		 }
-    		 else
-    		 {
-    		 	$req->session()->flash('msg', "UNAUTHORIZED!");
-        		return redirect()->route('login.index');
-    		 }
-    	}
+             }
+             else
+             {
+                $req->session()->flash('msg', "UNAUTHORIZED!");
+                return redirect()->route('login.index');
+             }
+        }
 
     //### index ###
 
 
 
 
-    	//*** profileView ***
-    	public function profileView(Request $req)
+        //*** profileView ***
+        public function profileView(Request $req)
                  {
-                 	if($this->userCheck($req))
-    		 		{
-       				 	return view('page.portal.user.profile');
+                    if($this->userCheck($req))
+                    {
+                        return view('page.portal.user.profile');
 
-    		 		}
-    		 		else
-    		 		{
-    		 			$req->session()->flash('msg', "UNAUTHORIZED!");
-        				return redirect()->route('login.index');
-    		 		}
+                    }
+                    else
+                    {
+                        $req->session()->flash('msg', "UNAUTHORIZED!");
+                        return redirect()->route('login.index');
+                    }
                 }
 
-    	//### profileView ###
+        //### profileView ###
 
 
 
@@ -81,9 +84,9 @@ public function userCheck($req)
         $req->validate([
 
             
-           'picture'=> 'required|image|mimes:jpeg,jpg,png,gif|max:2048',
+          /* 'picture'=> 'required|image|mimes:jpeg,jpg,png,gif|max:2048',
            'company_logo'=> 'required|image|mimes:jpeg,jpg,png,gif|max:2048',
-
+*/
 
 
             
@@ -326,6 +329,7 @@ DB::table('t_product')->where('p_id', $p_id)
     
          
     
+    'p_name' => $req->p_name ,
     'p_price' => $req->p_price ,
     'p_stock' => $req->p_stock
     
@@ -397,21 +401,207 @@ $facultySlideList   = DB::table('t_product')->where('p_id', $p_id)
             
              if($this->userCheck($req))
              {
-               /*// echo $req->totalx;
-                echo '<pre>';
+               // echo $req->totalx;
+                /*echo '<pre>';
                 print_r($req->invoiceItem);
                 print_r($req->invoiceQuantity);
                 print_r($req->invoiceRate);
                 print_r($req->invoiceAmount);
-                echo '</pre>';
-               // return view('page.portal.user.create');*/
+                echo '</pre>';*/
+
+
+                //*** insert invoice
+                //echo $req;
+             /*echo  $req->invoice_type; echo "<br>";
+             echo  $req->invoice_number; echo "<br>";
+             echo  $req->invoice_from; echo "<br>";
+             echo  $req->invoice_to; echo "<br>";
+             echo  $req->date; echo "<br>";
+             echo  $req->due_date; echo "<br>";
+
+                $invoiceItem = json_encode($req->invoiceItem);
+                $invoiceQuantity = json_encode($req->invoiceQuantity);
+                $invoiceRate = json_encode($req->invoiceRate);
+                $invoiceAmount = json_encode($req->invoiceAmount);
+                echo  $invoiceItem;echo "<br>";
+                echo  $invoiceQuantity;echo "<br>";
+                echo  $invoiceRate;echo "<br>";
+                echo  $invoiceAmount;echo "<br>";
+             echo  $req->Sub_total; echo "<br>";
+             echo  $req->shipping; echo "<br>";
+             echo  $req->tax; echo "<br>";
+             echo  $req->discount; echo "<br>";
+             echo  $req->total; echo "<br>";
+             echo  $req->amount_paid; echo "<br>";
+             echo  $req->due_banalce; echo "<br>";
+             echo  $req->description; echo "<br>";
+             echo  $req->terms; echo "<br>";
+             echo  $req->payment_terms; echo "<br>";*/
+
+    //***encode main
+    $invoiceItem = json_encode($req->invoiceItem);
+    $invoiceQuantity = json_encode($req->invoiceQuantity);
+    $invoiceRate = json_encode($req->invoiceRate);
+    $invoiceAmount = json_encode($req->invoiceAmount);
+    //###encode main
+
+
+    //***insert main
+    
+     DB::table('t_invoice')
+     ->insert([
+    [
+    'invoice_from' => $req->invoice_from,  
+    'invoice_to' => $req->invoice_to,  
+    'invoice_type' => $req->invoice_type,  
+    'invoice_number' => $req->invoice_number,  
+    'date' => $req->date,  
+    'due_date' => $req->due_date,  
+    'item' => $invoiceItem,  
+    'quantity' => $invoiceQuantity,  
+    'rate' => $invoiceRate,  
+    'amount' => $invoiceAmount,  
+    'Sub_total' => $req->Sub_total,  
+    'tax' => $req->tax,  
+    'discount' => $req->discount,
+    'shipping' => $req->shipping,
+    'total' => $req->total,  
+    'amount_paid' => $req->amount_paid,  
+    'due_banalce' => $req->due_banalce,  
+    'description' => $req->description,  
+    'terms' => $req->terms,  
+    'payment_terms' => $req->payment_terms,  
+    'draft' => $req->draft,  
+   ]   
+]);
+     //###insert main
+     //*pdf main
+        $pdf = PDF::loadView('page.portal.user.invoice', compact('req'))
+        ->save( 'pdf/invoice.pdf' );
+        //return $pdf->setPaper('A4','landscape')->stream('invoice.pdf');
+    //#pdf  main
+
+    //*mail
+        if($req->draft == 'off')
+        {
+        $data = array(
+        'invoice_type' => $req->invoice_type,
+        'invoice_number' => $req->invoice_number,
+        'invoice_from' => $req->invoice_from,
+        'invoice_to' => $req->invoice_to,
+        'due_date' => $req->due_date,
+        'date' => $req->date,
+        'due_banalce' => $req->due_banalce,
+        'amount_paid' => $req->amount_paid,
+        'description' => $req->description,
+        'total' => $req->total,
+        'terms' => $req->terms,
+        );
+        
+        //echo $email;
+        
+        Mail::to($req->mail_to)->send(new sendMail($data));
+        return back()->with('success','Mail sent to '.$req->invoice_to);
+        }
+                     //#mail
+
+        else{return back()->with('success','Draft saved for '.$req->invoice_to);}
+                //### insert invoice
                
-                $pdf = PDF::loadView('page.portal.user.invoice', compact('req'));
-                return $pdf->setPaper('A4','landscape')->stream('invoice.pdf');
+                //*json
+                //*encode
+               /* $invoiceItem = $req->invoiceItem;
+                $invoiceQuantity = $req->invoiceQuantity;
+                $invoiceRate = $req->invoiceRate;
+                $invoiceAmount = $req->invoiceAmount;
+
+                $invoiceItemd = json_encode($invoiceItem);
+                $invoiceQuantityd = json_encode($invoiceQuantity);
+                $invoiceRated = json_encode($invoiceRate);
+                $invoiceAmountd = json_encode($invoiceAmount);*/
+
+                /*echo $invoiceItem;
+                echo "<br>";
+                echo $invoiceQuantity;
+                echo "<br>";
+                echo $invoiceRate;
+                echo "<br>";
+                echo $invoiceAmount;*/
+                //#encode
+                //*decode
+                /* $invoice = DB::table('t_invoice')->get();
+                 //echo $invoice[0]->item;
+                 $din = json_decode($invoice[0]->item);
+                foreach($din as $value)
+                {
+                echo $value . "<br>";
+                }
+                */
+                //#decode
+
+                //#json
+
+//insert
+      /*DB::table('t_invoice')->insert([
+    [
+
+     
+    'item' => $invoiceItemd,  
+    'iid' => $req->invoice_No,  
+    'type' => $req->invoice_option
+
+   
+]   
+]);*/
+//#insert
+
+
+
+               // return view('page.portal.user.create');
+
+               //*pdf
+                /*$pdf = PDF::loadView('page.portal.user.invoice', compact('req'))
+                ->save( 'pdf/invoice.pdf' );*/
+                //return $pdf->setPaper('A4','landscape')->stream('invoice.pdf');
+                //#pdf
+
+                /*$url = Storage::url('invoice.pdf');
+                echo $url;*/
+                               
+
+                //*mail
+                   /* $data = array(
+                        'invoice_No' => $req->invoice_No,
+                        'invoiceFrom' => $req->invoiceFrom,
+                        'invoiceTo' => $req->invoiceTo,
+                        'duedate' => $req->duedate,
+                        'description' => $req->description,
+                        
+                        
+                        
+                    );
+                    Mail::to('rifatron99@gmail.com')->send(new sendMail($data));
+                    return back()->with('success','mail sent');*/
+                     //#mail
+
+
+                /*    $to_name = 'kawsar';
+$to_email = 'rifatron999@gmail.com';
+$data = array('name'=>"Sam Jose", "body" => "Test mail");
+    
+Mail::send('page.portal.user.email', $data, function($message) use ($to_name, $to_email) {
+    $message->to($to_email, $to_name)
+            ->subject('Artisans Web Testing Mail');
+    $message->from('noreply.oinvoice@gmail.com','Artisans Web');*/
+
+
+               
 
 
 
              }
+         
+
              else
              {
                 $req->session()->flash('msg', "UNAUTHORIZED!");
@@ -459,35 +649,7 @@ $facultySlideList   = DB::table('t_product')->where('p_id', $p_id)
 
 
 
-        //test
-function index1()
-    {
-     return view('autocomplete');
-    }
-
-    function fetch(Request $request)
-    {
-     if($request->get('query'))
-     {
-      $query = $request->get('query');
-      $data = DB::table('t_product')
-        ->where('p_name', 'LIKE', "%{$query}%")
-        ->get();
-      $output = '<ul class="dropdown-menu" style="display:block; position:relative">';
-      foreach($data as $row)
-      {
-       $output .= '
-       <li>'.$row->p_name.'</li>
-       ';
-      }
-      $output .= '</ul>';
-      echo $output;
-     }
-    }
-
-
-        //#test
-
+        
 
 
 

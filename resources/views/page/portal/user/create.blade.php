@@ -33,14 +33,15 @@ Oinvoice-Portal-Create
                   </li>
 
                   <li class="sub-menu">
-                      <a class="active" href="javascript:;" >
+                      <a class="active"  href="javascript:;" >
                           <i class="fa fa-file"></i>
                           <span>Invoice</span>
                       </a>
                       <ul class="sub">
-                          <li class="active" ><a  href="">Create New Invoice</a></li>
-                          <li><a  href="buttons.html">Buttons</a></li>
-                          <li><a  href="panels.html">Panels</a></li>
+                          <li class="active" ><a  href="{{route('createinvoiceView.index')}}">Create New Invoice</a></li>
+                          <li><a  href="buttons.html">Previous Invoices</a></li>
+                          <li><a  href="panels.html">Due Invoices</a></li>
+                          <li><a  href="panels.html">Drafts</a></li>
                       </ul>
                   </li>
 
@@ -108,7 +109,7 @@ Oinvoice-Portal-Create
             <!-- create -->
             <form method="post">
 
- <!-- test -->
+ <!-- test --><marquee align="center" behavior="alternate" >{{session('success')}}</marquee>
 
                 <div class="col-lg-12">
                 <div class="form-panel">
@@ -123,7 +124,7 @@ Oinvoice-Portal-Create
                                          <hr style="border: 5px solid green;border-radius: 8px;">
                               </div>
                               <div class="col-sm-6 text-center">
-                                  <select  class="form-controls" name="invoice_option" >
+                                  <select  class="form-controls" name="invoice_type" >
   <option value="Invoice"  >Invoice</option>
   <option value="Quotation"  >Quotation</option>
   
@@ -131,7 +132,7 @@ Oinvoice-Portal-Create
               <br>
               <br>
 
-              <input name="invoice_No" type="number" class="form-controls"  placeholder="Invoice Number" value="56">
+              <input name="invoice_number" type="number" class="form-controls"  placeholder="Invoice Number" value="56">
               <hr style="border: px solid green;border-radius: 8px;">
 
                               </div>
@@ -142,13 +143,21 @@ Oinvoice-Portal-Create
                               <div class="col-sm-6 text-center">
                                 <input  name="billfrom" type="text" class="form-controlss"  placeholder="Bill From" value="Bill From" >
                                   
-                                  <input name="invoiceFrom" type="text" class="form-controlm"  placeholder="Who is this invoice from ? (required)" value="{{session('c_name')}}" >
+                                  <input name="invoice_from" type="text" class="form-controlm"  placeholder="Who is this invoice from ? (required)" value="{{session('c_name')}}" >
               <br>
               <br>
            
 
               <input  name="billto" type="text" class="form-controlss"  placeholder="Bill To" value="Bill to" >
-              <input name="invoiceTo" type="text" class="form-controlm"  placeholder="Who is this invoice to? (required)"  >
+              <input name="invoice_to" type="text" class="form-controlm"  placeholder="Who is this invoice to? (required)"  >
+               
+               <br>
+               <br>
+
+              <input  name="mailTo" type="text" class="form-controlss"  placeholder="Mail To" value="Mail to" >
+              <input name="mail_to" type="text" class="form-controlm"  placeholder="Who is this mail to? (required)"  >
+
+
                               </div>
                               <div class="col-sm-6 text-center">
 
@@ -156,13 +165,13 @@ Oinvoice-Portal-Create
                              <input  name="date" type="date" class="form-controls"  id="today"  >
                               <br>
                            <input  name="paymentTermsx" type="text" class="form-controlss"  placeholder="Payment Terms" value="Payment Terms" > 
-                            <input  name="paymentTermsx" type="text" class="form-controls"   >
+                            <input  name="payment_terms" type="text" class="form-controls"   >
                             <br>
                             <input  name="duedatex" type="text" class="form-controlss"  placeholder=" Due Date"  value="Due Date">   
-                             <input  name="duedate" type="date" class="form-controls"   >
+                             <input  name="due_date" type="date" class="form-controls"   >
                              <br>
                             <input  name="duebanalcex" type="text" class="form-controlss"  placeholder="Balance Due" value="Balance Due" >   
-                             <input id="duebanalce" name="duebanalce" type="text" class="form-controls"    readonly="readonly">
+                             <input id="duebanalce" name="due_banalce" type="text" class="form-controls"    readonly="readonly">
 
                               </div>
                              
@@ -203,7 +212,7 @@ Oinvoice-Portal-Create
 
             <tr>
               
-                <td ><input id='invoiceItem_0' name='invoiceItem[]' type='text' class='form-control'  placeholder='Description of service and product' list='productList' ></td>
+                <td ><input id='invoiceItem_0' name='invoiceItem[]' type='text' class='form-control'  placeholder='Description of service and product' list='productList' autocomplete='off'></td>
                 <td><input id='quantity_0' name='invoiceQuantity[]' type='number' class='form-controlssp'  onkeyup="amountCal(0)"  ></td>
                 <td><input id='rate_0'  name='invoiceRate[]' type='number' class='form-controlssp' onkeyup="amountCal(0)"></td>
               <td><input  id='amount_0' name='invoiceAmount[]' type='number' class='form-controlssp'  readonly='readonly' ></td>
@@ -243,7 +252,7 @@ Oinvoice-Portal-Create
                               <div class="col-sm-6 text-center">
                                 <!--col 2 -->
                                     <input  name="subTotalx" type="text" class="form-controlss"  value="Sub Total"   >   
-                             <input id="subTotal" name="subTotal" type="number" class="form-controls"  readonly="readonly"  >
+                             <input id="subTotal" name="Sub_total" type="number" class="form-controls"  readonly="readonly"  >
                               
                                <br>
                            
@@ -268,10 +277,15 @@ Oinvoice-Portal-Create
                              <br>
 
                              <input  name="paidx" type="text" class="form-controlss"  placeholder="Amount Paid" value="Amount Paid"   >   
-                             <input id="paid" name="paid" type="text" class="form-controls" onkeyup="dueCal()" >
+                             <input id="paid" name="amount_paid" type="text" class="form-controls" onkeyup="dueCal()" >
                              <br>
                              <br>
                              <br>
+                             <label for="slider">Save as Draft only: </label>
+    <select name="draft"  data-role="slider">
+        <option value="off">Off</option>
+        <option value="on">On</option>
+    </select>
                              <button type="Submit" class="btn btn-primary btn-lg">Submit Payment</button>
                             
 

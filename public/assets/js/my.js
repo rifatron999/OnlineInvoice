@@ -40,7 +40,7 @@ var i=0;
         $("#add-row").click(function()
         {
             i++;
-            var markup = "<tr><td ><input  list='productList' name='invoiceItem[]' type='text' class='form-control'  placeholder='Description of service and product'  ></td><td><input id='quantity_"+i+"' name='invoiceQuantity[]' type='number' onkeyup='amountCal("+i+")' class='form-controlssp'    ></td><td><input id='rate_"+i+"' onkeyup='amountCal("+i+")' name='invoiceRate[]' type='number' class='form-controlssp'    ></td><td><input id='amount_"+i+"' name='invoiceAmount[]' type='number' class='form-controlssp' readonly='readonly'    ></td><td><input type='checkbox' name='record' class='form-controlssp' ></td></tr>";
+            var markup = "<tr><td ><input  list='productList' name='invoiceItem[]' type='text' class='form-control'  placeholder='Description of service and product' autocomplete='off' ></td><td><input id='quantity_"+i+"' name='invoiceQuantity[]' type='number' onkeyup='amountCal("+i+")' class='form-controlssp'    ></td><td><input id='rate_"+i+"' onkeyup='amountCal("+i+")' name='invoiceRate[]' type='number' class='form-controlssp'    ></td><td><input id='amount_"+i+"' name='invoiceAmount[]' type='number' class='form-controlssp' readonly='readonly'    ></td><td><input type='checkbox' name='record' class='form-controlssp' ></td></tr>";
             $("table tbody").append(markup);
         });
         
@@ -76,12 +76,12 @@ var i=0;
   //*** discount tax shipping  ***  
 
   $("#discount").click(function(){
-    $("#next").after('<div id="d"> <input  name="discountx" type="text" class="form-controlss"  placeholder="Discount" value="Discount" > <input  id="discount"  name="discount" type="text" class="form-controls"  onkeyup="totalCal()" >  <br></div>');
+    $("#next").after('<div id="d"> <input  name="discountx" type="text" class="form-controlss"  placeholder="Discount" value="Discount (%)" > <input  id="discount"  name="discount" type="text" class="form-controls"  onkeyup="totalCal()" >  <br></div>');
     $(this).hide();
   });
 
   $("#tax").click(function(){
-    $("#next").after('<br> <input  name="taxx" type="text" class="form-controlss"  placeholder="Tax" value="Tax" > <input  id="tax" name="tax" type="text" class="form-controls" onkeyup="totalCal()"  ><br>');
+    $("#next").after('<br> <input  name="taxx" type="text" class="form-controlss"  placeholder="Tax" value="Tax (%)" > <input  id="tax" name="tax" type="text" class="form-controls" onkeyup="totalCal()"  ><br>');
     $(this).hide();
   });
 
@@ -177,10 +177,13 @@ function amountCal(i)
 
 function totalCal() 
 {
-  
-        var tax = $('#tax').val();
         var shipping = $('#shipping').val();
-        var discount = $('#discount').val();
+        var taxp = $('#tax').val()/100;
+        var tax = $('#subTotal').val()*taxp;
+
+        var discountp = $('#discount').val()/100;
+        var discount = $('#subTotal').val()*discountp;
+        //var discount = $('#discount').val();
 
          if (!tax) 
             {

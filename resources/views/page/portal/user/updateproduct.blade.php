@@ -35,9 +35,9 @@ Oinvoice-Portal-UpdateProduct
                           <span>Invoice</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href="general.html">General</a></li>
-                          <li><a  href="buttons.html">Buttons</a></li>
-                          <li><a  href="panels.html">Panels</a></li>
+                          <li><a  href="{{route('createinvoiceView.index')}}">Create New Invoice</a></li>
+                          <li><a  href="buttons.html">Previous Invoices</a></li>
+                          <li><a  href="panels.html">Due Invoices</a></li>
                       </ul>
                   </li>
 
@@ -115,7 +115,7 @@ Oinvoice-Portal-UpdateProduct
                               <div class="form-group "> <h3  align="center">Update Product</h3> <br>
                                   <label class="col-sm-2 control-label col-lg-2" for="inputSuccess"> Product Name</label>
                                   <div class="col-lg-10">
-                                      <input name="p_name"  type="text" class="form-control" value="{{$productByid[0]->p_name}}" disabled >
+                                      <input name="p_name"  type="text" class="form-control" value="{{$productByid[0]->p_name}}"  >
                                       <br>
                                   </div>
 

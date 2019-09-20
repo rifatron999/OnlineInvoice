@@ -35,9 +35,9 @@ Oinvoice-Portal-AddProduct
                           <span>Invoice</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href="general.html">General</a></li>
-                          <li><a  href="buttons.html">Buttons</a></li>
-                          <li><a  href="panels.html">Panels</a></li>
+                          <li><a  href="{{route('createinvoiceView.index')}}">Create New Invoice</a></li>
+                          <li><a  href="buttons.html">Previous Invoices</a></li>
+                          <li><a  href="panels.html">Due Invoices</a></li>
                       </ul>
                   </li>
 

@@ -32,7 +32,7 @@
     <tr>
         <td valign="top"><!-- <img  src="{{asset('assets/img/company_logo')}}/{{session('c_logo')}}" width="200" height="250">  --> <img  src="assets/img/company_logo/{{session('c_logo')}}" width="200" height="250"></td>
         <td align="right">
-            <h2> {{$req->invoice_option}} #{{$req->invoice_No}}</h2>
+            <h2> {{$req->invoice_type}} #{{$req->invoice_number}}</h2>
             <h3>{{session('c_name')}}</h3>
             <pre>
                 {{session('name')}}
@@ -48,15 +48,15 @@
 
   <table width="100%">
     <tr>
-        <td><strong>{{$req->billfrom}}:</strong> {{$req->invoiceFrom}}</td>
+        <td><strong>{{$req->billfrom}}:</strong> {{$req->invoice_from}}</td>
       </tr>
       <tr>
-        <td><strong>{{$req->billto}}:</strong> {{$req->invoiceTo}}</td>
+        <td><strong>{{$req->billto}}:</strong> {{$req->invoice_to}}</td>
         
         <td align="right" >
           <strong>{{$req->datex}}:</strong> {{$req->date}} <br>
-          <strong>{{$req->duedatex}}:</strong> {{$req->duedate}} <br>
-          <strong  >{{$req->duebanalcex}}:</strong> <span class="gray" >{{$req->duebanalce}}</span> 
+          <strong>{{$req->duedatex}}:</strong> {{$req->due_date}} <br>
+          <strong  >{{$req->duebanalcex}}:</strong> <span class="gray" >{{$req->due_banalce}}</span> 
 
         </td>
 
@@ -105,7 +105,7 @@
         <tr>
            
             <td align="center">{{$req->subTotalx}}</td>
-            <td align="center">{{$req->subTotal}}</td>
+            <td align="center">{{$req->Sub_total}}</td>
         </tr>
         <tr>
             
@@ -132,24 +132,25 @@
         <tr>
            
             <td align="center">{{$req->paidx}}</td>
-            <td align="center" class="gray">{{$req->paid}}</td>
+            <td align="center" class="gray">{{$req->amount_paid}}</td>
         </tr>
 <hr width="70%" align="left" >
 
 
         
-    <table align="left"  width="70%"  >
+    <table align="left"  width="70%" style="padding: 50px;
+  " >
     
       
         <tr>
            
             <td align="left" style="color: #a0aec0;"width="20%" >{{$req->descriptionx}}: </td>
-            <td align="left"  style=" color: #fbd38d;">{{$req->description}}</td>
+            <td align="left"  style=" color: #a0aec0;">{{$req->description}}</td>
         </tr>
         <tr>
            
             <td align="left" style="color: #a0aec0;"width="20%" >{{$req->termsx}}: </td>
-            <td align="left"  style=" color: #fbd38d;">{{$req->terms}}</td>
+            <td align="left"  style=" color: #a0aec0;">{{$req->terms}}</td>
         </tr>
     </table>
   
