@@ -91,6 +91,9 @@ var i=0;
     $("#next").after('<br> <input  name="shippingx" type="text" class="form-controlss"  placeholder="Shipping" value="Shipping"  >   <input id="shipping" name="shipping" type="text" class="form-controls" onkeyup="totalCal()"   ><br>');
     $(this).hide();
   });
+
+
+
   //### product add in create ###  
   //*** Ajax Search Product ***
   
@@ -164,11 +167,8 @@ function amountCal(i)
                 for (j = 0; j < i+1; j++) 
                 {  
                    amountTotal += parseInt(document.getElementById('amount_'+j).value);
-                  
-
-  
                 }
-                document.getElementById('subTotal').value = amountTotal; //subtotal from amount
+                //document.getElementById('subTotal').value = amountTotal; //subtotal from amount
                 totalCal();
           }
 } 
@@ -232,6 +232,16 @@ function dueCal()
               document.getElementById('duebanalce').value = document.getElementById('total').value;
             }
 }
+
+
+
+$(document).on("keyup", ".rate", function() {
+    var sum = 0;
+    $(".amount").each(function(){
+        sum += +$(this).val();
+    });
+    $("#subTotal").val(sum);
+});
 
 
 

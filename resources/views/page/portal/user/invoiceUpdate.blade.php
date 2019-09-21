@@ -230,10 +230,11 @@ Oinvoice-Update Invoice
                 <input  name='invoiceItem[]' type='text' class='form-control'  placeholder='Description of service and product' list='productList' autocomplete='off' value="{{$item}}" >
               </td>
                 <td><input id='quantity_{{$p}}' name='invoiceQuantity[]' type='number' class='form-controlssp'  onkeyup="amountCal('{{$p}}')" value="{{$quantityRow[$p]}}" ></td> 
-                <td><input id='rate_{{$p}}'  name='invoiceRate[]' type='number' class='form-controlssp' onkeyup="amountCal('{{$p}}')" value="{{$rateRow[$p]}}" ></td>
-              <td><input  id='amount_{{$p}}' name='invoiceAmount[]' type='number' class='form-controlssp'  readonly='readonly' value="{{$amountRow[$p]}}" ></td>
+                <td><input id='rate_{{$p}}'  name='invoiceRate[]' type='number' class='form-controlssp rate ' onkeyup="amountCal('{{$p}}')" value="{{$rateRow[$p]}}" ></td>
+              <td><input  id='amount_{{$p}}' name='invoiceAmount[]' type='number' class='form-controlssp amount'  readonly='readonly' value="{{$amountRow[$p]}}" ></td>
               <td><input type='checkbox' name='record' class='form-controlssp'  ></td>
             </tr>
+
             @endforeach
 
 
@@ -269,7 +270,7 @@ Oinvoice-Update Invoice
                               <div class="col-sm-6 text-center">
                                 <!--col 2 -->
                                     <input  name="subTotalx" type="text" class="form-controlss"  value="Sub Total"   >   
-                             <input id="subTotal" name="Sub_total" type="number" class="form-controls"  readonly="readonly" value="{{$invoiceById[0]->Sub_total}}" >
+                             <input id="subTotal" name="Sub_total" type="number" class="form-controls"  readonly="readonly"  >
                               
                                <br>
                            
