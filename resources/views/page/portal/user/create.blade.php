@@ -190,7 +190,8 @@ Oinvoice-Portal-Create
                                 <thead>
                                 <tr>
                                     
-                                    <th style="min-width:500px; max-width:501px"  >Item &nbsp <button id='add-row' type="button" class="btn btn-theme02"><i class="fa fa-plus"></i> </button> 
+                                    <th style="min-width:500px; max-width:501px"  >Item &nbsp 
+                                      <button id='add-row-create' onclick="addRow(0)" type="button" class="btn btn-theme02"><i class="fa fa-plus"></i> </button> 
                                       &nbsp <button id='delete-row' type="button" class="btn btn-theme04"><i class="fa fa-minus"></i> </button>
 
                                     </th>
@@ -213,9 +214,9 @@ Oinvoice-Portal-Create
             <tr>
               
                 <td ><input id='invoiceItem_0' name='invoiceItem[]' type='text' class='form-control'  placeholder='Description of service and product' list='productList' autocomplete='off'></td>
-                <td><input id='quantity_0' name='invoiceQuantity[]' type='number' class='form-controlssp'  onkeyup="amountCal(0)"  ></td>
-                <td><input id='rate_0'  name='invoiceRate[]' type='number' class='form-controlssp' onkeyup="amountCal(0)"></td>
-              <td><input  id='amount_0' name='invoiceAmount[]' type='number' class='form-controlssp'  readonly='readonly' ></td>
+                <td><input id='quantity_0' name='invoiceQuantity[]' type='number' class='form-controlssp quantity'  onkeyup="amountCal(0)"  ></td>
+                <td><input id='rate_0'  name='invoiceRate[]' type='number' class='form-controlssp rate' onkeyup="amountCal(0)"></td>
+              <td><input  id='amount_0' name='invoiceAmount[]' type='number' class='form-controlssp amount'  readonly='readonly' ></td>
               <td><input type='checkbox' name='record' class='form-controlssp' ></td>
             </tr>
 

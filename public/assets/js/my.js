@@ -1,3 +1,5 @@
+var i=0;
+//#################################################################
 function previewImage(event)
                                     {
                                       var reader = new FileReader();
@@ -31,16 +33,16 @@ window.onload = function() {
 
 //*** product add in create ***
 
-var i=0;
+
 
 
     $(document).ready(function()
     {
       
         $("#add-row").click(function()
-        {
+        { //off now
             i++;
-            var markup = "<tr><td ><input  list='productList' name='invoiceItem[]' type='text' class='form-control'  placeholder='Description of service and product' autocomplete='off' ></td><td><input id='quantity_"+i+"' name='invoiceQuantity[]' type='number' onkeyup='amountCal("+i+")' class='form-controlssp'    ></td><td><input id='rate_"+i+"' onkeyup='amountCal("+i+")' name='invoiceRate[]' type='number' class='form-controlssp'    ></td><td><input id='amount_"+i+"' name='invoiceAmount[]' type='number' class='form-controlssp' readonly='readonly'    ></td><td><input type='checkbox' name='record' class='form-controlssp' ></td></tr>";
+            var markup = "<tr><td ><input  list='productList' name='invoiceItem[]' type='text' class='form-control'  placeholder='Description of service and product' autocomplete='off' ></td><td><input id='quantity_"+i+"' name='invoiceQuantity[]' type='number' onkeyup='amountCal("+i+")' class='form-controlssp quantity'    ></td><td><input id='rate_"+i+"' onkeyup='amountCal("+i+")' name='invoiceRate[]' type='number' class='form-controlssp rate'    ></td><td><input id='amount_"+i+"' name='invoiceAmount[]' type='number' class='form-controlssp amount' readonly='readonly'    ></td><td><input type='checkbox' name='record' class='form-controlssp' ></td></tr>";
             $("table tbody").append(markup);
         });
         
@@ -65,10 +67,17 @@ var i=0;
 
 
 
+function addRow(size) 
+{ 
+             i++;
+             var s = parseInt(size) + parseInt(i);
+             //alert(s);
+            var markup = "<tr><td ><input  list='productList' name='invoiceItem[]' type='text' class='form-control'  placeholder='Description of service and product' autocomplete='off' ></td><td><input id='quantity_"+s+"' name='invoiceQuantity[]' type='number' onkeyup='amountCal("+s+")' class='form-controlssp quantity'    ></td><td><input id='rate_"+s+"' onkeyup='amountCal("+s+")' name='invoiceRate[]' type='number' class='form-controlssp rate'    ></td><td><input id='amount_"+s+"' name='invoiceAmount[]' type='number' class='form-controlssp amount' readonly='readonly'    ></td><td><input type='checkbox' name='record' class='form-controlssp' ></td></tr>";
+            $("table tbody").append(markup);
+} 
 
 
-
-
+//#################################################################################
 
     $(document).ready(function(){
 
@@ -235,12 +244,14 @@ function dueCal()
 
 
 
-$(document).on("keyup", ".rate", function() {
+$(document).on("keyup", ".rate,.quantity", function() 
+{ 
     var sum = 0;
     $(".amount").each(function(){
         sum += +$(this).val();
     });
     $("#subTotal").val(sum);
+    totalCal();
 });
 
 

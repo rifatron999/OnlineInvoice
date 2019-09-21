@@ -184,6 +184,16 @@ Oinvoice-Update Invoice
                              
                           </div> 
                           <!--/2nd row -->
+                          <!-- decode -->
+                          <?php 
+                   $itemRow = json_decode($invoiceById[0]->item);
+                   $size = sizeof($itemRow) - 1;
+                   //echo $size;
+                   $quantityRow = json_decode($invoiceById[0]->quantity);
+                   $rateRow = json_decode($invoiceById[0]->rate);
+                   $amountRow = json_decode($invoiceById[0]->amount);
+                  ?>
+                          <!-- /decode -->
 
   
 
@@ -197,7 +207,8 @@ Oinvoice-Update Invoice
                                 <thead>
                                 <tr>
                                     
-                                    <th style="min-width:500px; max-width:501px"  >Item &nbsp <button id='add-row' type="button" class="btn btn-theme02"><i class="fa fa-plus"></i> </button> 
+                                    <th style="min-width:500px; max-width:501px"  >Item &nbsp 
+                                      <button id='add-row-update'  onclick="addRow('{{$size}}')" type="button" class="btn btn-theme02"><i class="fa fa-plus"></i> </button> 
                                       &nbsp <button id='delete-row' type="button" class="btn btn-theme04"><i class="fa fa-minus"></i> </button>
 
                                     </th>
@@ -215,12 +226,7 @@ Oinvoice-Update Invoice
                     @endforeach
                              
                   </datalist>
-                  <?php 
-                   $itemRow = json_decode($invoiceById[0]->item);
-                   $quantityRow = json_decode($invoiceById[0]->quantity);
-                   $rateRow = json_decode($invoiceById[0]->rate);
-                   $amountRow = json_decode($invoiceById[0]->amount);
-                  ?>
+                  
 
                   @foreach ($itemRow as $p =>$item)  
 
@@ -229,7 +235,7 @@ Oinvoice-Update Invoice
                 <td>
                 <input  name='invoiceItem[]' type='text' class='form-control'  placeholder='Description of service and product' list='productList' autocomplete='off' value="{{$item}}" >
               </td>
-                <td><input id='quantity_{{$p}}' name='invoiceQuantity[]' type='number' class='form-controlssp'  onkeyup="amountCal('{{$p}}')" value="{{$quantityRow[$p]}}" ></td> 
+                <td><input id='quantity_{{$p}}' name='invoiceQuantity[]' type='number' class='form-controlssp quantity'  onkeyup="amountCal('{{$p}}')" value="{{$quantityRow[$p]}}" ></td> 
                 <td><input id='rate_{{$p}}'  name='invoiceRate[]' type='number' class='form-controlssp rate ' onkeyup="amountCal('{{$p}}')" value="{{$rateRow[$p]}}" ></td>
               <td><input  id='amount_{{$p}}' name='invoiceAmount[]' type='number' class='form-controlssp amount'  readonly='readonly' value="{{$amountRow[$p]}}" ></td>
               <td><input type='checkbox' name='record' class='form-controlssp'  ></td>
@@ -270,7 +276,7 @@ Oinvoice-Update Invoice
                               <div class="col-sm-6 text-center">
                                 <!--col 2 -->
                                     <input  name="subTotalx" type="text" class="form-controlss"  value="Sub Total"   >   
-                             <input id="subTotal" name="Sub_total" type="number" class="form-controls"  readonly="readonly"  >
+                             <input id="subTotal" name="Sub_total" type="number" class="form-controls" value="{{$invoiceById[0]->Sub_total}}"  readonly="readonly"  >
                               
                                <br>
                            
