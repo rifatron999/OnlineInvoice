@@ -139,7 +139,7 @@ Oinvoice-Update Invoice
               <br>
               <br>
 
-              <input name="invoice_number" type="number" class="form-controls"  placeholder="Invoice Number" value="{{$invoiceById[0]->invoice_number}}">
+              <input name="invoice_number" type="number" class="form-controls"  placeholder="Invoice Number" value="{{$invoiceById[0]->invoice_number}}" readonly="readonly">
               <hr style="border: px solid green;border-radius: 8px;">
 
                               </div>
@@ -215,16 +215,26 @@ Oinvoice-Update Invoice
                     @endforeach
                              
                   </datalist>
-                    
+                  <?php 
+                   $itemRow = json_decode($invoiceById[0]->item);
+                   $quantityRow = json_decode($invoiceById[0]->quantity);
+                   $rateRow = json_decode($invoiceById[0]->rate);
+                   $amountRow = json_decode($invoiceById[0]->amount);
+                  ?>
+
+                  @foreach ($itemRow as $p =>$item)  
 
             <tr>
               
-                <td ><input id='invoiceItem_0' name='invoiceItem[]' type='text' class='form-control'  placeholder='Description of service and product' list='productList' autocomplete='off'></td>
-                <td><input id='quantity_0' name='invoiceQuantity[]' type='number' class='form-controlssp'  onkeyup="amountCal(0)"  ></td>
-                <td><input id='rate_0'  name='invoiceRate[]' type='number' class='form-controlssp' onkeyup="amountCal(0)"></td>
-              <td><input  id='amount_0' name='invoiceAmount[]' type='number' class='form-controlssp'  readonly='readonly' ></td>
-              <td><input type='checkbox' name='record' class='form-controlssp' ></td>
+                <td>
+                <input  name='invoiceItem[]' type='text' class='form-control'  placeholder='Description of service and product' list='productList' autocomplete='off' value="{{$item}}" >
+              </td>
+                <td><input id='quantity_{{$p}}' name='invoiceQuantity[]' type='number' class='form-controlssp'  onkeyup="amountCal('{{$p}}')" value="{{$quantityRow[$p]}}" ></td> 
+                <td><input id='rate_{{$p}}'  name='invoiceRate[]' type='number' class='form-controlssp' onkeyup="amountCal('{{$p}}')" value="{{$rateRow[$p]}}" ></td>
+              <td><input  id='amount_{{$p}}' name='invoiceAmount[]' type='number' class='form-controlssp'  readonly='readonly' value="{{$amountRow[$p]}}" ></td>
+              <td><input type='checkbox' name='record' class='form-controlssp'  ></td>
             </tr>
+            @endforeach
 
 
             
