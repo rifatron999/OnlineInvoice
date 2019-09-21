@@ -489,6 +489,7 @@ $facultySlideList   = DB::table('t_product')->where('p_id', $p_id)
         'invoice_number' => $req->invoice_number,
         'invoice_from' => $req->invoice_from,
         'invoice_to' => $req->invoice_to,
+        'mail_to' => $req->mail_to,
         'due_date' => $req->due_date,
         'date' => $req->date,
         'due_banalce' => $req->due_banalce,
@@ -619,7 +620,7 @@ Mail::send('page.portal.user.email', $data, function($message) use ($to_name, $t
              if($this->userCheck($req))
              {
                 
-                $invoiceList   = DB::table('t_invoice')->where('invoice_type', 'Invoice')->get();
+                $invoiceList   = DB::table('t_invoice')->where('draft', 'off')->get();
 
                 return view('page.portal.user.previousInvoiceList',['invoiceList'=>$invoiceList]);
 
@@ -632,6 +633,29 @@ Mail::send('page.portal.user.email', $data, function($message) use ($to_name, $t
         }
 
     //### previousInvoiceView ###
+
+         //*** invoiceUpdateView ***
+
+        public function invoiceUpdateView($invoice_number,Request $req)
+        {
+            
+             if($this->userCheck($req))
+             {
+                
+                $invoiceById   = DB::table('t_invoice')->where('invoice_number',$invoice_number)->get();
+                $productList   = DB::table('t_product')->where('p_owner', $req->session()->get('name'))->get();
+
+                return view('page.portal.user.invoiceUpdate',['invoiceById'=>$invoiceById,'productList'=>$productList]);
+
+             }
+             else
+             {
+                $req->session()->flash('msg', "UNAUTHORIZED!");
+                return redirect()->route('login.index');
+             }
+        }
+
+    //### invoiceUpdateView ###
 
         //*** productFetch ***
 

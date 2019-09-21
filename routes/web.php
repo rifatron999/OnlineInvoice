@@ -66,6 +66,8 @@ Route::get('/portal/user/updateProduct/{p_id}','userController@productUpdateView
 Route::get('/portal/user/removeProduct/{p_id}','userController@deleteProduct')->name('removeProduct');
 Route::get('/portal/user/create','userController@createinvoiceView')->name('createinvoiceView.index');
 Route::get('/portal/user/previousInvoiceList','userController@previousInvoiceView')->name('previousInvoiceView.index');
+Route::get('/portal/user/updateInvoice/{invoice_number}','userController@invoiceUpdateView')->name('invoiceUpdateView');
+
 
 
 //Route::get('/portal/user/create/invoice','userController@createinvoice')->name('createinvoice.index');

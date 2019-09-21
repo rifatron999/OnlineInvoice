@@ -39,7 +39,7 @@ Oinvoice-Previous Invoices
                       </a>
                       <ul class="sub">
                           <li><a  href="{{route('createinvoiceView.index')}}">Create New Invoice</a></li>
-                          <li class="active" ><a  href="">Previous Invoices</a></li>
+                          <li class="active" ><a  href="">Invoices and Quotation</a></li>
                           <li><a  href="panels.html">Due Invoices</a></li>
                           <li><a  href="panels.html">Drafts</a></li>
                       </ul>
@@ -112,12 +112,14 @@ Oinvoice-Previous Invoices
                   <div class="col-md-12">
                       <div class="content-panel">
                           <table class="table table-striped  table-hover">
-                            <h4 style="text-align:center;" > Previous Invoices</h4>
+                            <h4 style="text-align:center;" > Previous Invoices and Quotation</h4>
                             <hr>
                               <thead>
                               <tr >
                                   <th><i class="fa fa-bullhorn"></i> Id</th>
+                                  <th><i class="fa fa-bullhorn"></i> Type</th>
                                   <th><i class=""></i> To</th>
+                                  <th><i class=" "></i>Issue Date</th>
                                   <th><i class=" "></i>Deadline</th>
                                   <th><i class=" fa fa-edit"></i> Total</th>
                                   <th><i class=" fa fa-edit"></i> Due </th>
@@ -131,12 +133,14 @@ Oinvoice-Previous Invoices
                                  @foreach ($invoiceList as $s) 
                               <tr>
                                   <td><a >{{$s->invoice_number}}</a></td>
+                                  <td><a >{{$s->invoice_type}}</a></td>
                                   <td><a >{{$s->invoice_to}}</a></td>
+                                  <td><a href="">{{$s->date}}</a></td>
                                   <td><a href="">{{$s->due_date}}</a></td>
                                   <td><a >{{$s->total}}</a></td>
-                                  <td><a >{{$s->due_banalce}}</a></td>
+                                  <td><a >{{$s->due_balance}}</a></td>
                                                                    
-                                  <td> <a href="{{route('productUpdateView',$s->invoice_number )}}" class="btn btn-danger btn-xs"><i class="fa fa-edit"></i></a></td>
+                                  <td> <a href="{{route('invoiceUpdateView',$s->invoice_number )}}" class="btn btn-danger btn-xs"><i class="fa fa-edit"></i></a></td>
                                   <td>
                                      
       

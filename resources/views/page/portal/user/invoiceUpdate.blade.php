@@ -1,6 +1,6 @@
 @extends('template.portal.user')
 @section('title')
-Oinvoice-Portal-Create
+Oinvoice-Update Invoice
 @endsection
 @section('sidebar&content')
 
@@ -113,7 +113,7 @@ Oinvoice-Portal-Create
 
                 <div class="col-lg-12">
                 <div class="form-panel">
-                     <h3  align="center"> Create New Invoice</h3> <br>
+                     <h3  align="center">Update Invoice</h3> <br>
                           <div class="row mt">
                               <div class="col-sm-6 text-center">
                                     <img  src="{{asset('assets/img/company_logo')}}/{{session('c_logo')}}" width="200" height="250">
@@ -124,15 +124,22 @@ Oinvoice-Portal-Create
                                          <hr style="border: 5px solid green;border-radius: 8px;">
                               </div>
                               <div class="col-sm-6 text-center">
-                                  <select  class="form-controls" name="invoice_type" >
-  <option value="Invoice"  >Invoice</option>
-  <option value="Quotation"  >Quotation</option>
+                <select  class="form-controls" name="invoice_type"  >
+                      @if($invoiceById[0]->invoice_type === 'Invoice')
+                              
+                              {<option value="Invoice" selected="select" >Invoice</option>
+                              <option value="Quotation"  >Quotation</option>}
+                      @else
+                              {<option value="Invoice"  >Invoice</option>
+                              <option value="Quotation" selected="select" >Quotation</option>}
+                      @endif
+
   
               </select  >
               <br>
               <br>
 
-              <input name="invoice_number" type="number" class="form-controls"  placeholder="Invoice Number" value="56">
+              <input name="invoice_number" type="number" class="form-controls"  placeholder="Invoice Number" value="{{$invoiceById[0]->invoice_number}}">
               <hr style="border: px solid green;border-radius: 8px;">
 
                               </div>
@@ -143,35 +150,35 @@ Oinvoice-Portal-Create
                               <div class="col-sm-6 text-center">
                                 <input  name="billfrom" type="text" class="form-controlss"  placeholder="Bill From" value="Bill From" >
                                   
-                                  <input name="invoice_from" type="text" class="form-controlm"  placeholder="Who is this invoice from ? (required)" value="{{session('c_name')}}" >
+                                  <input name="invoice_from" type="text" class="form-controlm"  placeholder="Who is this invoice from ? (required)" value="{{$invoiceById[0]->invoice_from}}" >
               <br>
               <br>
            
 
               <input  name="billto" type="text" class="form-controlss"  placeholder="Bill To" value="Bill to" >
-              <input name="invoice_to" type="text" class="form-controlm"  placeholder="Who is this invoice to? (required)"  >
+              <input name="invoice_to" type="text" class="form-controlm"  placeholder="Who is this invoice to? (required)" value="{{$invoiceById[0]->invoice_to}}" >
                
                <br>
                <br>
 
               <input  name="mailTo" type="text" class="form-controlss"  placeholder="Mail To" value="Mail to" >
-              <input name="mail_to" type="text" class="form-controlm"  placeholder="Who is this mail to? (required)"  >
+              <input name="mail_to" type="text" class="form-controlm"  placeholder="Who is this mail to? (required)" value="{{$invoiceById[0]->mail_to}}" >
 
 
                               </div>
                               <div class="col-sm-6 text-center">
 
                              <input  name="datex" type="text" class="form-controlss"  placeholder="Date" value="Date" >   
-                             <input  name="date" type="date" class="form-controls"  id="today"  >
+                             <input  name="date" type="date" class="form-controls"  value="{{$invoiceById[0]->date}}"  >
                               <br>
                            <input  name="paymentTermsx" type="text" class="form-controlss"  placeholder="Payment Terms" value="Payment Terms" > 
-                            <input  name="payment_terms" type="text" class="form-controls"   >
+                            <input  name="payment_terms" type="text" class="form-controls"  value="{{$invoiceById[0]->payment_terms}}" >
                             <br>
                             <input  name="duedatex" type="text" class="form-controlss"  placeholder=" Due Date"  value="Due Date">   
-                             <input  name="due_date" type="date" class="form-controls"   >
+                             <input  name="due_date" type="date" class="form-controls" value="{{$invoiceById[0]->due_date}}"  >
                              <br>
-                            <input  name="duebanalcex" type="text" class="form-controlss"  placeholder="Balance Due" value="Balance Due" >   
-                             <input id="duebanalce" name="due_banalce" type="text" class="form-controls"    readonly="readonly">
+                            <input  name="duebanalcex" type="text" class="form-controlss"  placeholder="Balance Due" value="Balance Due"  >   
+                             <input id="duebanalce" name="due_banalce" type="text" class="form-controls"  value="{{$invoiceById[0]->due_balance}}"  readonly="readonly">
 
                               </div>
                              
