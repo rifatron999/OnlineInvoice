@@ -113,7 +113,7 @@ Oinvoice-Portal-Create
 
                 <div class="col-lg-12">
                 <div class="form-panel">
-                     <h3  align="center"> Create New Invoice</h3> <br>
+                     <h3  align="center"> Create New Invoice/Quotation</h3> <br>
                           <div class="row mt">
                               <div class="col-sm-6 text-center">
                                     <img  src="{{asset('assets/img/company_logo')}}/{{session('c_logo')}}" width="200" height="250">
@@ -171,7 +171,7 @@ Oinvoice-Portal-Create
                              <input  name="due_date" type="date" class="form-controls"   >
                              <br>
                             <input  name="duebanalcex" type="text" class="form-controlss"  placeholder="Balance Due" value="Balance Due" >   
-                             <input id="duebanalce" name="due_banalce" type="text" class="form-controls"    readonly="readonly">
+                             <input id="duebanalce" name="due_balance" type="text" class="form-controls"    readonly="readonly">
 
                               </div>
                              

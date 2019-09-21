@@ -56,7 +56,7 @@
         <td align="right" >
           <strong>{{$req->datex}}:</strong> {{$req->date}} <br>
           <strong>{{$req->duedatex}}:</strong> {{$req->due_date}} <br>
-          <strong  >{{$req->duebanalcex}}:</strong> <span class="gray" >{{$req->due_banalce}}</span> 
+          <strong  >{{$req->duebanalcex}}:</strong> <span class="gray" >{{$req->due_balance}}</span> 
 
         </td>
 

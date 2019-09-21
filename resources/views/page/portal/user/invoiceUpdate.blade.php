@@ -38,8 +38,8 @@ Oinvoice-Update Invoice
                           <span>Invoice</span>
                       </a>
                       <ul class="sub">
-                          <li class="active" ><a  href="{{route('createinvoiceView.index')}}">Create New Invoice</a></li>
-                          <li><a  href="{{route('previousInvoiceView.index')}}">Invoices and Quotation</a></li>
+                          <li><a  href="{{route('createinvoiceView.index')}}">Create New Invoice</a></li>
+                          <li  class="active"  ><a  href="{{route('previousInvoiceView.index')}}">Invoices and Quotation</a></li>
                           <li><a  href="panels.html">Due Invoices</a></li>
                           <li><a  href="panels.html">Drafts</a></li>
                       </ul>
@@ -113,7 +113,7 @@ Oinvoice-Update Invoice
 
                 <div class="col-lg-12">
                 <div class="form-panel">
-                     <h3  align="center">Update Invoice</h3> <br>
+                     <h3  align="center">Update {{$invoiceById[0]->invoice_type}}</h3> <br>
                           <div class="row mt">
                               <div class="col-sm-6 text-center">
                                     <img  src="{{asset('assets/img/company_logo')}}/{{session('c_logo')}}" width="200" height="250">
@@ -247,27 +247,49 @@ Oinvoice-Update Invoice
                  <hr style="border: 5px solid green;border-radius: 8px;">
                                     <!--col 1 -->
                                      <input  align="left" name="descriptionx" type="text" class="form-controlss"  placeholder="Description" value="Description" >
-              <input name="description" type="text" class="form-controld"  placeholder="Any required information not already covered"  >
+              <input name="description" type="text" class="form-controld"  placeholder="Any required information not already covered" value="{{$invoiceById[0]->description}}" >
 
               <br>
               <br>
 
               <input  name="termsx" type="text" class="form-controlss"  placeholder="Terms" value="Terms" >
-              <input name="terms" type="text" class="form-controld"  placeholder="Terms and condition e.g late fee, Delivery schedule , Payment methods "  >
+              <input name="terms" type="text" class="form-controld"  placeholder="Terms and condition e.g late fee, Delivery schedule , Payment methods " value="{{$invoiceById[0]->terms}}" >
                                     
                               </div>
                               <div class="col-sm-6 text-center">
                                 <!--col 2 -->
                                     <input  name="subTotalx" type="text" class="form-controlss"  value="Sub Total"   >   
-                             <input id="subTotal" name="Sub_total" type="number" class="form-controls"  readonly="readonly"  >
+                             <input id="subTotal" name="Sub_total" type="number" class="form-controls"  readonly="readonly" value="{{$invoiceById[0]->Sub_total}}" >
                               
                                <br>
                            
                            <p id='next' > </p>
+                           @if(isset($invoiceById[0]->discount))
+                          
+                          <input  name="discountx" type="text" class="form-controlss"  placeholder="Discount" value="Discount (%)" > 
+                          <input  id="discount"  name="discount" type="text" class="form-controls"  onkeyup="totalCal()" value="{{$invoiceById[0]->discount}}"> <br>
+                          
+                          @else<span style="color:blue;font-weight:bold" id="discount" type="button">+ Discount</span> &nbsp
+                          @endif
+
+                          @if(isset($invoiceById[0]->tax))
+                          
+                          <input  name="taxx" type="text" class="form-controlss"  placeholder="Tax" value="Tax (%)" > <input  id="tax" name="tax" type="text" class="form-controls" onkeyup="totalCal()"  value="{{$invoiceById[0]->tax}}" > <br>
+                          
+                          @else<span style="color:green;font-weight:bold" id="tax" type="button">+ Tax</span> &nbsp
+                          @endif
+
+                          @if(isset($invoiceById[0]->shipping))
+                          
+                          <input  name="shippingx" type="text" class="form-controlss"  placeholder="Shipping" value="Shipping"  >   <input id="shipping" name="shipping" type="text" class="form-controls" onkeyup="totalCal()"  value="{{$invoiceById[0]->shipping}}" > <br>
+                          
+                          @else<span style="color:blue;font-weight:bold" id="Shipping" type="button">+ Shipping</span> &nbsp
+                          @endif
                            
-                           <span style="color:blue;font-weight:bold" id="discount" type="button">+ Discount</span> &nbsp
-                            <span style="color:green;font-weight:bold" id="tax" type="button">+ Tax</span> &nbsp
-                            <span style="color:blue;font-weight:bold" id="Shipping" type="button">+ Shipping</span> &nbsp
+                           
+                            
+                            
+                            
 
                             
 
@@ -280,11 +302,11 @@ Oinvoice-Update Invoice
 
 
                              <input  name="totalx" type="text" class="form-controlss"  placeholder="Total" value="Total"   >   
-                             <input id="total" name="total" type="text" class="form-controls"    readonly="readonly" >
+                             <input id="total" name="total" type="text" class="form-controls"  value="{{$invoiceById[0]->total}}"  readonly="readonly" >
                              <br>
 
                              <input  name="paidx" type="text" class="form-controlss"  placeholder="Amount Paid" value="Amount Paid"   >   
-                             <input id="paid" name="amount_paid" type="text" class="form-controls" onkeyup="dueCal()" >
+                             <input id="paid" name="amount_paid" type="text" class="form-controls" value="{{$invoiceById[0]->amount_paid}}" onkeyup="dueCal()" >
                              <br>
                              <br>
                              <br>
