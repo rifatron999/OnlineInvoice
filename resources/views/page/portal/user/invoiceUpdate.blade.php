@@ -178,7 +178,7 @@ Oinvoice-Update Invoice
                              <input  name="due_date" type="date" class="form-controls" value="{{$invoiceById[0]->due_date}}"  >
                              <br>
                             <input  name="duebanalcex" type="text" class="form-controlss"  placeholder="Balance Due" value="Balance Due"  >   
-                             <input id="duebanalce" name="due_banalce" type="text" class="form-controls"  value="{{$invoiceById[0]->due_balance}}"  readonly="readonly">
+                             <input id="duebalance" name="due_balance" type="text" class="form-controls"  value="{{$invoiceById[0]->due_balance}}"  readonly="readonly">
 
                               </div>
                              
@@ -286,21 +286,21 @@ Oinvoice-Update Invoice
                           <input  name="discountx" type="text" class="form-controlss"  placeholder="Discount" value="Discount (%)" > 
                           <input  id="discount"  name="discount" type="text" class="form-controls"  onkeyup="totalCal()" value="{{$invoiceById[0]->discount}}"> <br>
                           
-                          @else<span style="color:blue;font-weight:bold" id="discount" type="button">+ Discount</span> &nbsp
+                          @else<span style="color:blue;font-weight:bold" id="discountadd" type="button">+ Discount</span> &nbsp
                           @endif
 
                           @if(isset($invoiceById[0]->tax))
                           
                           <input  name="taxx" type="text" class="form-controlss"  placeholder="Tax" value="Tax (%)" > <input  id="tax" name="tax" type="text" class="form-controls" onkeyup="totalCal()"  value="{{$invoiceById[0]->tax}}" > <br>
                           
-                          @else<span style="color:green;font-weight:bold" id="tax" type="button">+ Tax</span> &nbsp
+                          @else<span style="color:green;font-weight:bold" id="taxadd" type="button">+ Tax</span> &nbsp
                           @endif
 
                           @if(isset($invoiceById[0]->shipping))
                           
                           <input  name="shippingx" type="text" class="form-controlss"  placeholder="Shipping" value="Shipping"  >   <input id="shipping" name="shipping" type="text" class="form-controls" onkeyup="totalCal()"  value="{{$invoiceById[0]->shipping}}" > <br>
                           
-                          @else<span style="color:blue;font-weight:bold" id="Shipping" type="button">+ Shipping</span> &nbsp
+                          @else<span style="color:blue;font-weight:bold" id="Shippingadd" type="button">+ Shipping</span> &nbsp
                           @endif
                            
                            
@@ -332,7 +332,7 @@ Oinvoice-Update Invoice
         <option value="off">Off</option>
         <option value="on">On</option>
     </select>
-                             <button type="Submit" class="btn btn-primary btn-lg">Submit Payment</button>
+                             <button type="Submit" class="btn btn-primary btn-lg">Update Payment</button>
                             
 
                               </div>

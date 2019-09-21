@@ -84,19 +84,19 @@ function addRow(size)
   //### product add in create ###  
   //*** discount tax shipping  ***  
 
-  $("#discount").click(function(){
+  $("#discountadd").click(function(){
     $("#next").after('<div id="d"> <input  name="discountx" type="text" class="form-controlss"  placeholder="Discount" value="Discount (%)" > <input  id="discount"  name="discount" type="text" class="form-controls"  onkeyup="totalCal()" >  <br></div>');
     $(this).hide();
   });
 
-  $("#tax").click(function(){
+  $("#taxadd").click(function(){
     $("#next").after('<br> <input  name="taxx" type="text" class="form-controlss"  placeholder="Tax" value="Tax (%)" > <input  id="tax" name="tax" type="text" class="form-controls" onkeyup="totalCal()"  ><br>');
     $(this).hide();
   });
 
 
 
-  $("#Shipping").click(function(){
+  $("#Shippingadd").click(function(){
     $("#next").after('<br> <input  name="shippingx" type="text" class="form-controlss"  placeholder="Shipping" value="Shipping"  >   <input id="shipping" name="shipping" type="text" class="form-controls" onkeyup="totalCal()"   ><br>');
     $(this).hide();
   });
@@ -171,14 +171,14 @@ function amountCal(i)
             {
                 document.getElementById('amount_'+i).value = result;
 
-                var amountTotal = 0;
+                /*var amountTotal = 0;
                 var j;
                 for (j = 0; j < i+1; j++) 
                 {  
                    amountTotal += parseInt(document.getElementById('amount_'+j).value);
                 }
                 //document.getElementById('subTotal').value = amountTotal; //subtotal from amount
-                totalCal();
+                totalCal();*/
           }
 } 
 
@@ -234,11 +234,11 @@ function dueCal()
      
             if (!isNaN(result3)) 
             {
-                document.getElementById('duebanalce').value = result3;
+                document.getElementById('duebalance').value = result3;
             }
             else
             {
-              document.getElementById('duebanalce').value = document.getElementById('total').value;
+              document.getElementById('duebalance').value = document.getElementById('total').value;
             }
 }
 

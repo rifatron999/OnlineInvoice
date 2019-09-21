@@ -657,6 +657,86 @@ Mail::send('page.portal.user.email', $data, function($message) use ($to_name, $t
         }
 
     //### invoiceUpdateView ###
+         //*** invoiceUpdate ***
+
+     public function invoiceUpdate($invoice_number,Request $req)
+     {
+        //***encode main
+    $invoiceItem = json_encode($req->invoiceItem);
+    $invoiceQuantity = json_encode($req->invoiceQuantity);
+    $invoiceRate = json_encode($req->invoiceRate);
+    $invoiceAmount = json_encode($req->invoiceAmount);
+    //###encode main
+        
+
+DB::table('t_invoice')->where('invoice_number', $invoice_number)
+->update([
+    
+         
+    
+    'invoice_from' => $req->invoice_from,  
+    'invoice_to' => $req->invoice_to,  
+     'mail_to' => $req->mail_to,
+    'invoice_type' => $req->invoice_type,  
+    'invoice_number' => $req->invoice_number,  
+    'date' => $req->date,  
+    'due_date' => $req->due_date,  
+    'item' => $invoiceItem,  
+    'quantity' => $invoiceQuantity,  
+    'rate' => $invoiceRate,  
+    'amount' => $invoiceAmount,  
+    'Sub_total' => $req->Sub_total,  
+    'tax' => $req->tax,  
+    'discount' => $req->discount,
+    'shipping' => $req->shipping,
+    'total' => $req->total,  
+    'amount_paid' => $req->amount_paid,  
+   'due_balance' => $req->due_balance,
+    'description' => $req->description,  
+    'terms' => $req->terms,  
+    'payment_terms' => $req->payment_terms,  
+    'draft' => $req->draft,  
+    
+    
+]);
+
+//*pdf main
+        $pdf = PDF::loadView('page.portal.user.invoice', compact('req'))
+        ->save( 'pdf/invoice.pdf' );
+        //return $pdf->setPaper('A4','landscape')->stream('invoice.pdf');
+    //#pdf  main
+
+    //*mail
+        if($req->draft == 'off')
+        {
+        $data = array(
+        'invoice_type' => $req->invoice_type,
+        'invoice_number' => $req->invoice_number,
+        'invoice_from' => $req->invoice_from,
+        'invoice_to' => $req->invoice_to,
+        'mail_to' => $req->mail_to,
+        'due_date' => $req->due_date,
+        'date' => $req->date,
+        'due_balance' => $req->due_balance,
+        'amount_paid' => $req->amount_paid,
+        'description' => $req->description,
+        'total' => $req->total,
+        'terms' => $req->terms,
+        );
+        
+        //echo $email;
+        
+        Mail::to($req->mail_to)->send(new sendMail($data));
+        return back()->with('success','Mail sent to '.$req->invoice_to);
+        }
+                     //#mail
+return back()->with('success',$req->invoice_type.' Updated');
+
+        
+
+    }
+    
+    //### invoiceUpdate ###
 
         //*** productFetch ***
 

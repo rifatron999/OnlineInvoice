@@ -171,7 +171,7 @@ Oinvoice-Portal-Create
                              <input  name="due_date" type="date" class="form-controls"   >
                              <br>
                             <input  name="duebanalcex" type="text" class="form-controlss"  placeholder="Balance Due" value="Balance Due" >   
-                             <input id="duebanalce" name="due_balance" type="text" class="form-controls"    readonly="readonly">
+                             <input id="duebalance" name="due_balance" type="text" class="form-controls"    readonly="readonly">
 
                               </div>
                              
@@ -259,9 +259,9 @@ Oinvoice-Portal-Create
                            
                            <p id='next' > </p>
                            
-                           <span style="color:blue;font-weight:bold" id="discount" type="button">+ Discount</span> &nbsp
-                            <span style="color:green;font-weight:bold" id="tax" type="button">+ Tax</span> &nbsp
-                            <span style="color:blue;font-weight:bold" id="Shipping" type="button">+ Shipping</span> &nbsp
+                           <span style="color:blue;font-weight:bold" id="discountadd" type="button">+ Discount</span> &nbsp
+                            <span style="color:green;font-weight:bold" id="taxadd" type="button">+ Tax</span> &nbsp
+                            <span style="color:blue;font-weight:bold" id="Shippingadd" type="button">+ Shipping</span> &nbsp
 
                             
 

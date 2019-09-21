@@ -79,13 +79,15 @@ Route::get('/portal/user/updateInvoice/{invoice_number}','userController@invoice
 Route::post('/portal/user/profile','userController@profileUpdate');
 Route::post('/portal/user/updateProduct/{p_id}','userController@productUpdate');
 Route::post('/portal/user/addProduct','userController@addProduct');
+Route::post('/portal/user/updateInvoice/{invoice_number}','userController@invoiceUpdate');
+
 
 //Route::post('/portal/user/create','userController@createinvoice');
 Route::post('/portal/user/create','userController@createinvoice');
 //Route::post('/portal/user/create','userController@productFetch')->name('product.fetch');
 
 
-Route::get('/autocomplete', 'userController@index1');
-Route::post('/autocomplete/fetch', 'userController@productFetch')->name('product.fetch');
+/*Route::get('/autocomplete', 'userController@index1');
+Route::post('/autocomplete/fetch', 'userController@productFetch')->name('product.fetch');*/
 
 //### portal user  ###
