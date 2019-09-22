@@ -40,8 +40,8 @@ Oinvoice-Previous Invoices
                       <ul class="sub">
                           <li><a  href="{{route('createinvoiceView.index')}}">Create New Invoice</a></li>
                           <li class="active" ><a  href="">Invoices and Quotation</a></li>
-                          <li><a  href="panels.html">Due Invoices</a></li>
-                          <li><a  href="panels.html">Drafts</a></li>
+                          <li ><a  href="{{route('dueInvoiceView.index')}}">Due Invoices</a></li>
+                          <li ><a  href="{{route('draftInvoiceView.index')}}">Drafts</a></li>
                       </ul>
                   </li>
 
@@ -111,6 +111,7 @@ Oinvoice-Previous Invoices
 <div class="row mt">
                   <div class="col-md-12">
                       <div class="content-panel">
+                        <font size="4"  >
                           <table class="table table-striped  table-hover">
                             <h4 style="text-align:center;" > Previous Invoices and Quotation</h4>
                             <hr>
@@ -138,7 +139,14 @@ Oinvoice-Previous Invoices
                                   <td><a href="">{{$s->date}}</a></td>
                                   <td><a href="">{{$s->due_date}}</a></td>
                                   <td><a >{{$s->total}}</a></td>
-                                  <td><a >{{$s->due_balance}}</a></td>
+                                  <td><a >@if($s->due_balance === 0)
+                                   <mark style="background-color: green;color: white;" >  Paid  </mark>
+                                          @else
+                                           <mark style="background-color: red;color: white;" >  {{$s->due_balance}} </mark>
+                                          
+                                          @endif
+
+                                  </a></td>
                                                                    
                                   <td> <a href="{{route('invoiceUpdateView',$s->invoice_number )}}" class="btn btn-danger btn-xs"><i class="fa fa-edit"></i></a></td>
                                   <td>
@@ -156,6 +164,7 @@ Oinvoice-Previous Invoices
                               
                               </tbody>
                           </table>
+                        </font>
                       </div><!-- /content-panel -->
                   </div><!-- /col-md-12 -->
               </div><!-- /row -->

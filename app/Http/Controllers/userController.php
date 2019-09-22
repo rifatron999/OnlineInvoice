@@ -93,17 +93,28 @@ public function userCheck($req)
          ]); 
 
 //***image
-           $file = $req->file('picture');
-           $fileName = $req->name.'.'.$file->getClientOriginalExtension();
+        $fileName;
+        if($req->file('picture') == null){$fileName = session('picture');}
+        else
+        {
+             $file = $req->file('picture');
+           $fileName = $req->name.'.'.$file->getClientOriginalExtension(); //^^bug
            //echo $fileName;
            $file->move('assets/img/user_picture', $fileName);
+        }
+          
 //###image
 
 //***company_logo
+         $fileName1;
+        if($req->file('company_logo') == null){$fileName1 = session('c_logo');}
+        else
+        {
            $file = $req->file('company_logo');
            $fileName1 = $req->c_name.'.'.$file->getClientOriginalExtension();
            //echo $fileName;
            $file->move('assets/img/company_logo', $fileName1);
+           }
 //###company_logo
 
 
@@ -621,7 +632,7 @@ Mail::send('page.portal.user.email', $data, function($message) use ($to_name, $t
              if($this->userCheck($req))
              {
                 
-                $invoiceList   = DB::table('t_invoice')->where('draft', 'off')->get();
+                $invoiceList   = DB::table('t_invoice')->where('draft', 'off')->where('invoice_from', $req->session()->get('c_name'))->get();
 
                 return view('page.portal.user.previousInvoiceList',['invoiceList'=>$invoiceList]);
 
@@ -737,6 +748,49 @@ return back()->with('success',$req->invoice_type.' Updated');
     }
     
     //### invoiceUpdate ###
+
+    //*** dueInvoiceView ***
+
+        public function dueInvoiceView(Request $req)
+        {
+            
+             if($this->userCheck($req))
+             {
+                
+                $invoiceList   = DB::table('t_invoice')->where('due_balance', '>', 0)->where('invoice_from', $req->session()->get('c_name'))->get();
+
+                return view('page.portal.user.dueInvoiceList',['invoiceList'=>$invoiceList]);
+
+             }
+             else
+             {
+                $req->session()->flash('msg', "UNAUTHORIZED!");
+                return redirect()->route('login.index');
+             }
+        }
+
+    //### dueInvoiceView ###
+        //*** dueInvoiceView ***
+
+        public function draftInvoiceView(Request $req)
+        {
+            
+             if($this->userCheck($req))
+             {
+                
+                $invoiceList   = DB::table('t_invoice')->where('draft', 'on')->where('invoice_from', $req->session()->get('c_name'))->get();
+
+                return view('page.portal.user.draftInvoiceList',['invoiceList'=>$invoiceList]);
+
+             }
+             else
+             {
+                $req->session()->flash('msg', "UNAUTHORIZED!");
+                return redirect()->route('login.index');
+             }
+        }
+
+    //### dueInvoiceView ###
 
         //*** productFetch ***
 

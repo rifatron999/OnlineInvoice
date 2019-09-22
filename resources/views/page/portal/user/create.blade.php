@@ -40,8 +40,8 @@ Oinvoice-Portal-Create
                       <ul class="sub">
                           <li class="active" ><a  href="{{route('createinvoiceView.index')}}">Create New Invoice</a></li>
                           <li><a  href="{{route('previousInvoiceView.index')}}">Invoices and Quotation</a></li>
-                          <li><a  href="panels.html">Due Invoices</a></li>
-                          <li><a  href="panels.html">Drafts</a></li>
+                          <li ><a  href="{{route('dueInvoiceView.index')}}">Due Invoices</a></li>
+                          <li ><a  href="{{route('draftInvoiceView.index')}}">Drafts</a></li>
                       </ul>
                   </li>
 
@@ -132,7 +132,7 @@ Oinvoice-Portal-Create
               <br>
               <br>
 
-              <input name="invoice_number" type="number" class="form-controls"  placeholder="Invoice Number" value="56">
+              <input name="invoice_number" type="number" class="form-controls"  placeholder="Invoice Number" >
               <hr style="border: px solid green;border-radius: 8px;">
 
                               </div>
