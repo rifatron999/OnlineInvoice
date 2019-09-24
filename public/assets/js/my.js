@@ -85,12 +85,12 @@ function addRow(size)
   //*** discount tax shipping  ***  
 
   $("#discountadd").click(function(){
-    $("#next").after('<div id="d"> <input  name="discountx" type="text" class="form-controlss"  placeholder="Discount" value="Discount (%)" > <input  id="discount"  name="discount" type="text" class="form-controls"  onkeyup="totalCal()" >  <br></div>');
+    $("#next").after('<div id="d"> <input  name="discountx" type="text" class="form-controlss"  placeholder="Discount" value="Discount (%)" > <input  id="discount"  name="discount" type="text" class="form-controls"  onkeyup="discountcal()" >  <br></div>');
     $(this).hide();
   });
 
   $("#taxadd").click(function(){
-    $("#next").after('<br> <input  name="taxx" type="text" class="form-controlss"  placeholder="Tax" value="Tax (%)" > <input  id="tax" name="tax" type="text" class="form-controls" onkeyup="totalCal()"  ><br>');
+    $("#next").after('<br> <input  name="taxx" type="text" class="form-controlss"  placeholder="Tax" value="Tax (%)" > <input  id="tax" name="tax" type="text" class="form-controls" onkeyup="taxcal()"  ><br>');
     $(this).hide();
   });
 
@@ -180,6 +180,23 @@ function amountCal(i)
                 //document.getElementById('subTotal').value = amountTotal; //subtotal from amount
                 totalCal();*/
           }
+}
+
+var discount;
+var tax;
+
+function discountcal()
+{
+
+   var discountp = $('#discount').val()/100;
+   discount = $('#subTotal').val()*discountp;
+   totalCal();
+} 
+function taxcal()
+{
+   var taxp = $('#tax').val()/100;
+    tax = $('#total').val()*taxp;
+   totalCal();
 } 
 
 
@@ -187,11 +204,11 @@ function amountCal(i)
 function totalCal() 
 {
         var shipping = $('#shipping').val();
-        var taxp = $('#tax').val()/100;
-        var tax = $('#subTotal').val()*taxp;
+        /*var taxp = $('#tax').val()/100;
+        var tax = $('#total').val()*taxp;*/
 
-        var discountp = $('#discount').val()/100;
-        var discount = $('#subTotal').val()*discountp;
+        // var discountp = $('#discount').val()/100;
+        // var discount = $('#subTotal').val()*discountp;
         //var discount = $('#discount').val();
 
          if (!tax) 
