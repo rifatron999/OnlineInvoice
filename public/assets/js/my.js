@@ -72,7 +72,7 @@ function addRow(size)
              i++;
              var s = parseInt(size) + parseInt(i);
              //alert(s);
-            var markup = "<tr><td ><input  list='productList' name='invoiceItem[]' type='text' class='form-control'  placeholder='Description of service and product' autocomplete='off' ></td><td><input id='quantity_"+s+"' name='invoiceQuantity[]' type='number' onkeyup='amountCal("+s+")' class='form-controlssp quantity'    ></td><td><input id='rate_"+s+"' onkeyup='amountCal("+s+")' name='invoiceRate[]' type='number' class='form-controlssp rate'    ></td><td><input id='amount_"+s+"' name='invoiceAmount[]' type='number' class='form-controlssp amount' readonly='readonly'    ></td><td><input type='checkbox' name='record' class='form-controlssp' ></td></tr>";
+            var markup = "<tr><td ><input id='invoiceItem_"+s+"' list='productList' name='invoiceItem[]' type='text' class='form-control'  placeholder='Description of service and product' autocomplete='off' ></td><td><input id='quantity_"+s+"' name='invoiceQuantity[]' type='number' onkeyup='amountCal("+s+")' class='form-controlssp quantity'    ></td><td><input id='rate_"+s+"' onkeyup='amountCal("+s+")' name='invoiceRate[]' type='number' class='form-controlssp rate'    ></td><td><input id='amount_"+s+"' name='invoiceAmount[]' type='number' class='form-controlssp amount' readonly='readonly'    ></td><td><input type='checkbox' name='record' class='form-controlssp' ></td></tr>";
             $("table tbody").append(markup);
 } 
 
@@ -192,6 +192,7 @@ function discountcal()
    discount = $('#subTotal').val()*discountp;
    totalCal();
 } 
+
 function taxcal()
 {
    var taxp = $('#tax').val()/100;
@@ -260,7 +261,7 @@ function dueCal()
 }
 
 
-
+//******************** amount cal 
 $(document).on("keyup", ".rate,.quantity", function() 
 { 
     var sum = 0;
@@ -270,6 +271,18 @@ $(document).on("keyup", ".rate,.quantity", function()
     $("#subTotal").val(sum);
     totalCal();
 });
+//################### amount cal 
+
+
+
+function showDescription() 
+{
+           var k = $("#productList option[value='" + $('#invoiceItem_0').val() + "']").attr('data-id');
+         // alert(k);
+         //document.getElementById("invoiceItemDes_0").style.visibility = "visible";
+          document.getElementById('invoiceItemDes_0').value = k;
+
+}
 
 
 

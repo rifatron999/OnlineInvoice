@@ -120,12 +120,11 @@ Oinvoice-Portal-UpdateProduct
                                   </div>
 
 
-                                  <label class="col-sm-2 control-label col-lg-2" for="inputSuccess">Unit Price</label>
+                                  <label class="col-sm-2 control-label col-lg-2" for="inputSuccess">Product Description</label>
                                   <div class="col-lg-10">
-                                      <input name="p_price" type="number" class="form-controls" value="{{$productByid[0]->p_price}}" >
+                                      <input name="p_description" type="text" class="form-control" value="{{$productByid[0]->p_description}}" >
                                       &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-                                      <label > Stock</label> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-                                      <input name="p_stock" type="number" class="form-controls" value="{{$productByid[0]->p_stock}}" >
+                                      
                                       <br>
                                   </div>
 

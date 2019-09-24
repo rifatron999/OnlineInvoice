@@ -256,8 +256,7 @@ DB::table('t_user')->where('name', $req->session()->get('name'))
        DB::table('t_product')->insert([
     [
         'p_name' => $req->p_name,  
-        'p_price' => $req->p_price,  
-        'p_stock' => $req->p_stock,  
+        'p_description' => $req->p_description,  
         'p_owner' => $req->session()->get('name') 
    
     
@@ -341,8 +340,7 @@ DB::table('t_product')->where('p_id', $p_id)
          
     
     'p_name' => $req->p_name ,
-    'p_price' => $req->p_price ,
-    'p_stock' => $req->p_stock
+    'p_description' => $req->p_description 
     
     
 ]);

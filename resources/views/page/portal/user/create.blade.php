@@ -204,16 +204,23 @@ Oinvoice-Portal-Create
 
                                 <tbody>
                                   <datalist id='productList'>
+                                    <?php $p= 0; ?>
+                                    
                     @foreach ($productList as $s)
-                             <option label='Price: {{$s->p_price}}' value='{{$s->p_name}}'>
+                    
+                             <option label='{{$s->p_description}}' value='{{$s->p_name}}' data-id="{{$s->p_description}}" >
                     @endforeach
                              
                   </datalist>
+
+
                     
 
             <tr>
               
-                <td ><input id='invoiceItem_0' name='invoiceItem[]' type='text' class='form-control'  placeholder='Description of service and product' list='productList' autocomplete='off'></td>
+                <td >
+                  <input id='invoiceItem_0' name='invoiceItem[]' type='text' class='form-control'  placeholder='Description of service and product' list='productList' autocomplete='off' onchange=showDescription() >  
+                  <input id='invoiceItemDes_0' name="invoiceItemDes" type="text" class="form-control"  placeholder="Product description" style="visibility: hidden;" ></td>
                 <td><input id='quantity_0' name='invoiceQuantity[]' type='number' class='form-controlssp quantity'  onkeyup="amountCal(0)"  ></td>
                 <td><input id='rate_0'  name='invoiceRate[]' type='number' class='form-controlssp rate' onkeyup="amountCal(0)"></td>
               <td><input  id='amount_0' name='invoiceAmount[]' type='number' class='form-controlssp amount'  readonly='readonly' ></td>
