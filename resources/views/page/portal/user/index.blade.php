@@ -116,7 +116,54 @@ Oinvoice-Portal
             <h3><i class="fa fa-angle-right"></i> user from portal</h3>
             <div class="row mt">
               <div class="col-lg-12">
-              <p>Place your content here.</p>
+             //
+              
+              <?php 
+              $sum_total = 0 ;
+              $sum_amount_paid = 0 ;
+              $sum_due_balance = 0 ;
+
+              $sum_total_this = 0 ;
+              $sum_amount_paid_this = 0 ;
+              $sum_due_balance_this = 0 ;
+
+              
+              
+              $todayDate = date("Y-m-d");
+              $this_month = date("m",strtotime($todayDate));
+
+              ?>
+
+               @foreach ($invoiceSum as $s) 
+               <?php 
+               $sum_total += $s->total ;
+               $sum_amount_paid += $s->amount_paid ;
+               $sum_due_balance += $s->due_balance ;
+               $date = $s->date ;
+               $month = date("m",strtotime($date));
+               if($this_month == $month)
+               {
+                $sum_total_this += $s->total ;
+               $sum_amount_paid_this += $s->amount_paid ;
+               $sum_due_balance_this += $s->due_balance ;
+
+               }
+
+
+               ?>
+              
+              
+              @endforeach
+              ******** total **********<br>
+              total {{$sum_total}} <br>
+              amount paid {{$sum_amount_paid}} <br>
+              due balance {{$sum_due_balance}} <br>
+              ***** this month *****<br>
+              total {{$sum_total_this}} <br>
+              amount paid {{$sum_amount_paid_this}} <br>
+              due balance {{$sum_due_balance_this}} <br>
+              this month {{$this_month}} <br>
+              
               </div>
             </div>
       

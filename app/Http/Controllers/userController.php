@@ -38,7 +38,12 @@ public function userCheck($req)
         {
              if($this->userCheck($req))
              {
-                return view('page.portal.user.index');
+                $invoiceSum = DB::table('t_invoice')
+       ->where('invoice_from', $req->session()->get('c_name'))
+       ->where('invoice_type','Invoice')
+       ->where('draft','off')
+        ->get();
+                return view('page.portal.user.index',['invoiceSum' => $invoiceSum]);
 
              }
              else
