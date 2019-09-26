@@ -65,6 +65,14 @@ window.onload = function() {
   //#############################################################################
 
 
+function type() 
+{
+   alert();
+        /*var description = $("#productList option[value='" + $('#invoiceItem_'+s+'').val() + "']").attr('data-id');
+        document.getElementById('invoiceItemDes_'+s+'').style.visibility = "visible";
+        document.getElementById('invoiceItemDes_'+s+'').value = description;*/
+
+}
 
 
 function addRow(size) 
@@ -135,6 +143,20 @@ function hideDescription(s)
   $("#Shippingadd").click(function(){
     $("#next").after('<br> <input  name="shippingx" type="text" class="form-controlss"  placeholder="Shipping" value="Shipping"  >   <input id="shipping" name="shipping" type="text" class="form-controls" onkeyup="totalCal()"   ><br>');
     $(this).hide();
+  });
+
+  $("#invoice_type").change(function(){
+      if(document.getElementById('invoice_type').value == 'Quotation')
+      {
+        document.getElementById('paid').style.visibility = "hidden";
+        document.getElementById('paidx').style.visibility = "hidden";
+      }
+      if(document.getElementById('invoice_type').value == 'Invoice')
+      {
+        document.getElementById('paid').style.visibility = "visible";
+        document.getElementById('paidx').style.visibility = "visible";
+      }
+    
   });
 
 

@@ -124,15 +124,18 @@ Oinvoice-Portal-Create
                                          <hr style="border: 5px solid green;border-radius: 8px;">
                               </div>
                               <div class="col-sm-6 text-center">
-                                  <select  class="form-controls" name="invoice_type" >
+                                  <select  class="form-controls" name="invoice_type" id="invoice_type"  >
   <option value="Invoice"  >Invoice</option>
   <option value="Quotation"  >Quotation</option>
   
               </select  >
               <br>
               <br>
+              <?php
+              $in_iv =  uniqid();
+              ?>
 
-              <input name="invoice_number" type="number" class="form-controls"  placeholder="Invoice Number" >
+              <input name="invoice_number" type="text" class="form-controls"  placeholder="Invoice Number" value="{{ $in_iv}}" >
               <hr style="border: px solid green;border-radius: 8px;">
 
                               </div>
@@ -295,7 +298,7 @@ Oinvoice-Portal-Create
                              <input id="total" name="total" type="text" class="form-controls"    readonly="readonly" >
                              <br>
 
-                             <input  name="paidx" type="text" class="form-controlss"  placeholder="Amount Paid" value="Amount Paid"   >   
+                             <input id="paidx" name="paidx" type="text" class="form-controlss"  placeholder="Amount Paid" value="Amount Paid"   >   
                              <input id="paid" name="amount_paid" type="text" class="form-controls" onkeyup="dueCal()" >
                              <br>
                              <br>

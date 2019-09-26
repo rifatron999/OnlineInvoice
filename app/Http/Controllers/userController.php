@@ -766,7 +766,7 @@ return back()->with('success',$req->invoice_type.' Updated');
              if($this->userCheck($req))
              {
                 
-                $invoiceList   = DB::table('t_invoice')->where('due_balance', '>', 0)->where('invoice_from', $req->session()->get('c_name'))->get();
+                $invoiceList   = DB::table('t_invoice')->where('invoice_type', 'Invoice')->where('due_balance', '>', 0)->where('invoice_from', $req->session()->get('c_name'))->get();
 
                 return view('page.portal.user.dueInvoiceList',['invoiceList'=>$invoiceList]);
 

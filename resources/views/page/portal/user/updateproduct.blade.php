@@ -29,15 +29,16 @@ Oinvoice-Portal-UpdateProduct
                       </a>
                   </li>
 
-                  <li class="sub-menu">
-                      <a href="javascript:;" >
+                   <li class="sub-menu">
+                      <a   href="javascript:;" >
                           <i class="fa fa-file"></i>
                           <span>Invoice</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href="{{route('createinvoiceView.index')}}">Create New Invoice</a></li>
-                          <li><a  href="buttons.html">Previous Invoices</a></li>
-                          <li><a  href="panels.html">Due Invoices</a></li>
+                          <li  ><a  href="{{route('createinvoiceView.index')}}">Create New Invoice</a></li>
+                          <li><a  href="{{route('previousInvoiceView.index')}}">Invoices and Quotation</a></li>
+                          <li ><a  href="{{route('dueInvoiceView.index')}}">Due Invoices</a></li>
+                          <li ><a  href="{{route('draftInvoiceView.index')}}">Drafts</a></li>
                       </ul>
                   </li>
 

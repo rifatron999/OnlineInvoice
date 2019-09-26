@@ -124,7 +124,7 @@ Oinvoice-Update Invoice
                                          <hr style="border: 5px solid green;border-radius: 8px;">
                               </div>
                               <div class="col-sm-6 text-center">
-                <select  class="form-controls" name="invoice_type"  >
+                <select  class="form-controls" name="invoice_type"  id="invoice_type">
                       @if($invoiceById[0]->invoice_type === 'Invoice')
                               
                               {<option value="Invoice" selected="select" >Invoice</option>
@@ -139,7 +139,7 @@ Oinvoice-Update Invoice
               <br>
               <br>
 
-              <input name="invoice_number" type="number" class="form-controls"  placeholder="Invoice Number" value="{{$invoiceById[0]->invoice_number}}" readonly="readonly">
+              <input name="invoice_number" type="text" class="form-controls"  placeholder="Invoice Number" value="{{$invoiceById[0]->invoice_number}}" readonly="readonly">
               <hr style="border: px solid green;border-radius: 8px;">
 
                               </div>
@@ -279,13 +279,13 @@ Oinvoice-Update Invoice
                  <hr style="border: 5px solid green;border-radius: 8px;">
                                     <!--col 1 -->
                                      <input  align="left" name="descriptionx" type="text" class="form-controlss"  placeholder="Description" value="Description" >
-              <input name="description" type="text" class="form-controld"  placeholder="Any required information not already covered" value="{{$invoiceById[0]->description}}" >
+              <textarea name="description" type="text" class="form-controld"  placeholder="Any required information not already covered"  >{{$invoiceById[0]->description}}</textarea>
 
               <br>
               <br>
 
               <input  name="termsx" type="text" class="form-controlss"  placeholder="Terms" value="Terms" >
-              <input name="terms" type="text" class="form-controld"  placeholder="Terms and condition e.g late fee, Delivery schedule , Payment methods " value="{{$invoiceById[0]->terms}}" >
+              <textarea name="terms" type="text" class="form-controld"  placeholder="Terms and condition e.g late fee, Delivery schedule , Payment methods "  >{{$invoiceById[0]->terms}}</textarea>
                                     
                               </div>
                               <div class="col-sm-6 text-center">
@@ -336,9 +336,13 @@ Oinvoice-Update Invoice
                              <input  name="totalx" type="text" class="form-controlss"  placeholder="Total" value="Total"   >   
                              <input id="total" name="total" type="text" class="form-controls"  value="{{$invoiceById[0]->total}}"  readonly="readonly" >
                              <br>
-
-                             <input  name="paidx" type="text" class="form-controlss"  placeholder="Amount Paid" value="Amount Paid"   >   
+                            @if($invoiceById[0]->invoice_type === 'Invoice')
+                             <input id="paidx" name="paidx" type="text" class="form-controlss"  placeholder="Amount Paid" value="Amount Paid"   >   
                              <input id="paid" name="amount_paid" type="text" class="form-controls" value="{{$invoiceById[0]->amount_paid}}" onkeyup="dueCal()" >
+                             @else
+                             <input id="paidx" name="paidx" type="text" class="form-controlss"  placeholder="Amount Paid" value="Amount Paid"  style="visibility: hidden;" >   
+                             <input id="paid" name="amount_paid" type="text" class="form-controls" value="{{$invoiceById[0]->amount_paid}}" onkeyup="dueCal()" style="visibility: hidden;" >
+                             @endif
                              <br>
                              <br>
                              <br>

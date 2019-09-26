@@ -139,7 +139,16 @@ Oinvoice-Due Invoices
                                   <td><a href="">{{$s->date}}</a></td>
                                   <td><a href="">{{$s->due_date}}</a></td>
                                   <td><a >{{$s->total}}</a></td>
-                                  <td><a >{{$s->due_balance}}</a></td>
+                                 <td><a >@if($s->due_balance === 0)
+                                   <mark style="background-color: green;color: white;" >  Paid  </mark>
+                                          @elseif($s->invoice_type === "Quotation")
+                                          <mark style="background-color: Yellow;color: black;" >  Quotation  </mark>
+                                          @else
+                                           <mark style="background-color: red;color: white;" >  {{$s->due_balance}} </mark>
+                                          
+                                          @endif
+
+                                  </a></td>
                                                                    
                                   <td> <a href="{{route('invoiceUpdateView',$s->invoice_number )}}" class="btn btn-danger btn-xs"><i class="fa fa-edit"></i></a></td>
                                   <td>
