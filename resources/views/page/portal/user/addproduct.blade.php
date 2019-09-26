@@ -128,6 +128,14 @@ Oinvoice-Portal-AddProduct
                                       <br>
                                   </div>
 
+                                  <label class="col-sm-2 control-label col-lg-2" for="inputSuccess">Product Price</label>
+                                  <div class="col-lg-10">
+                                      <input name="p_price" type="number" class="form-controlss"  >
+                                      &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+                                      
+                                      <br>
+                                  </div>
+
                                  
 
                                  
@@ -165,6 +173,7 @@ Oinvoice-Portal-AddProduct
                               <tr>
                                   <th><i class="fa fa-bullhorn"></i> Id</th>
                                   <th class="hidden-phone"><i class="fa fa-question-circle"></i> Name</th>
+                                  <th><i class=""></i> Price</th>
                                   <th><i class=""></i> Description</th>
                                   <th><i class=" fa fa-edit"></i> Edit</th>
                                   <th><i class=" fa fa-edit"></i> Delete</th>
@@ -177,6 +186,7 @@ Oinvoice-Portal-AddProduct
                               <tr>
                                   <td><a >{{$s->p_id}}</a></td>
                                   <td><a href="">{{$s->p_name}}</a></td>
+                                  <td><a href="">{{$s->p_price}}</a></td>
                                   <td><a >{{$s->p_description}}</a></td>
                                                                    
                                   <td> <a href="{{route('productUpdateView',$s->p_id )}}" class="btn btn-danger btn-xs"><i class="fa fa-edit"></i></a></td>

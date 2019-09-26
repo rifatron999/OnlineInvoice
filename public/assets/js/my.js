@@ -72,9 +72,45 @@ function addRow(size)
              i++;
              var s = parseInt(size) + parseInt(i);
              //alert(s);
-            var markup = "<tr><td ><input id='invoiceItem_"+s+"' list='productList' name='invoiceItem[]' type='text' class='form-control'  placeholder='Description of service and product' autocomplete='off' ></td><td><input id='quantity_"+s+"' name='invoiceQuantity[]' type='number' onkeyup='amountCal("+s+")' class='form-controlssp quantity'    ></td><td><input id='rate_"+s+"' onkeyup='amountCal("+s+")' name='invoiceRate[]' type='number' class='form-controlssp rate'    ></td><td><input id='amount_"+s+"' name='invoiceAmount[]' type='number' class='form-controlssp amount' readonly='readonly'    ></td><td><input type='checkbox' name='record' class='form-controlssp' ></td></tr>";
+            var markup = "<tr><td ><input id='invoiceItem_"+s+"' list='productList' name='invoiceItem[]' type='text' class='form-control'  placeholder='Description of service and product' autocomplete='off' onchange='showPrice("+s+")' ><input id='invoiceItemDes_"+s+"' name='invoiceItemDes[]' type='text' class='form-control'  placeholder='Product description' style='visibility: hidden;' ></td><td><div class='btn-group form-control'><button type='button' class='btn btn-default btn-theme03' onclick='showDescription("+s+")' >Show</button><button type='button' class='btn btn-default btn-theme04' onclick='hideDescription("+s+")' >Hide</button></div></td><td><input id='quantity_"+s+"' name='invoiceQuantity[]' type='number' onkeyup='amountCal("+s+")' class='form-controlssp quantity'    ></td><td><input id='rate_"+s+"' onkeyup='amountCal("+s+")' name='invoiceRate[]' type='number' class='form-controlssp rate'    ></td><td><input id='amount_"+s+"' name='invoiceAmount[]' type='number' class='form-controlssp amount' readonly='readonly'    ></td><td><input type='checkbox' name='record' class='form-controlssp' ></td></tr>";
+            
             $("table tbody").append(markup);
 } 
+
+function showPrice(s) 
+{
+  var price = $("#productList option[value='" + $('#invoiceItem_'+s+'').val() + "']").attr('label');
+  document.getElementById('rate_'+s+'').value = parseInt(price);
+  amountCal(s); 
+
+}
+
+//************** description append ********************
+
+function showDescription(s) 
+{
+       // var markup =  "<input id='invoiceItemDes_"+s+"' name='invoiceItemDes' type='text' class='form-control'  placeholder='Product description'  >";
+        //var markup = "<p>OK</p>"
+        // $("table tbody").append(markup);
+           
+           var description = $("#productList option[value='" + $('#invoiceItem_'+s+'').val() + "']").attr('data-id');
+          // var price = $("#productList option[value='" + $('#invoiceItem_'+s+'').val() + "']").attr('label');
+          //alert(k);
+          document.getElementById('invoiceItemDes_'+s+'').style.visibility = "visible";
+          document.getElementById('invoiceItemDes_'+s+'').value = description;
+          //document.getElementById('rate_'+s+'').value = price;
+
+}
+
+function hideDescription(s) 
+{
+        document.getElementById('invoiceItemDes_'+s+'').value = '';
+        document.getElementById('invoiceItemDes_'+s+'').style.visibility = "hidden";
+          
+
+}
+
+//#################description append #####################
 
 
 //#################################################################################
@@ -275,14 +311,6 @@ $(document).on("keyup", ".rate,.quantity", function()
 
 
 
-function showDescription() 
-{
-           var k = $("#productList option[value='" + $('#invoiceItem_0').val() + "']").attr('data-id');
-         // alert(k);
-         //document.getElementById("invoiceItemDes_0").style.visibility = "visible";
-          document.getElementById('invoiceItemDes_0').value = k;
-
-}
 
 
 

@@ -257,6 +257,7 @@ DB::table('t_user')->where('name', $req->session()->get('name'))
     [
         'p_name' => $req->p_name,  
         'p_description' => $req->p_description,  
+        'p_price' => $req->p_price ,
         'p_owner' => $req->session()->get('name') 
    
     
@@ -340,6 +341,7 @@ DB::table('t_product')->where('p_id', $p_id)
          
     
     'p_name' => $req->p_name ,
+    'p_price' => $req->p_price ,
     'p_description' => $req->p_description 
     
     
@@ -447,15 +449,18 @@ $facultySlideList   = DB::table('t_product')->where('p_id', $p_id)
              echo  $req->terms; echo "<br>";
              echo  $req->payment_terms; echo "<br>";*/
 
-    //***encode main
+//***  encode main ***
     $invoiceItem = json_encode($req->invoiceItem);
     $invoiceQuantity = json_encode($req->invoiceQuantity);
     $invoiceRate = json_encode($req->invoiceRate);
     $invoiceAmount = json_encode($req->invoiceAmount);
-    //###encode main
+    $invoiceItemDes = json_encode($req->invoiceItemDes);
 
 
-    //***insert main
+//### encode main ###
+
+
+//*** insert main ***
     
      DB::table('t_invoice')
      ->insert([
@@ -468,6 +473,7 @@ $facultySlideList   = DB::table('t_product')->where('p_id', $p_id)
     'date' => $req->date,  
     'due_date' => $req->due_date,  
     'item' => $invoiceItem,  
+    'itemDescription' => $invoiceItemDes,  
     'quantity' => $invoiceQuantity,  
     'rate' => $invoiceRate,  
     'amount' => $invoiceAmount,  
@@ -484,14 +490,16 @@ $facultySlideList   = DB::table('t_product')->where('p_id', $p_id)
     'draft' => $req->draft,  
    ]   
 ]);
-     //###insert main
-     //*pdf main
+ 
+ //### insert main ###
+
+//*** pdf main ***
         $pdf = PDF::loadView('page.portal.user.invoice', compact('req'))
         ->save( 'pdf/invoice.pdf' );
         //return $pdf->setPaper('A4','landscape')->stream('invoice.pdf');
-    //#pdf  main
+//### pdf  main ###
 
-    //*mail
+//*** mail ***
         if($req->draft == 'off')
         {
         $data = array(
@@ -514,7 +522,7 @@ $facultySlideList   = DB::table('t_product')->where('p_id', $p_id)
         Mail::to($req->mail_to)->send(new sendMail($data));
         return back()->with('success','Mail sent to '.$req->invoice_to);
         }
-                     //#mail
+//### mail ###
 
         else{return back()->with('success','Draft saved for '.$req->invoice_to);}
                 //### insert invoice
@@ -675,6 +683,8 @@ Mail::send('page.portal.user.email', $data, function($message) use ($to_name, $t
     $invoiceQuantity = json_encode($req->invoiceQuantity);
     $invoiceRate = json_encode($req->invoiceRate);
     $invoiceAmount = json_encode($req->invoiceAmount);
+    $invoiceItemDes = json_encode($req->invoiceItemDes);
+   
     //###encode main
         
 
@@ -691,6 +701,7 @@ DB::table('t_invoice')->where('invoice_number', $invoice_number)
     'date' => $req->date,  
     'due_date' => $req->due_date,  
     'item' => $invoiceItem,  
+    'itemDescription' => $invoiceItemDes, 
     'quantity' => $invoiceQuantity,  
     'rate' => $invoiceRate,  
     'amount' => $invoiceAmount,  

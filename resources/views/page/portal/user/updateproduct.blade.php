@@ -128,6 +128,14 @@ Oinvoice-Portal-UpdateProduct
                                       <br>
                                   </div>
 
+                                   <label class="col-sm-2 control-label col-lg-2" for="inputSuccess">Product Price</label>
+                                  <div class="col-lg-10">
+                                      <input name="p_price" type="number" class="form-controlss" value="{{$productByid[0]->p_price}}" >
+                                      &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+                                      
+                                      <br>
+                                  </div>
+
                                  
 
                                  

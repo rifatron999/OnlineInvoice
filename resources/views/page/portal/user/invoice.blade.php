@@ -91,6 +91,9 @@
         <td align="center">{{$req->invoiceRate[$x]}}</td>
         <td align="center">{{$req->invoiceAmount[$x]}}</td>
       </tr>
+      <tr>
+        <td style="color: #a0aec0;" align="center">{{$req->invoiceItemDes[$x]}}</td>
+      </tr>
 
       <?php
       }

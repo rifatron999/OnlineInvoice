@@ -195,6 +195,7 @@ Oinvoice-Portal-Create
                                       &nbsp <button id='delete-row' type="button" class="btn btn-theme04"><i class="fa fa-minus"></i> </button>
 
                                     </th>
+                                    <th>Description</th>
                                     <th>Quantity</th>
                                     <th>Rate</th>
                                     <th>Amount</th>
@@ -208,19 +209,29 @@ Oinvoice-Portal-Create
                                     
                     @foreach ($productList as $s)
                     
-                             <option label='{{$s->p_description}}' value='{{$s->p_name}}' data-id="{{$s->p_description}}" >
+                             <option label='{{$s->p_price}}' value='{{$s->p_name}}' data-id="{{$s->p_description}}" >
                     @endforeach
                              
-                  </datalist>
+                                </datalist>
 
 
                     
 
             <tr>
               
-                <td >
-                  <input id='invoiceItem_0' name='invoiceItem[]' type='text' class='form-control'  placeholder='Description of service and product' list='productList' autocomplete='off' onchange=showDescription() >  
-                  <input id='invoiceItemDes_0' name="invoiceItemDes" type="text" class="form-control"  placeholder="Product description" style="visibility: hidden;" ></td>
+                <td>
+                  <input id='invoiceItem_0' name='invoiceItem[]' type='text' class='form-control '  placeholder='Description of service and product' list='productList' autocomplete='off' onchange='showPrice(0)'  >
+                  <input id='invoiceItemDes_0' name='invoiceItemDes[]' type='text' class='form-control'  placeholder='Product description' style='visibility: hidden;' >
+
+
+                </td>
+                <td>
+                  <div class='btn-group form-control'>
+              <button type='button' class='btn btn-default btn-theme03' onclick='showDescription(0)' >Show</button>
+              <button type='button' class='btn btn-default btn-theme04' onclick='hideDescription(0)' >Hide</button>
+              
+            </div>
+          </td>
                 <td><input id='quantity_0' name='invoiceQuantity[]' type='number' class='form-controlssp quantity'  onkeyup="amountCal(0)"  ></td>
                 <td><input id='rate_0'  name='invoiceRate[]' type='number' class='form-controlssp rate' onkeyup="amountCal(0)"></td>
               <td><input  id='amount_0' name='invoiceAmount[]' type='number' class='form-controlssp amount'  readonly='readonly' ></td>

@@ -192,6 +192,7 @@ Oinvoice-Update Invoice
                    $quantityRow = json_decode($invoiceById[0]->quantity);
                    $rateRow = json_decode($invoiceById[0]->rate);
                    $amountRow = json_decode($invoiceById[0]->amount);
+                   $itemDesRow = json_decode($invoiceById[0]->itemDescription);
                   ?>
                           <!-- /decode -->
 
@@ -212,6 +213,7 @@ Oinvoice-Update Invoice
                                       &nbsp <button id='delete-row' type="button" class="btn btn-theme04"><i class="fa fa-minus"></i> </button>
 
                                     </th>
+                                    <th>Description</th>
                                     <th>Quantity</th>
                                     <th>Rate</th>
                                     <th>Amount</th>
@@ -222,7 +224,7 @@ Oinvoice-Update Invoice
                                 <tbody>
                                   <datalist id='productList'>
                     @foreach ($productList as $s)
-                             <option label='Price: {{$s->p_price}}' value='{{$s->p_name}}'>
+                             <option label='{{$s->p_price}}' value='{{$s->p_name}}' data-id="{{$s->p_description}}" >
                     @endforeach
                              
                   </datalist>
@@ -233,8 +235,21 @@ Oinvoice-Update Invoice
             <tr>
               
                 <td>
-                <input  name='invoiceItem[]' type='text' class='form-control'  placeholder='Description of service and product' list='productList' autocomplete='off' value="{{$item}}" >
+                <input  id='invoiceItem_{{$p}}' name='invoiceItem[]' type='text' class='form-control'  placeholder='Description of service and product' list='productList' autocomplete='off' value='{{$item}}'onchange='showPrice("{{$p}}")' >
+                @if(isset($itemDesRow[$p]))
+                <input id='invoiceItemDes_{{$p}}' name='invoiceItemDes[]' type='text' class='form-control'  placeholder='Product description' style='visibility: visible;' value="{{$itemDesRow[$p]}}" >
+                @else
+                <input id='invoiceItemDes_{{$p}}' name='invoiceItemDes[]' type='text' class='form-control'  placeholder='Product description' style='visibility: hidden;' >
+                @endif
+
               </td>
+              <td>
+                  <div class='btn-group form-control'>
+              <button type='button' class='btn btn-default btn-theme03' onclick='showDescription("{{$p}}")' >Show</button>
+              <button type='button' class='btn btn-default btn-theme04' onclick='hideDescription("{{$p}}")' >Hide</button>
+              
+            </div>
+          </td>
                 <td><input id='quantity_{{$p}}' name='invoiceQuantity[]' type='number' class='form-controlssp quantity'  onkeyup="amountCal('{{$p}}')" value="{{$quantityRow[$p]}}" ></td> 
                 <td><input id='rate_{{$p}}'  name='invoiceRate[]' type='number' class='form-controlssp rate ' onkeyup="amountCal('{{$p}}')" value="{{$rateRow[$p]}}" ></td>
               <td><input  id='amount_{{$p}}' name='invoiceAmount[]' type='number' class='form-controlssp amount'  readonly='readonly' value="{{$amountRow[$p]}}" ></td>
