@@ -214,53 +214,46 @@ DB::table('t_user')->where('name', $req->session()->get('name'))
 
 
 
+//**************************************************** ~Product *****************************************************
 
-
-    //*** addProductView ***
+//*** addProductView ***
         public function addProductView(Request $req)
                  {
                     $productList   = DB::table('t_product')->where('p_owner', $req->session()->get('name'))
                     ->get();
-                    if($this->userCheck($req))
-                    {
-                        return view('page.portal.user.addproduct', ['productList' => $productList ]);
+                        if($this->userCheck($req))
+                        {
+                            return view('page.portal.user.addproduct', ['productList' => $productList ]);
 
-                    }
-                    else
-                    {
+                        }
+                        else
+                        {
                         $req->session()->flash('msg', "UNAUTHORIZED!");
                         return redirect()->route('login.index');
-                    }
+                        }
                 }
 
-        //### addProductView ###
+//### addProductView ###
 
 
 
-                //*** addProduct ***
+//*** addProduct ***
 
          public function addProduct(Request $req)
          {
         
         
-       /*$req->validate([
-
-            'name'=>'required|unique:t_users',
-            'password'=>'required|max:3',
-            'cpassword'=>'required|max:3',
-            'email'=>'required',
-            'phone'=>'required|unique:t_temp_users',
-            'dob'=>'required',
-            
+             $req->validate([
+            'product_name'=>'required',
             ]); 
-*/
+
 
 //insert statrs
        //echo $req;
 
        DB::table('t_product')->insert([
     [
-        'p_name' => $req->p_name,  
+        'p_name' => $req->product_name,  
         'p_description' => $req->p_description,  
         'p_price' => $req->p_price ,
         'p_owner' => $req->session()->get('name') 
@@ -276,7 +269,7 @@ DB::table('t_user')->where('name', $req->session()->get('name'))
        // //$msg="reg comp";
        //   return view('page.registration.registration')->with('msg', 'complete');
        
-       //$req->session()->flash('msg', "✔ Your registration request has been submitted to our admin");
+       $req->session()->flash('msg', "✔ Product Added");
                 return redirect()->route('addProductView.index');
 
         
@@ -286,7 +279,7 @@ DB::table('t_user')->where('name', $req->session()->get('name'))
 
 
 
-        //### addProduct ###
+//### addProduct ###
 
 
 
@@ -325,18 +318,9 @@ public function productUpdateView($p_id,Request $req)
         //echo $req;
         
         
-//        $req->validate([
-
-            
-//             't_sun'=>'required',
-//             't_mon'=>'required',
-            
-            
-
-
-            
-//         ]); 
-
+       $req->validate([
+            'product_name'=>'required',
+            ]);
         
 
 
@@ -345,14 +329,14 @@ DB::table('t_product')->where('p_id', $p_id)
     
          
     
-    'p_name' => $req->p_name ,
+    'p_name' => $req->product_name ,
     'p_price' => $req->p_price ,
     'p_description' => $req->p_description 
     
     
 ]);
 
-
+$req->session()->flash('msg', "✔ Product Updated");
 return redirect()->route('addProductView.index');
 
         
@@ -376,7 +360,7 @@ $facultySlideList   = DB::table('t_product')->where('p_id', $p_id)
 
 
 
-         return back()->with('msg', "✘ SLIDE REMOVED");
+         return back()->with('msg', "✘ Product Removed");
         }
     
     else{
@@ -385,6 +369,8 @@ $facultySlideList   = DB::table('t_product')->where('p_id', $p_id)
         }
     }
     //### deleteProduct ###
+
+    //###################################################### product #############################################
 
 
 

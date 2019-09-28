@@ -113,10 +113,28 @@ Oinvoice-Portal-AddProduct
 
                           <div class="form-horizontal tasi-form" >
                             <div class="form-panel">
+ <!-- validation -->            
+          @if(count($errors) > 0)
+                <div class="alert alert-danger alert-dismissable">
+             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+             <p align="center" ><strong >@foreach($errors->all() as $err)
+            ⚠️{{$err}} <br>
+          @endforeach</strong></p> 
+            </div>
+            @endif
+  <!-- /validation -->
+  <!-- message -->
+                  @if(session('msg'))
+                <div class="alert alert-success alert-dismissable">
+             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+             <p align="center" ><strong >{{session('msg')}}!</strong></p> 
+            </div>
+            @endif
+<!-- /message -->                                
                               <div class="form-group "> <h3  align="center">Add Product</h3> <br>
                                   <label class="col-sm-2 control-label col-lg-2" for="inputSuccess"> Product Name</label>
                                   <div class="col-lg-10">
-                                      <input name="p_name" placeholder="*Required"  type="text" class="form-control"  >
+                                      <input name="product_name" placeholder="*Required"  type="text" class="form-control"  >
                                       <br>
                                   </div>
 
