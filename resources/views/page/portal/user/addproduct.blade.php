@@ -116,7 +116,7 @@ Oinvoice-Portal-AddProduct
                               <div class="form-group "> <h3  align="center">Add Product</h3> <br>
                                   <label class="col-sm-2 control-label col-lg-2" for="inputSuccess"> Product Name</label>
                                   <div class="col-lg-10">
-                                      <input name="p_name"  type="text" class="form-control"  >
+                                      <input name="p_name" placeholder="*Required"  type="text" class="form-control"  >
                                       <br>
                                   </div>
 

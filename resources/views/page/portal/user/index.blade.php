@@ -113,10 +113,11 @@ Oinvoice-Portal
       <!--main content start-->
       <section id="main-content">
           <section class="wrapper site-min-height">
-            <h3><i class="fa fa-angle-right"></i> user from portal</h3>
+            
+           
             <div class="row mt">
               <div class="col-lg-12">
-             //
+             
               
               <?php 
               $sum_total = 0 ;
@@ -131,6 +132,8 @@ Oinvoice-Portal
               
               $todayDate = date("Y-m-d");
               $this_month = date("m",strtotime($todayDate));
+              $this_month_v = date("F",strtotime($todayDate));
+              $this_year_v = date("Y",strtotime($todayDate));
 
               ?>
 
@@ -154,7 +157,7 @@ Oinvoice-Portal
               
               
               @endforeach
-              ******** total **********<br>
+              <!-- ******** total **********<br>
               total {{$sum_total}} <br>
               amount paid {{$sum_amount_paid}} <br>
               due balance {{$sum_due_balance}} <br>
@@ -162,10 +165,37 @@ Oinvoice-Portal
               total {{$sum_total_this}} <br>
               amount paid {{$sum_amount_paid_this}} <br>
               due balance {{$sum_due_balance_this}} <br>
-              this month {{$this_month}} <br>
+              this month {{$this_month}} <br> -->
               
               </div>
             </div>
+
+        
+
+          <div class="col-md-4 col-sm-1 col-md-offset-1 box0">
+                        <div style="background: #73a7fa ;color: white" class="box1">
+
+                  
+                 <h3  >Total : {{$sum_total_this}} BDT</h3>
+                 <h3  >Collection: {{$sum_total_this}} BDT</h3>
+                 <h3  >Due: {{$sum_due_balance_this}} BDT</h3>
+                        </div>
+                  <h4 align="center"> <span class="fa fa-calendar"></span> {{$this_month_v}},{{$this_year_v}}  </h4>
+                      </div>
+
+          <div class="col-md-4 col-sm-1 col-md-offset-1 box0">
+                      <div style="background: #45de9e ;color: white" class="box1">
+
+                  
+                 <h3  >Total : {{$sum_total}} BDT</h3>
+                 <h3  >Collection: {{$sum_total}} BDT</h3>
+                 <h3  >Due: {{$sum_due_balance}} BDT</h3>
+                        </div>
+                  <h4 align="center"><span class="fa fa-paper-plane"></span> Overall</h4>
+                      </div>
+
+
+                      
       
     </section><! --/wrapper -->
       </section><!-- /MAIN CONTENT -->

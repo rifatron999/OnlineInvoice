@@ -23,17 +23,14 @@ class registrationController extends Controller
     	 {
 		
 		
-       /*$req->validate([
-
-            'u_name'=>'required|unique:t_users',
-            'ut_password'=>'required|max:3',
-            'ut_password'=>'required|max:3',
-            'utc_password'=>'required|same:ut_password|max:3',
-            'ut_email'=>'required',
-            'ut_phone'=>'required|unique:t_temp_users',
-            'ut_dob'=>'required',
+       $req->validate([
+'name'=>'required|unique:t_user',
+            'password'=>'required|min:3',
+            'confirm_password'=>'required|same:password|max:3',
+            'phone'=>'required|unique:t_user',
+            'gender'=>'required'
             
-            ]); */
+            ]); 
 
 
 //insert statrs
@@ -42,9 +39,9 @@ class registrationController extends Controller
        DB::table('t_user')->insert([
     ['name' => $req->name,  
     'password' => $req->password ,
-    'dob' => $req->dob ,
+    
     'gender' => $req->gender,
-    'email' => $req->email,
+    
     'phone' => $req->phone,
     'type' => 'user'
     
@@ -57,7 +54,7 @@ class registrationController extends Controller
        // //$msg="reg comp";
        //   return view('page.registration.registration')->with('msg', 'complete');
        
-       //$req->session()->flash('msg', "✔ Your registration request has been submitted to our admin");
+       $req->session()->flash('msg', "✔ Registration Completed");
         		return redirect()->route('registration.index');
 
 		

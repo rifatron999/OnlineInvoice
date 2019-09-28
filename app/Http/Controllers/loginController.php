@@ -35,12 +35,12 @@ class loginController extends Controller
     	public function signin(Request $req){
 		
 		
-       /*$req->validate([
+       $req->validate([
 
-            'u_name'=>'required',
-            'u_password'=>'required|max:3',
+            'name'=>'required',
+            'password'=>'required',
             
-        ]); */
+        ]); 
 
 
 		

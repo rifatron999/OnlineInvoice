@@ -1,11 +1,39 @@
 @extends('template.unsigned.index')
+@section('title')
+Oinvoice-Login
+@endsection
 @section('unsigned')
 	  <div id="login-page">
 	  	<div class="container">
 	  	
 		      
-		        
-		        <div class="login-wrap">
+		       
+      					
+						    				
+      				
+            
+
+					
+		        		<div class="login-wrap">
+	<!-- validation -->	        	
+					@if(count($errors) > 0)
+		        		<div class="alert alert-danger alert-dismissable">
+						 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+						 <p align="center" ><strong >@foreach($errors->all() as $err)
+  					⚠️{{$err}} <br>
+					@endforeach</strong></p> 
+						</div>
+						@endif
+	<!-- /validation -->
+	<!-- message -->
+		        			@if(session('msg'))
+		        		<div class="alert alert-danger alert-dismissable">
+						 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+						 <p align="center" ><strong >{{session('msg')}}!</strong></p> 
+						</div>
+						@endif
+<!-- /message -->   
+
 		        	<form class="form-login" method="post" >
 		        		<h2 class="form-login-heading">sign in now</h2>
 		            <input type="text" class="form-control" placeholder="User Name" name="name" autofocus>
