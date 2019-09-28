@@ -56,6 +56,7 @@ public function userCheck($req)
     //### index ###
 
 
+//**************************************************** ~Profile *****************************************************
 
 
         //*** profileView ***
@@ -84,18 +85,28 @@ public function userCheck($req)
 
      public function profileUpdate(Request $req){
         //echo $req;
+        if($req->name == session('name'))
+        {   
+            $req->validate([
+
+            'name'=> 'required',
+           'password'=> 'required|min:3',
+           'picture'=> 'image|mimes:jpeg,jpg,png,gif|max:2048',
+           'company_logo'=> 'image|mimes:jpeg,jpg,png,gif|max:2048',
+            ]); 
+        }
+            else
+            {
+                $req->validate([
+
+            'name'=> 'required|unique:t_user',
+           'password'=> 'required|min:3',
+           'picture'=> 'image|mimes:jpeg,jpg,png,gif|max:2048',
+           'company_logo'=> 'image|mimes:jpeg,jpg,png,gif|max:2048',
+            ]); 
+            }
         
         
-        $req->validate([
-
-            
-          /* 'picture'=> 'required|image|mimes:jpeg,jpg,png,gif|max:2048',
-           'company_logo'=> 'required|image|mimes:jpeg,jpg,png,gif|max:2048',
-*/
-
-
-            
-         ]); 
 
 //***image
         $fileName;
@@ -204,7 +215,7 @@ DB::table('t_user')->where('name', $req->session()->get('name'))
 
         //echo 'update called';
 
-      //  $req->session()->flash('msg', "✔ Your Tsf has been Updated");
+        $req->session()->flash('msg', "✔ Your Profile has been Updated");
                 return redirect()->route('profileView.index');
         
 
@@ -212,6 +223,7 @@ DB::table('t_user')->where('name', $req->session()->get('name'))
     
     //### profileUpdate ###
 
+//**************************************************** Profile *****************************************************
 
 
 //**************************************************** ~Product *****************************************************

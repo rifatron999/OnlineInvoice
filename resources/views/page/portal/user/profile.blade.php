@@ -104,17 +104,31 @@ Oinvoice-Portal-profile
           <section class="wrapper site-min-height">
            
             <!-- profile -->
-            <font color="red">
-        @foreach($errors->all() as $err)
-  ⚠️{{$err}} <br>
-@endforeach
-</font>
+            <
             <form method="post" enctype="multipart/form-data">
            
              <div class="row mt">
               <div class="col-lg-12">
                 <div class="form-inline" >
                 <div class="form-panel">
+                  <!-- validation -->           
+          @if(count($errors) > 0)
+                <div class="alert alert-danger alert-dismissable">
+             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+             <p align="center" ><strong >@foreach($errors->all() as $err)
+            ⚠️{{$err}} <br>
+          @endforeach</strong></p> 
+            </div>
+            @endif
+  <!-- /validation -->
+  <!-- message -->
+                  @if(session('msg'))
+                <div class="alert alert-success alert-dismissable">
+             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+             <p align="center" ><strong >{{session('msg')}}!</strong></p> 
+            </div>
+            @endif
+<!-- /message --> 
                       
                       
                           <div class="form-group"> <h3  align="center"> User Information</h3> <br>
