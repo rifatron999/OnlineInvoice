@@ -111,7 +111,7 @@ Oinvoice-Portal-profile
               <div class="col-lg-12">
                 <div class="form-inline" >
                 <div class="form-panel">
-                  <!-- validation -->           
+<!-- validation -->           
           @if(count($errors) > 0)
                 <div class="alert alert-danger alert-dismissable">
              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -120,8 +120,8 @@ Oinvoice-Portal-profile
           @endforeach</strong></p> 
             </div>
             @endif
-  <!-- /validation -->
-  <!-- message -->
+<!-- /validation -->
+<!-- message -->
                   @if(session('msg'))
                 <div class="alert alert-success alert-dismissable">
              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>

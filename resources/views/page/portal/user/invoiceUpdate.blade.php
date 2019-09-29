@@ -109,10 +109,28 @@ Oinvoice-Update Invoice
             <!-- create -->
             <form method="post">
 
- <!-- test --><h3 align="center" behavior="alternate" ><mark>{{session('success')}}</mark></h3>
+ <!-- test -->
 
                 <div class="col-lg-12">
                 <div class="form-panel">
+<!-- validation -->           
+          @if(count($errors) > 0)
+                <div class="alert alert-danger alert-dismissable">
+             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+             <p align="center" ><strong >@foreach($errors->all() as $err)
+            ⚠️{{$err}} <br>
+          @endforeach</strong></p> 
+            </div>
+          @endif
+<!-- /validation -->
+<!-- message -->
+                  @if(session('msg'))
+                <div class="alert alert-success alert-dismissable">
+             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+             <p align="center" ><strong >{{session('msg')}}!</strong></p> 
+            </div>
+            @endif
+<!-- /message -->                  
                      <h3  align="center">Update {{$invoiceById[0]->invoice_type}}</h3> <br>
                           <div class="row mt">
                               <div class="col-sm-6 text-center">
@@ -346,10 +364,10 @@ Oinvoice-Update Invoice
                              <br>
                              <br>
                              <br>
-                             <label for="slider">Save as Draft only: </label>
+                             <label for="slider">Send to Client: </label>
     <select name="draft"  data-role="slider">
-        <option value="off">Off</option>
-        <option value="on">On</option>
+        <option value="off">Yes</option>
+       
     </select>
                              <button type="Submit" class="btn btn-primary btn-lg">Update Payment</button>
                             

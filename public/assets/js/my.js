@@ -89,6 +89,7 @@ function showPrice(s)
 {
   var price = $("#productList option[value='" + $('#invoiceItem_'+s+'').val() + "']").attr('label');
   document.getElementById('rate_'+s+'').value = parseInt(price);
+  //document.getElementById('quantity_'+s+'').value = parseInt(1);
   amountCal(s); 
 
 }

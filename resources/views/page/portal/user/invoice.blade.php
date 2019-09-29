@@ -58,7 +58,7 @@
         <td align="right"> 
         <img  src="assets/img/company_logo/{{session('c_logo')}}" width="100" height="125"    >
           <pre> 
-            {{session('c_name')}}
+            {{$req->invoice_from}}
               {{session('c_address')}}
               {{session('c_phone')}}
               {{session('c_email')}}

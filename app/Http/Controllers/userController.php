@@ -39,7 +39,7 @@ public function userCheck($req)
              if($this->userCheck($req))
              {
                 $invoiceSum = DB::table('t_invoice')
-       ->where('invoice_from', $req->session()->get('c_name'))
+       ->where('owner', $req->session()->get('name'))
        ->where('invoice_type','Invoice')
        ->where('draft','off')
         ->get();
@@ -383,6 +383,7 @@ $facultySlideList   = DB::table('t_product')->where('p_id', $p_id)
     //### deleteProduct ###
 
     //###################################################### product #############################################
+    //###################################################### ~invoice #############################################
 
 
 
@@ -491,6 +492,7 @@ $facultySlideList   = DB::table('t_product')->where('p_id', $p_id)
     'terms' => $req->terms,  
     'payment_terms' => $req->payment_terms,  
     'draft' => $req->draft,  
+    'owner' => $req->session()->get('name'),  
    ]   
 ]);
  
@@ -523,11 +525,11 @@ $facultySlideList   = DB::table('t_product')->where('p_id', $p_id)
         //echo $email;
         
         Mail::to($req->mail_to)->send(new sendMail($data));
-        return back()->with('success','Mail sent to '.$req->invoice_to);
+        return back()->with('msg','Mail sent to '.$req->invoice_to);
         }
 //### mail ###
 
-        else{return back()->with('success','Draft saved for '.$req->invoice_to);}
+        else{return back()->with('msg','Draft saved for '.$req->invoice_to);}
                 //### insert invoice
                
                 //*json
@@ -641,7 +643,7 @@ Mail::send('page.portal.user.email', $data, function($message) use ($to_name, $t
              if($this->userCheck($req))
              {
                 
-                $invoiceList   = DB::table('t_invoice')->where('draft', 'off')->where('invoice_from', $req->session()->get('c_name'))->get();
+                $invoiceList   = DB::table('t_invoice')->where('draft', 'off')->where('owner', $req->session()->get('name'))->get();
 
                 return view('page.portal.user.previousInvoiceList',['invoiceList'=>$invoiceList]);
 
@@ -750,10 +752,10 @@ DB::table('t_invoice')->where('invoice_number', $invoice_number)
         //echo $email;
         
         Mail::to($req->mail_to)->send(new sendMail($data));
-        return back()->with('success','Mail sent to '.$req->invoice_to);
+        return back()->with('msg','Mail sent to '.$req->invoice_to);
         }
                      //#mail
-return back()->with('success',$req->invoice_type.' Updated');
+return back()->with('msg',$req->invoice_type.' Updated');
 
         
 
@@ -769,7 +771,7 @@ return back()->with('success',$req->invoice_type.' Updated');
              if($this->userCheck($req))
              {
                 
-                $invoiceList   = DB::table('t_invoice')->where('invoice_type', 'Invoice')->where('due_balance', '>', 0)->where('invoice_from', $req->session()->get('c_name'))->get();
+                $invoiceList   = DB::table('t_invoice')->where('invoice_type', 'Invoice')->where('draft', 'off')->where('due_balance', '>', 0)->where('owner', $req->session()->get('name'))->get();
 
                 return view('page.portal.user.dueInvoiceList',['invoiceList'=>$invoiceList]);
 
@@ -790,7 +792,7 @@ return back()->with('success',$req->invoice_type.' Updated');
              if($this->userCheck($req))
              {
                 
-                $invoiceList   = DB::table('t_invoice')->where('draft', 'on')->where('invoice_from', $req->session()->get('c_name'))->get();
+                $invoiceList   = DB::table('t_invoice')->where('draft', 'on')->where('owner', $req->session()->get('name'))->get();
 
                 return view('page.portal.user.draftInvoiceList',['invoiceList'=>$invoiceList]);
 

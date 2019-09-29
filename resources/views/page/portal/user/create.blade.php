@@ -109,10 +109,28 @@ Oinvoice-Portal-Create
             <!-- create -->
             <form method="post">
 
- <!-- test --><h3 align="center" behavior="alternate" ><mark>{{session('success')}}</mark></h3>
+ <!-- test -->
 
                 <div class="col-lg-12">
                 <div class="form-panel">
+<!-- validation -->           
+          @if(count($errors) > 0)
+                <div class="alert alert-danger alert-dismissable">
+             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+             <p align="center" ><strong >@foreach($errors->all() as $err)
+            ⚠️{{$err}} <br>
+          @endforeach</strong></p> 
+            </div>
+          @endif
+<!-- /validation -->
+<!-- message -->
+                  @if(session('msg'))
+                <div class="alert alert-success alert-dismissable">
+             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+             <p align="center" ><strong >{{session('msg')}}!</strong></p> 
+            </div>
+            @endif
+<!-- /message -->
                      <h3  align="center"> Create New Invoice/Quotation</h3> <br>
                           <div class="row mt">
                               <div class="col-sm-6 text-center">

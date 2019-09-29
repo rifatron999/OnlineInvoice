@@ -177,7 +177,7 @@ Oinvoice-Portal
 
                   
                  <h3  >Total : {{$sum_total_this}} BDT</h3>
-                 <h3  >Collection: {{$sum_total_this}} BDT</h3>
+                 <h3  >Collection: {{$sum_amount_paid_this}} BDT</h3>
                  <h3  >Due: {{$sum_due_balance_this}} BDT</h3>
                         </div>
                   <h4 align="center"> <span class="fa fa-calendar"></span> {{$this_month_v}},{{$this_year_v}}  </h4>
@@ -188,7 +188,7 @@ Oinvoice-Portal
 
                   
                  <h3  >Total : {{$sum_total}} BDT</h3>
-                 <h3  >Collection: {{$sum_total}} BDT</h3>
+                 <h3  >Collection: {{$sum_amount_paid}} BDT</h3>
                  <h3  >Due: {{$sum_due_balance}} BDT</h3>
                         </div>
                   <h4 align="center"><span class="fa fa-paper-plane"></span> Overall</h4>
