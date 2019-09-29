@@ -49,17 +49,17 @@ Oinvoice-Portal
                       
                   </li>
 
-                  <li class="sub-menu">
+                  <!-- <li class="sub-menu">
                       <a href="javascript:;" >
                           <i class="fa fa-cogs"></i>
-                          <span>Components</span>
+                          <span>Temlates</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href="calendar.html">Calendar</a></li>
-                          <li><a  href="gallery.html">Gallery</a></li>
-                          <li><a  href="todo_list.html">Todo List</a></li>
+                          <li><a  href="">Create Template</a></li>
+                          <li><a  href="">Select Template</a></li>
+                          
                       </ul>
-                  </li>
+                  </li> -->
                   <li class="sub-menu">
                       <a  href="javascript:;" >
                           <i class="fa fa-book"></i>
@@ -176,9 +176,9 @@ Oinvoice-Portal
                         <div style="background: #73a7fa ;color: white" class="box1">
 
                   
-                 <h3  >Total : {{$sum_total_this}} BDT</h3>
-                 <h3  >Collection: {{$sum_amount_paid_this}} BDT</h3>
-                 <h3  >Due: {{$sum_due_balance_this}} BDT</h3>
+                 <h3 style="color: yellow" >Total : {{$sum_total_this}} {{session('c_currency')}}</h3>
+                 <h3  >Collection: {{$sum_amount_paid_this}} {{session('c_currency')}}</h3>
+                 <h3  >Due: {{$sum_due_balance_this}} {{session('c_currency')}}</h3>
                         </div>
                   <h4 align="center"> <span class="fa fa-calendar"></span> {{$this_month_v}},{{$this_year_v}}  </h4>
                       </div>
@@ -187,12 +187,73 @@ Oinvoice-Portal
                       <div style="background: #45de9e ;color: white" class="box1">
 
                   
-                 <h3  >Total : {{$sum_total}} BDT</h3>
-                 <h3  >Collection: {{$sum_amount_paid}} BDT</h3>
-                 <h3  >Due: {{$sum_due_balance}} BDT</h3>
+                 <h3  >Total : {{$sum_total}} {{session('c_currency')}}</h3>
+                 <h3  >Collection: {{$sum_amount_paid}} {{session('c_currency')}}</h3>
+                 <h3 style="color: red" >Due: {{$sum_due_balance}} {{session('c_currency')}}</h3>
                         </div>
                   <h4 align="center"><span class="fa fa-paper-plane"></span> Overall</h4>
                       </div>
+                      <br>
+                      <br>
+
+
+                       <!-- Prevoius invoicelist table -->
+             
+<div class="row mt">
+                  <div class="col-md-12">
+                      <div class="content-panel">
+                        <font size="4"  >
+                          <table class="table table-striped  table-hover">
+                            <h4 style="text-align:center;" > Due Invoices</h4>
+                            <hr>
+                              <thead>
+                              <tr >
+                                  <th><i class="fa fa-bullhorn"></i> Id</th>
+                                  <th><i class="fa fa-bullhorn"></i> Type</th>
+                                  <th><i class=""></i> To</th>
+                                  <th><i class=" "></i>Issue Date</th>
+                                  <th><i class=" "></i>Deadline</th>
+                                  <th><i class=" fa fa-edit"></i> Total</th>
+                                  <th><i class=" fa fa-edit"></i> Due </th>
+                                  <th><i class=" fa fa-edit"></i> Update </th>
+                                  <th><i class=" fa fa-edit"></i> Delete </th>
+                                  <th></th>
+                              </tr>
+                              </thead>
+
+                              <tbody>
+                                 @foreach ($invoiceList as $s) 
+                              <tr>
+                                  <td><a >{{$s->invoice_number}}</a></td>
+                                  <td><a >{{$s->invoice_type}}</a></td>
+                                  <td><a >{{$s->invoice_to}}</a></td>
+                                  <td><a href="">{{$s->date}}</a></td>
+                                  <td><a href="">{{$s->due_date}}</a></td>
+                                  <td><a >{{$s->total}}</a></td>
+                                  <td><a >{{$s->due_balance}}</a></td>
+                                                                   
+                                  <td> <a href="{{route('invoiceUpdateView',$s->invoice_number )}}" class="btn btn-danger btn-xs"><i class="fa fa-edit"></i></a></td>
+                                  <td>
+                                     
+      
+           <a class="btn btn-danger btn-xs" href="{{route('removeProduct',$s->invoice_number )}}" ><i class="fa fa-trash-o "></i></a>
+            
+
+        
+                                      
+                                      
+                                  </td>
+                              </tr>
+                               @endforeach
+                              
+                              </tbody>
+                          </table>
+                        </font>
+                      </div><!-- /content-panel -->
+                  </div><!-- /col-md-12 -->
+              </div><!-- /row -->
+
+            <!-- /Prevoius invoicelist table -->
 
 
                       

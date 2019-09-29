@@ -176,7 +176,7 @@ Oinvoice-Portal-Create
                <br>
 
               <input  name="mailTo" type="text" class="form-controlss"  placeholder="Mail To" value="Mail to" >
-              <input name="mail_to" type="text" class="form-controlm"  placeholder="Who is this mail to? (required)"  >
+              <input name="mail_to" type="email" class="form-controlm"  placeholder="Who is this mail to? (required)"  >
 
 
                               </div>
@@ -212,8 +212,7 @@ Oinvoice-Portal-Create
                                 <tr>
                                     
                                     <th style="min-width:500px; max-width:501px"  >Item &nbsp 
-                                      <button id='add-row-create' onclick="addRow(0)" type="button" class="btn btn-theme02"><i class="fa fa-plus"></i> </button> 
-                                      &nbsp <button id='delete-row' type="button" class="btn btn-theme04"><i class="fa fa-minus"></i> </button>
+                                      
 
                                     </th>
                                     <th>Description</th>
@@ -266,6 +265,9 @@ Oinvoice-Portal-Create
                                 </tbody>
 
                             </table>
+                            <button id='add-row-create' onclick="addRow(0)" type="button" class="btn btn-theme02"><i class="fa fa-plus"></i> Add Item Line</button> 
+                                      &nbsp 
+                            <button id='delete-row' type="button" class="btn btn-theme04"> Remove Selected Lines</button>
                                   
 
                               </div>

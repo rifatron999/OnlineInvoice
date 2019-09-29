@@ -48,7 +48,7 @@
           @if($req->due_balance === '0')
           <strong  >Invoice Status:</strong> <span class="gray" >Paid</span> <br>
           @else
-          <strong  >{{$req->duebanalcex}}:</strong> <span class="gray" >{{$req->due_balance}}</span> <br>
+          <strong  >{{$req->duebanalcex}}:</strong> <span class="gray" >{{session('c_currency')}} {{$req->due_balance}} </span> <br>
           @endif
           @endif
 
@@ -133,7 +133,7 @@
         <tr>
            
             <td align="center">{{$req->subTotalx}}</td>
-            <td align="center">{{$req->Sub_total}}</td>
+            <td align="center">{{session('c_currency')}} {{$req->Sub_total}}</td>
         </tr>
         <tr>
             
@@ -148,20 +148,20 @@
         <tr>
             
             <td align="center">{{$req->shippingx}}</td>
-            <td align="center">{{$req->shipping}}</td>
+            <td align="center">{{session('c_currency')}} {{$req->shipping}}</td>
         </tr>
 
         
         <tr>
            
             <td align="center">{{$req->totalx}}</td>
-            <td align="center" class="gray">{{$req->total}}</td>
+            <td align="center" class="gray">{{session('c_currency')}} {{$req->total}}</td>
         </tr>
  @if($req->invoice_type === 'Invoice')
         <tr>
            
             <td align="center">{{$req->paidx}}</td>
-            <td align="center" class="gray">{{$req->amount_paid}}</td>
+            <td align="center" class="gray">{{session('c_currency')}} {{$req->amount_paid}}</td>
         </tr>
 @endif
 <hr width="99%" align="left" >

@@ -69,6 +69,7 @@ class loginController extends Controller
             $req->session()->put('c_address', $result1[0]->c_address );
             $req->session()->put('c_phone', $result1[0]->c_phone );
             $req->session()->put('c_email', $result1[0]->c_email );
+            $req->session()->put('c_currency', $result1[0]->c_currency );
             if($result1[0]->c_logo == null)
             {
             	  $req->session()->put('c_logo', 'blank.png' );

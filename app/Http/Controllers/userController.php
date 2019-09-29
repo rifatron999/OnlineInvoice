@@ -43,7 +43,10 @@ public function userCheck($req)
        ->where('invoice_type','Invoice')
        ->where('draft','off')
         ->get();
-                return view('page.portal.user.index',['invoiceSum' => $invoiceSum]);
+
+         $invoiceList   = DB::table('t_invoice')->where('invoice_type', 'Invoice')->where('draft', 'off')->where('due_balance', '>', 0)->where('owner', $req->session()->get('name'))->get();
+
+                return view('page.portal.user.index',['invoiceSum' => $invoiceSum,'invoiceList' => $invoiceList]);
 
              }
              else
@@ -165,7 +168,8 @@ DB::table('t_user')->where('name', $req->session()->get('name'))
     'c_phone' => $req->c_phone,  
     'c_email' => $req->c_email,
     'c_owner' => $req->name,
-    'c_logo' => $fileName1
+    'c_logo' => $fileName1,
+    'c_currency' => $req->currencies
     
 ]);
 
@@ -210,6 +214,7 @@ DB::table('t_user')->where('name', $req->session()->get('name'))
             $req->session()->put('c_phone', $req->c_phone );
             $req->session()->put('c_email', $req->c_email );
              $req->session()->put('c_logo', $fileName1 );
+             $req->session()->put('c_currency', $req->currencies );
 
 
 
@@ -289,6 +294,42 @@ DB::table('t_user')->where('name', $req->session()->get('name'))
     }
 
 
+
+        //*** productFetch ***
+
+        public function productFetch(Request $req)
+        {
+            
+             if($this->userCheck($req))
+             {
+                if($req->get('query'))
+     {
+      $query = $req->get('query');
+      $data = DB::table('t_product')
+        ->where('p_name', 'LIKE', "%{$query}%")
+        ->get();
+      $output = '<ul class="dropdown-menu" style="display:block; position:relative">';
+      foreach($data as $row)
+      {
+       $output .= '
+       <li><a href="#">'.$row->p_name.'</a></li>
+       ';
+      }
+      $output .= '</ul>';
+      echo $output;
+     }     
+
+
+
+             }
+             else
+             {
+                $req->session()->flash('msg', "UNAUTHORIZED!");
+                return redirect()->route('login.index');
+             }
+        }
+
+    //### productFetch ###
 
 
 //### addProduct ###
@@ -416,6 +457,15 @@ $facultySlideList   = DB::table('t_product')->where('p_id', $p_id)
             
              if($this->userCheck($req))
              {
+
+
+              $req->validate([
+'invoice_number'=>'required|unique:t_invoice',
+            'invoice_from'=>'required',
+            'invoice_to'=>'required',
+            'mail_to'=>'required',
+            'date'=>'required',
+            ]);   
                // echo $req->totalx;
                 /*echo '<pre>';
                 print_r($req->invoiceItem);
@@ -683,6 +733,13 @@ Mail::send('page.portal.user.email', $data, function($message) use ($to_name, $t
 
      public function invoiceUpdate($invoice_number,Request $req)
      {
+         $req->validate([
+
+            'invoice_from'=>'required',
+            'invoice_to'=>'required',
+            'mail_to'=>'required',
+            'date'=>'required',
+            ]);
         //***encode main
     $invoiceItem = json_encode($req->invoiceItem);
     $invoiceQuantity = json_encode($req->invoiceQuantity);
@@ -752,7 +809,7 @@ DB::table('t_invoice')->where('invoice_number', $invoice_number)
         //echo $email;
         
         Mail::to($req->mail_to)->send(new sendMail($data));
-        return back()->with('msg','Mail sent to '.$req->invoice_to);
+        return back()->with('msg',$req->invoice_type.' Updated and Mail sent to '.$req->invoice_to);
         }
                      //#mail
 return back()->with('msg',$req->invoice_type.' Updated');
@@ -805,42 +862,6 @@ return back()->with('msg',$req->invoice_type.' Updated');
         }
 
     //### dueInvoiceView ###
-
-        //*** productFetch ***
-
-        public function productFetch(Request $req)
-        {
-            
-             if($this->userCheck($req))
-             {
-                if($req->get('query'))
-     {
-      $query = $req->get('query');
-      $data = DB::table('t_product')
-        ->where('p_name', 'LIKE', "%{$query}%")
-        ->get();
-      $output = '<ul class="dropdown-menu" style="display:block; position:relative">';
-      foreach($data as $row)
-      {
-       $output .= '
-       <li><a href="#">'.$row->p_name.'</a></li>
-       ';
-      }
-      $output .= '</ul>';
-      echo $output;
-     }     
-
-
-
-             }
-             else
-             {
-                $req->session()->flash('msg', "UNAUTHORIZED!");
-                return redirect()->route('login.index');
-             }
-        }
-
-    //### productFetch ###
 
 
 

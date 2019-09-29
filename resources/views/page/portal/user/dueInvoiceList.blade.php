@@ -113,7 +113,7 @@ Oinvoice-Due Invoices
                       <div class="content-panel">
                         <font size="4"  >
                           <table class="table table-striped  table-hover">
-                            <h4 style="text-align:center;" > Due Invoices and Quotation</h4>
+                            <h4 style="text-align:center;" > Due Invoices </h4>
                             <hr>
                               <thead>
                               <tr >

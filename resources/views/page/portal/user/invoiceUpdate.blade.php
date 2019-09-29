@@ -317,14 +317,14 @@ Oinvoice-Update Invoice
                            @if(isset($invoiceById[0]->discount))
                           
                           <input  name="discountx" type="text" class="form-controlss"  placeholder="Discount" value="Discount (%)" > 
-                          <input  id="discount"  name="discount" type="text" class="form-controls"  onkeyup="totalCal()" value="{{$invoiceById[0]->discount}}"> <br>
+                          <input  id="discount"  name="discount" type="text" class="form-controls"  onkeyup="discountcal()" value="{{$invoiceById[0]->discount}}"> <br>
                           
                           @else<span style="color:blue;font-weight:bold" id="discountadd" type="button">+ Discount</span> &nbsp
                           @endif
 
                           @if(isset($invoiceById[0]->tax))
                           
-                          <input  name="taxx" type="text" class="form-controlss"  placeholder="Tax" value="Tax (%)" > <input  id="tax" name="tax" type="text" class="form-controls" onkeyup="totalCal()"  value="{{$invoiceById[0]->tax}}" > <br>
+                          <input  name="taxx" type="text" class="form-controlss"  placeholder="Tax" value="Tax (%)" > <input  id="tax" name="tax" type="text" class="form-controls" onkeyup="taxcal()"  value="{{$invoiceById[0]->tax}}" > <br>
                           
                           @else<span style="color:green;font-weight:bold" id="taxadd" type="button">+ Tax</span> &nbsp
                           @endif
