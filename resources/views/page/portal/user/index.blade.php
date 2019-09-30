@@ -48,60 +48,9 @@ Oinvoice-Portal
                       </a>
                       
                   </li>
+                </ul>
 
-                  <!-- <li class="sub-menu">
-                      <a href="javascript:;" >
-                          <i class="fa fa-cogs"></i>
-                          <span>Temlates</span>
-                      </a>
-                      <ul class="sub">
-                          <li><a  href="">Create Template</a></li>
-                          <li><a  href="">Select Template</a></li>
-                          
-                      </ul>
-                  </li> -->
-                  <li class="sub-menu">
-                      <a  href="javascript:;" >
-                          <i class="fa fa-book"></i>
-                          <span>Extra Pages</span>
-                      </a>
-                      <ul class="sub">
-                          <li class="active"><a  href="blank.html">Blank Page</a></li>
-                          <li><a  href="login.html">Login</a></li>
-                          <li><a  href="lock_screen.html">Lock Screen</a></li>
-                      </ul>
-                  </li>
-                  <li class="sub-menu">
-                      <a href="javascript:;" >
-                          <i class="fa fa-tasks"></i>
-                          <span>Forms</span>
-                      </a>
-                      <ul class="sub">
-                          <li><a  href="form_component.html">Form Components</a></li>
-                      </ul>
-                  </li>
-                  <li class="sub-menu">
-                      <a href="javascript:;" >
-                          <i class="fa fa-th"></i>
-                          <span>Data Tables</span>
-                      </a>
-                      <ul class="sub">
-                          <li><a  href="basic_table.html">Basic Table</a></li>
-                          <li><a  href="responsive_table.html">Responsive Table</a></li>
-                      </ul>
-                  </li>
-                  <li class="sub-menu">
-                      <a href="javascript:;" >
-                          <i class=" fa fa-bar-chart-o"></i>
-                          <span>Charts</span>
-                      </a>
-                      <ul class="sub">
-                          <li><a  href="morris.html">Morris</a></li>
-                          <li><a  href="chartjs.html">Chartjs</a></li>
-                      </ul>
-                  </li>
-
-              </ul>
+                
               <!-- sidebar menu end-->
           </div>
       </aside>
@@ -132,6 +81,7 @@ Oinvoice-Portal
               
               $todayDate = date("Y-m-d");
               $this_month = date("m",strtotime($todayDate));
+              //echo $todayDate;
               $this_month_v = date("F",strtotime($todayDate));
               $this_year_v = date("Y",strtotime($todayDate));
 
@@ -228,7 +178,14 @@ Oinvoice-Portal
                                   <td><a >{{$s->invoice_type}}</a></td>
                                   <td><a >{{$s->invoice_to}}</a></td>
                                   <td><a href="">{{$s->date}}</a></td>
-                                  <td><a href="">{{$s->due_date}}</a></td>
+                                  <td>
+                                    @if($s->due_date === $todayDate)
+                                    <a href=""><mark style="background-color: yellow;color: green;" >{{$s->due_date}}</mark></a>@elseif($s->due_date <= $todayDate)
+                                    <a href=""><mark style="background-color: red;color: white;" >{{$s->due_date}}</mark></a>
+                                    @else
+                                    <a href=""><mark style="background-color: green;color: white;" >{{$s->due_date}}</mark></a>
+                                    @endif
+                                  </td>
                                   <td><a >{{$s->total}}</a></td>
                                   <td><a >{{$s->due_balance}}</a></td>
                                                                    
