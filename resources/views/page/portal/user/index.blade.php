@@ -123,7 +123,7 @@ Oinvoice-Portal
         
 
           <div class="col-md-4 col-sm-1 col-md-offset-1 box0">
-                        <div style="background: #73a7fa ;color: white" class="box1">
+                        <div style="background: #7fa5e3 ;color: white" class="box1">
 
                   
                  <h3 style="color: yellow" >Total : {{$sum_total_this}} {{session('c_currency')}}</h3>
